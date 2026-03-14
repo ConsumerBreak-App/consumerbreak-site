@@ -62,15 +62,23 @@ if (hero.hero_image) {
 // Bake in site logo
 if (hero.site_logo) {
   const logoSrc = imgPath(hero.site_logo);
-  // Replace the hero logo img with the custom logo
+  // Replace hero logo - match exact src="" pattern
   html = html.replace(
-    /(<img id="hero-logo"[^>]*src=")[^"]*("[^>]*>)/,
-    `$1${logoSrc}$2`
+    'id="hero-logo" src=""',
+    `id="hero-logo" src="${logoSrc}"`
+  );
+  html = html.replace(
+    'id="hero-logo" src="/"',
+    `id="hero-logo" src="${logoSrc}"`
   );
   // Also update nav logo
   html = html.replace(
-    /(<img class="nav-logo-img"[^>]*src=")[^"]*("[^>]*>)/,
-    `$1${logoSrc}$2`
+    'class="nav-logo-img" src=""',
+    `class="nav-logo-img" src="${logoSrc}"`
+  );
+  html = html.replace(
+    'class="nav-logo-img" src="/"',
+    `class="nav-logo-img" src="${logoSrc}"`
   );
 }
 
