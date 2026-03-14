@@ -9,23 +9,19 @@ function copyDir(src, dest) {
   if (!fs.existsSync(dest)) fs.mkdirSync(dest, {recursive: true});
   const entries = fs.readdirSync(src, {withFileTypes: true});
   for (const entry of entries) {
-    if (entry.name === 'dist' || entry.name === '.git' || entry.name === 'node_modules') continue;
+    if (['dist','.git','node_modules'].includes(entry.name)) continue;
     const srcPath = path.join(src, entry.name);
     const destPath = path.join(dest, entry.name);
-    if (entry.isDirectory()) {
-      copyDir(srcPath, destPath);
-    } else {
-      fs.copyFileSync(srcPath, destPath);
-    }
+    if (entry.isDirectory()) copyDir(srcPath, destPath);
+    else fs.copyFileSync(srcPath, destPath);
   }
 }
 copyDir('.', 'dist');
 
-// Read data files
+// Read data
 function readJSON(file) {
-  try {
-    return JSON.parse(fs.readFileSync(path.join('_data', file + '.json'), 'utf8'));
-  } catch(e) { return {}; }
+  try { return JSON.parse(fs.readFileSync(path.join('_data', file + '.json'), 'utf8')); }
+  catch(e) { return {}; }
 }
 
 function imgPath(src) {
@@ -42,77 +38,101 @@ const nftopia = readJSON('nftopia');
 const breakery = readJSON('breakery');
 const community = readJSON('community');
 
-// Read and modify index.html
 let html = fs.readFileSync('index.html', 'utf8');
 
-// Remove CMS data loader entirely - replace with empty comment
-html = html.replace(/\/\/ ── CMS DATA LOADER ─+[\s\S]*?loadCMSData\(\);[\s\S]*?\/\/ ─+/g, '');
+// Helper: set text content of element with id
+function bakeText(id, val) {
+  if (!val) return;
+  html = html.replace(new RegExp(`(id="${id}"[^>]*>)[^<]*`), `$1${val}`);
+}
 
-// Bake in hero data
-if (hero.badge) html = html.replace(/(<span id="hero-badge">)[^<]*/g, '$1' + hero.badge);
-if (hero.tagline) html = html.replace(/(<p class="hero-sub" id="hero-tagline">)[^<]*/g, '$1' + hero.tagline);
-if (hero.hero_image) {
-  const src = imgPath(hero.hero_image);
+// Helper: set image src
+function bakeSrc(id, src) {
+  if (!src) return;
+  const s = imgPath(src);
+  html = html.replace(new RegExp(`(id="${id}"[^>]*src=")[^"]*`), `$1${s}`);
+}
+
+// Helper: inject image into container div
+function bakeImg(id, src) {
+  if (!src) return;
+  const s = imgPath(src);
   html = html.replace(
-    /(<div class="hero-img-col"[^>]*>)([\s\S]*?)(<\/div>\s*\n\s*<\/div>\s*\n\s*<!-- STATS)/,
-    `$1<img src="${src}" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;">$3`
+    new RegExp(`(<div[^>]*id="${id}"[^>]*>)([^<]*)`),
+    `$1<img src="${s}" style="width:100%;height:100%;object-fit:cover;display:block;">`
   );
 }
 
-// Bake in site logo
+// HERO
+if (hero.badge) bakeText('hero-badge', hero.badge);
+if (hero.tagline) bakeText('hero-tagline', hero.tagline);
 if (hero.site_logo) {
-  const logoSrc = imgPath(hero.site_logo);
-  // Replace hero logo - match exact src="" pattern
+  const s = imgPath(hero.site_logo);
+  html = html.replace('id="nav-logo-img" src=""', `id="nav-logo-img" src="${s}" style="display:block;"`);
+  html = html.replace('id="hero-logo" src=""', `id="hero-logo" src="${s}" style="display:block;"`);
+  html = html.replace('id="footer-logo" src=""', `id="footer-logo" src="${s}" style="display:block;"`);
+  html = html.replace('id="nav-logo-fallback"', 'id="nav-logo-fallback" style="display:none;"');
+  html = html.replace('id="hero-logo-fallback"', 'id="hero-logo-fallback" style="display:none;"');
+}
+if (hero.hero_image) {
+  const s = imgPath(hero.hero_image);
   html = html.replace(
-    'id="hero-logo" src=""',
-    `id="hero-logo" src="${logoSrc}"`
-  );
-  html = html.replace(
-    'id="hero-logo" src="/"',
-    `id="hero-logo" src="${logoSrc}"`
-  );
-  // Also update nav logo
-  html = html.replace(
-    'class="nav-logo-img" src=""',
-    `class="nav-logo-img" src="${logoSrc}"`
-  );
-  html = html.replace(
-    'class="nav-logo-img" src="/"',
-    `class="nav-logo-img" src="${logoSrc}"`
+    '<div id="hero-img-wrap">',
+    `<div id="hero-img-wrap"><img src="${s}" style="width:100%;height:100%;object-fit:cover;display:block;">`
   );
 }
 
-// Bake in show data
-if (pitchbreak.time) html = html.replace(/(<div class="show-time" id="pb-time">)[^<]*/g, '$1' + pitchbreak.time);
-if (pitchbreak.description) html = html.replace(/(<p class="sec-body" id="pb-desc">)[^<]*/g, '$1' + pitchbreak.description);
-if (pitchbreak.image) html = html.replace(/<div class="img-placeholder" id="pb-img"><\/div>/g, `<div class="img-placeholder" id="pb-img"><img src="${imgPath(pitchbreak.image)}" style="width:100%;height:100%;object-fit:cover;"></div>`);
+// SHOWS
+if (pitchbreak.time) bakeText('pb-time', pitchbreak.time);
+if (pitchbreak.description) bakeText('pb-desc', pitchbreak.description);
+if (pitchbreak.image) bakeImg('pb-img', pitchbreak.image);
 
-if (spectral.time) html = html.replace(/(<div class="show-time" id="ss-time">)[^<]*/g, '$1' + spectral.time);
-if (spectral.description) html = html.replace(/(<p class="sec-body" id="ss-desc">)[^<]*/g, '$1' + spectral.description);
-if (spectral.image) html = html.replace(/<div class="img-placeholder" id="ss-img"><\/div>/g, `<div class="img-placeholder" id="ss-img"><img src="${imgPath(spectral.image)}" style="width:100%;height:100%;object-fit:cover;"></div>`);
+if (spectral.time) bakeText('ss-time', spectral.time);
+if (spectral.description) bakeText('ss-desc', spectral.description);
+if (spectral.image) bakeImg('ss-img', spectral.image);
 
-if (hybrid.description) html = html.replace(/(<p class="sec-body" id="hybrid-desc">)[^<]*/g, '$1' + hybrid.description);
-if (hybrid.image) html = html.replace(/<div class="img-placeholder" id="hybrid-img"><\/div>/g, `<div class="img-placeholder" id="hybrid-img"><img src="${imgPath(hybrid.image)}" style="width:100%;height:100%;object-fit:cover;"></div>`);
+// NFT
+if (hybrid.description) bakeText('hybrid-desc', hybrid.description);
+if (hybrid.image) bakeImg('hybrid-img', hybrid.image);
 
-if (nftopia.description) html = html.replace(/(<p class="sec-body" id="nftopia-desc">)[^<]*/g, '$1' + nftopia.description);
-if (nftopia.image) html = html.replace(/<div class="img-placeholder" id="nftopia-img"><\/div>/g, `<div class="img-placeholder" id="nftopia-img"><img src="${imgPath(nftopia.image)}" style="width:100%;height:100%;object-fit:cover;"></div>`);
+if (nftopia.description) bakeText('nftopia-desc', nftopia.description);
+if (nftopia.image) bakeImg('nftopia-img', nftopia.image);
 
-if (breakery.tagline) html = html.replace(/(<p[^>]*id="breakery-tagline"[^>]*>)[^<]*/g, '$1' + breakery.tagline);
+// BREAKERY
+if (breakery.tagline) bakeText('breakery-tagline', breakery.tagline);
+if (breakery.apps && breakery.apps.length) {
+  const apps = breakery.apps.map(a => `
+    <div class="appcard">
+      <div class="appcard-icon">${a.image ? `<img src="${imgPath(a.image)}">` : '🎮'}</div>
+      <div class="appcard-name">${a.name}</div>
+      <div class="appcard-desc">${a.description}</div>
+      <span class="appcard-status">${a.status}</span>
+    </div>`).join('') + `
+    <div class="appcard" style="opacity:.4;border-style:dashed;">
+      <div class="appcard-icon">+</div>
+      <div class="appcard-name">More Soon</div>
+      <div class="appcard-desc">15+ mini games launching</div>
+      <span class="appcard-status">Coming</span>
+    </div>`;
+  html = html.replace(/<div class="app-strip" id="app-strip">[\s\S]*?<\/div>\s*<div class="breakery-foot">/,
+    `<div class="app-strip" id="app-strip">${apps}</div>
+  <div class="breakery-foot">`);
+}
 
-if (community.title) html = html.replace(/(<div class="comm-title" id="community-title">)[^<]*/g, '$1' + community.title);
-if (community.description) html = html.replace(/(<p class="sec-body" id="community-desc">)[^<]*/g, '$1' + community.description);
+// COMMUNITY
+if (community.title) bakeText('community-title', community.title);
+if (community.description) bakeText('community-desc', community.description);
 if (community.earn_items && community.earn_items.length) {
   const items = community.earn_items.map(i =>
     `<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">${i}</div></div>`
   ).join('\n');
-  html = html.replace(
-    /(<div id="earn-items-list">)([\s\S]*?)(<\/div>)/,
-    `$1${items}$3`
-  );
+  html = html.replace(/<div class="earn-list" id="earn-items-list">[\s\S]*?<\/div>\s*<\/div>\s*<\/div>\s*<\/section>\s*<!-- STORY/,
+    `<div class="earn-list" id="earn-items-list">${items}</div>
+    </div>
+  </div>
+</section>
+<!-- STORY`);
 }
 
-// Write to dist
 fs.writeFileSync(path.join('dist', 'index.html'), html);
-
-// Copy admin folder
-console.log('Build complete! Files written to dist/');
+console.log('Build complete! dist/index.html written.');
