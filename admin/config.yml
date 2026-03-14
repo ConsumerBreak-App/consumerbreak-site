@@ -17,7 +17,8 @@ collections:
         fields:
           - {label: "Live Badge Text", name: "badge", widget: "string"}
           - {label: "Tagline", name: "tagline", widget: "string"}
-          - {label: "Hero Image (jpg, png, gif)", name: "hero_image", widget: "image", required: false}
+          - {label: "Site Logo (nav + hero)", name: "site_logo", widget: "image", required: false}
+          - {label: "Hero Image right side (jpg, png, gif)", name: "hero_image", widget: "image", required: false}
       - name: "pitchbreak"
         label: "PitchBreak Show"
         file: "_data/pitchbreak.json"
