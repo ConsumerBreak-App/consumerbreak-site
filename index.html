@@ -132,7 +132,9 @@ const base = window.location.origin;
     try {
       const r = await fetch(base + path + '?v=' + Date.now());
       if (!r.ok) return null;
-      return await r.json();
+const text = await r.text();
+if (!text || text.trim().startsWith('<')) return null;
+return JSON.parse(text);
     } catch(e) { return null; }
   }
 
