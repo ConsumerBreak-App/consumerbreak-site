@@ -122,7 +122,115 @@ footer{background:#060d06;padding:40px 40px 24px;position:relative;}
 
 .img-placeholder{width:100%;height:100%;background:transparent;min-height:160px;}
 </style>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js">
+
+// ── CMS DATA LOADER ─────────────────────────────────────────
+async function loadCMSData() {
+  const base = '';
+  
+  async function fetchJSON(path) {
+    try {
+      const r = await fetch(base + path + '?v=' + Date.now());
+      if (!r.ok) return null;
+      return await r.json();
+    } catch(e) { return null; }
+  }
+
+  function setImg(id, src) {
+    if (!src) return;
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.background = 'transparent';
+    el.style.minHeight = '0';
+    el.innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+  }
+
+  function setText(id, val) {
+    if (!val) return;
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  }
+
+  // HERO
+  const hero = await fetchJSON('/_data/hero.json');
+  if (hero) {
+    setText('hero-badge', hero.badge);
+    setText('hero-tagline', hero.tagline);
+    if (hero.hero_image) {
+      const col = document.getElementById('hero-img-col');
+      if (col) col.innerHTML = `<img src="${hero.hero_image}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+    }
+  }
+
+  // PITCHBREAK
+  const pb = await fetchJSON('/_data/pitchbreak.json');
+  if (pb) {
+    setText('pb-time', pb.time);
+    setText('pb-desc', pb.description);
+    if (pb.image) setImg('pb-img', pb.image);
+  }
+
+  // SPECTRAL SESSIONS
+  const ss = await fetchJSON('/_data/spectral.json');
+  if (ss) {
+    setText('ss-time', ss.time);
+    setText('ss-desc', ss.description);
+    if (ss.image) setImg('ss-img', ss.image);
+  }
+
+  // HYBRID CREATURES
+  const hybrid = await fetchJSON('/_data/hybrid.json');
+  if (hybrid) {
+    setText('hybrid-desc', hybrid.description);
+    if (hybrid.image) setImg('hybrid-img', hybrid.image);
+  }
+
+  // NFTOPIA
+  const nftopia = await fetchJSON('/_data/nftopia.json');
+  if (nftopia) {
+    setText('nftopia-desc', nftopia.description);
+    if (nftopia.image) setImg('nftopia-img', nftopia.image);
+  }
+
+  // BREAKERY
+  const breakery = await fetchJSON('/_data/breakery.json');
+  if (breakery) {
+    setText('breakery-tagline', breakery.tagline);
+    if (breakery.apps && breakery.apps.length) {
+      const strip = document.getElementById('app-strip');
+      if (strip) {
+        strip.innerHTML = breakery.apps.map(app => `
+          <div class="appcard">
+            <div class="appcard-icon" style="font-size:20px;">
+              ${app.image ? `<img src="${app.image}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">` : '🎮'}
+            </div>
+            <div class="appcard-name">${app.name}</div>
+            <div class="appcard-desc">${app.description}</div>
+            <div class="appcard-status">${app.status}</div>
+          </div>`).join('');
+      }
+    }
+  }
+
+  // COMMUNITY
+  const community = await fetchJSON('/_data/community.json');
+  if (community) {
+    setText('community-title', community.title);
+    setText('community-desc', community.description);
+    if (community.earn_items && community.earn_items.length) {
+      const list = document.getElementById('earn-items-list');
+      if (list) {
+        list.innerHTML = community.earn_items.map(item => `
+          <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">${item}</div></div>
+        `).join('');
+      }
+    }
+  }
+}
+
+loadCMSData();
+// ────────────────────────────────────────────────────────────
+</script>
 </head>
 <body>
 
@@ -142,18 +250,18 @@ footer{background:#060d06;padding:40px 40px 24px;position:relative;}
 <div class="hero">
   <svg class="glass-bg" data-glass="900,460,7" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"></svg>
   <div class="hero-content">
-    <div class="live-badge"><div class="live-dot"></div><span>Live Every Wednesday & Sunday</span></div>
+    <div class="live-badge"><div class="live-dot"></div><span id="hero-badge">Live Every Wednesday & Sunday</span></div>
     <div class="hero-logo-wrap">
       <img id="hero-logo" src="" alt="ConsumerBreak" style="width:100%;mix-blend-mode:screen;display:block;">
     </div>
-    <p class="hero-sub">Web3 education · Live art · NFT drops · Community games · Prize-winning apps.</p>
+    <p class="hero-sub" id="hero-tagline">Web3 education · Live art · NFT drops · Community games · Prize-winning apps.</p>
     <div class="hero-btns">
       <a class="btn-solid" href="https://twitch.tv/consumerbreak" target="_blank">Watch on Twitch</a>
       <a class="btn-out" href="breakery.html">Explore The Breakery</a>
     </div>
   </div>
-  <div class="hero-img-col">
-    <div class="img-placeholder"></div>
+  <div class="hero-img-col" id="hero-img-col">
+    <div class="img-placeholder" id="hero-hero-img"></div>
       <div class="img-zone-label">Click to upload<br>host photo / hero art</div>
     </div>
   </div>
@@ -176,11 +284,11 @@ footer{background:#060d06;padding:40px 40px 24px;position:relative;}
     <div style="position:relative;z-index:2;">
       <div class="eyebrow">Every Wednesday</div>
       <div class="show-day">PitchBreak</div>
-      <div class="show-time">2:00 PM EST &nbsp;·&nbsp; 7:00 PM UTC</div>
+      <div class="show-time" id="pb-time">2:00 PM EST &nbsp;·&nbsp; 7:00 PM UTC</div>
       <div style="height:180px;margin:16px 0;">
-        <div class="img-placeholder"></div><div class="img-zone-label">Click to upload<br>stream screenshot</div></div>
+        <div class="img-placeholder" id="pb-img"></div><div class="img-zone-label">Click to upload<br>stream screenshot</div></div>
       </div>
-      <p class="sec-body">Live Web3 variety show — community games, NFT drops, crypto education, and prizes. Multi-streamed across Twitch, NFTOPIA, and Twitter Spaces every Wednesday.</p>
+      <p class="sec-body" id="pb-desc">Live Web3 variety show — community games, NFT drops, crypto education, and prizes. Multi-streamed across Twitch, NFTOPIA, and Twitter Spaces every Wednesday.</p>
       <div class="show-platforms" style="margin-top:12px;">
         <span class="platform-pill">Twitch</span>
         <span class="platform-pill">NFTOPIA</span>
@@ -198,11 +306,11 @@ footer{background:#060d06;padding:40px 40px 24px;position:relative;}
     <div style="position:relative;z-index:2;">
       <div class="eyebrow" style="color:#a78bfa;">Every Sunday</div>
       <div class="show-day" style="color:#a78bfa;">Spectral Sessions</div>
-      <div class="show-time">2:00 PM EST &nbsp;·&nbsp; 7:00 PM UTC</div>
+      <div class="show-time" id="ss-time">2:00 PM EST &nbsp;·&nbsp; 7:00 PM UTC</div>
       <div style="height:180px;margin:16px 0;">
-        <div class="img-placeholder"></div><div class="img-zone-label">Click to upload<br>show / art image</div></div>
+        <div class="img-placeholder" id="ss-img"></div><div class="img-zone-label">Click to upload<br>show / art image</div></div>
       </div>
-      <p class="sec-body">Live art show featuring Jumbie Art & guest artists drawing simultaneously — themes and attributes voted by viewers in real time. Learn the Spectral Art movement and Web3 through creativity.</p>
+      <p class="sec-body" id="ss-desc">Live art show featuring Jumbie Art & guest artists drawing simultaneously — themes and attributes voted by viewers in real time. Learn the Spectral Art movement and Web3 through creativity.</p>
       <div class="show-platforms" style="margin-top:12px;">
         <span class="platform-pill" style="border-color:#4c3a7a;color:#a78bfa;background:#1a1a3a;">Twitch</span>
         <span class="platform-pill" style="border-color:#4c3a7a;color:#a78bfa;background:#1a1a3a;">Blaze.stream</span>
@@ -224,8 +332,8 @@ footer{background:#060d06;padding:40px 40px 24px;position:relative;}
     <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:14px;">
       <div class="eyebrow">WAX NFT Collection</div>
       <div class="sec-title">Hybrid Creatures</div>
-      <div class="img-placeholder"></div><div class="img-zone-label">Click to upload<br>NFT card art</div></div>
-      <p class="sec-body">Hand-drawn digital trading cards on the carbon-neutral WAX blockchain. Collect, blend, stake, and earn — 500+ free NFTs distributed every week on stream. Now in Season 4.5: Scrolls & Maps.</p>
+      <div class="img-placeholder" id="hybrid-img"></div><div class="img-zone-label">Click to upload<br>NFT card art</div></div>
+      <p class="sec-body" id="hybrid-desc">Hand-drawn digital trading cards on the carbon-neutral WAX blockchain. Collect, blend, stake, and earn — 500+ free NFTs distributed every week on stream. Now in Season 4.5: Scrolls & Maps.</p>
       <div class="tags"><span class="tag">Season 4.5 Live</span><span class="tag">WAX</span><span class="tag">Blends</span><span class="tag">Watch2Earn</span></div>
       <a class="ext-link" href="https://hybridcreaturesnft.com" target="_blank">Visit HybridCreaturesNFT.com</a>
     </div>
@@ -235,8 +343,8 @@ footer{background:#060d06;padding:40px 40px 24px;position:relative;}
     <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:14px;">
       <div class="eyebrow">Metaverse Convention</div>
       <div class="sec-title">NFTOPIA</div>
-      <div class="img-placeholder"></div><div class="img-zone-label">Click to upload<br>NFTOPIA event image</div></div>
-      <p class="sec-body">Co-founded metaverse convention onboarding the world into Web3, blockchain, digital art, and community. 5 events, 50+ past exhibitors including WAX, Splinterlands, NeftyBlocks, and more.</p>
+      <div class="img-placeholder" id="nftopia-img"></div><div class="img-zone-label">Click to upload<br>NFTOPIA event image</div></div>
+      <p class="sec-body" id="nftopia-desc">Co-founded metaverse convention onboarding the world into Web3, blockchain, digital art, and community. 5 events, 50+ past exhibitors including WAX, Splinterlands, NeftyBlocks, and more.</p>
       <div class="tags"><span class="tag">NFTOPIA 5</span><span class="tag">Aug 16–17 2025</span><span class="tag">Virtual</span><span class="tag">Free</span></div>
       <a class="ext-link" href="https://nftopia.weebly.com" target="_blank">Visit NFTOPIA</a>
     </div>
@@ -250,11 +358,11 @@ footer{background:#060d06;padding:40px 40px 24px;position:relative;}
     <div>
       <div class="eyebrow">App Suite</div>
       <div class="breakery-title">The <span>Breakery</span></div>
-      <p style="font-size:13px;color:#7ab07a;margin-top:8px;max-width:500px;">Puzzle mini-games and interactive tools to play, win, and explore across the Breakverse.</p>
+      <p style="font-size:13px;color:#7ab07a;margin-top:8px;max-width:500px;" id="breakery-tagline">Puzzle mini-games and interactive tools to play, win, and explore across the Breakverse.</p>
     </div>
     <a class="btn-solid" href="breakery.html">See All Apps →</a>
   </div>
-  <div class="app-strip">
+  <div class="app-strip" id="app-strip">
     <div class="appcard"><div class="appcard-icon">🧩</div><div class="appcard-name">ConsumerBreak</div><div class="appcard-desc">Jigsaw ad puzzles with cash & NFT prizes</div><div class="appcard-status">Era 2 Beta</div></div>
     <div class="appcard"><div class="appcard-icon">🔷</div><div class="appcard-name">PuzzleBreak</div><div class="appcard-desc">The core puzzle engine</div><div class="appcard-status">Live</div></div>
     <div class="appcard"><div class="appcard-icon">⌨️</div><div class="appcard-name">KeyBreak</div><div class="appcard-desc">Keyboard puzzle challenges</div><div class="appcard-status">Beta</div></div>
@@ -267,8 +375,8 @@ footer{background:#060d06;padding:40px 40px 24px;position:relative;}
 <div id="community" class="community">
   <div class="comm-left">
     <div class="eyebrow">Community</div>
-    <div class="comm-title">Join The Breakverse</div>
-    <p class="sec-body">Discord, Twitch, Twitter — the ConsumerBreak community is where Web3 explorers, NFT collectors, live art fans, and puzzle players come together. Engage, earn, and play every week.</p>
+    <div class="comm-title" id="community-title">Join The Breakverse</div>
+    <p class="sec-body" id="community-desc">Discord, Twitch, Twitter — the ConsumerBreak community is where Web3 explorers, NFT collectors, live art fans, and puzzle players come together. Engage, earn, and play every week.</p>
     <div class="plat-row">
       <a class="plat-btn" href="https://twitch.tv/consumerbreak" target="_blank">Twitch</a>
       <a class="plat-btn" href="https://x.com/ConsumerBreak" target="_blank">Twitter/X</a>
@@ -278,11 +386,12 @@ footer{background:#060d06;padding:40px 40px 24px;position:relative;}
   </div>
   <div class="comm-right">
     <div class="eyebrow">Earn by participating</div>
-    <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">500+ free WAX NFTs distributed every week via stream</div></div>
+    <div id="earn-items-list">    <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">500+ free WAX NFTs distributed every week via stream</div></div>
     <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Weekly 50M $WUF airdrop split to Scroll holders</div></div>
     <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Watch2Earn — tune in and get rewarded live</div></div>
     <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Vote on Spectral Sessions art themes every Sunday</div></div>
     <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Play Breakery games and earn across the Breakverse</div></div>
+    </div>
   </div>
 </div>
 
