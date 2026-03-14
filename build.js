@@ -59,6 +59,21 @@ if (hero.hero_image) {
   );
 }
 
+// Bake in site logo
+if (hero.site_logo) {
+  const logoSrc = imgPath(hero.site_logo);
+  // Replace the hero logo img with the custom logo
+  html = html.replace(
+    /(<img id="hero-logo"[^>]*src=")[^"]*("[^>]*>)/,
+    `$1${logoSrc}$2`
+  );
+  // Also update nav logo
+  html = html.replace(
+    /(<img class="nav-logo-img"[^>]*src=")[^"]*("[^>]*>)/,
+    `$1${logoSrc}$2`
+  );
+}
+
 // Bake in show data
 if (pitchbreak.time) html = html.replace(/(<div class="show-time" id="pb-time">)[^<]*/g, '$1' + pitchbreak.time);
 if (pitchbreak.description) html = html.replace(/(<p class="sec-body" id="pb-desc">)[^<]*/g, '$1' + pitchbreak.description);
