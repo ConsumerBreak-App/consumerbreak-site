@@ -1,0 +1,10 @@
+{
+  "tagline": "Puzzle mini-games and interactive tools to play, win, and explore across the Breakverse.",
+  "apps": [
+    {"name": "ConsumerBreak", "description": "Jigsaw ad puzzles with cash & NFT prizes", "status": "Era 2 Beta"},
+    {"name": "PuzzleBreak", "description": "The core puzzle engine", "status": "Live"},
+    {"name": "KeyBreak", "description": "Keyboard puzzle challenges", "status": "Beta"},
+    {"name": "BingoBreak", "description": "Live bingo with rewards", "status": "Beta"},
+    {"name": "TriviaBreak", "description": "Web3 trivia & learn-to-earn", "status": "Beta"}
+  ]
+}
