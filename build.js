@@ -1,13 +1,37 @@
 const fs = require('fs');
 const path = require('path');
 
-// Read all data files
+// Create dist folder
+if (!fs.existsSync('dist')) fs.mkdirSync('dist');
+
+// Copy all static files to dist
+function copyDir(src, dest) {
+  if (!fs.existsSync(dest)) fs.mkdirSync(dest, {recursive: true});
+  const entries = fs.readdirSync(src, {withFileTypes: true});
+  for (const entry of entries) {
+    if (entry.name === 'dist' || entry.name === '.git' || entry.name === 'node_modules') continue;
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+    if (entry.isDirectory()) {
+      copyDir(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  }
+}
+copyDir('.', 'dist');
+
+// Read data files
 function readJSON(file) {
   try {
     return JSON.parse(fs.readFileSync(path.join('_data', file + '.json'), 'utf8'));
-  } catch(e) {
-    return {};
-  }
+  } catch(e) { return {}; }
+}
+
+function imgPath(src) {
+  if (!src) return '';
+  if (src.startsWith('http')) return src;
+  return src.startsWith('/') ? src : '/' + src;
 }
 
 const hero = readJSON('hero');
@@ -18,93 +42,54 @@ const nftopia = readJSON('nftopia');
 const breakery = readJSON('breakery');
 const community = readJSON('community');
 
-// Fix image path
-function imgPath(src) {
-  if (!src) return '';
-  if (src.startsWith('http')) return src;
-  return src.startsWith('/') ? src : '/' + src;
-}
-
-// Read template
+// Read and modify index.html
 let html = fs.readFileSync('index.html', 'utf8');
 
-// Remove the entire CMS data loader script block
-html = html.replace(/\/\/ ── CMS DATA LOADER[\s\S]*?loadCMSData\(\);[\s\S]*?\/\/ ─+/g, '// data baked in at build time');
+// Remove CMS data loader entirely - replace with empty comment
+html = html.replace(/\/\/ ── CMS DATA LOADER ─+[\s\S]*?loadCMSData\(\);[\s\S]*?\/\/ ─+/g, '');
 
-// Inject data directly into HTML
-// Hero badge
-if (hero.badge) {
-  html = html.replace(
-    /(<span id="hero-badge">)[^<]*/,
-    `$1${hero.badge}`
-  );
-}
-
-// Hero tagline
-if (hero.tagline) {
-  html = html.replace(
-    /(<p class="hero-sub" id="hero-tagline">)[^<]*/,
-    `$1${hero.tagline}`
-  );
-}
-
-// Hero image - inject into hero-img-col
+// Bake in hero data
+if (hero.badge) html = html.replace(/(<span id="hero-badge">)[^<]*/g, '$1' + hero.badge);
+if (hero.tagline) html = html.replace(/(<p class="hero-sub" id="hero-tagline">)[^<]*/g, '$1' + hero.tagline);
 if (hero.hero_image) {
   const src = imgPath(hero.hero_image);
   html = html.replace(
-    /(<div class="hero-img-col" id="hero-img-col">)([\s\S]*?)(<\/div>\s*<\/div>\s*<!-- STATS)/,
-    `$1<img src="${src}" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;">$3`
+    /(<div class="hero-img-col"[^>]*>)([\s\S]*?)(<\/div>\s*\n\s*<\/div>\s*\n\s*<!-- STATS)/,
+    `$1<img src="${src}" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;">$3`
   );
 }
 
-// PitchBreak
-if (pitchbreak.time) html = html.replace(/(<div class="show-time" id="pb-time">)[^<]*/, `$1${pitchbreak.time}`);
-if (pitchbreak.description) html = html.replace(/(<p class="sec-body" id="pb-desc">)[^<]*/, `$1${pitchbreak.description}`);
-if (pitchbreak.image) {
-  const src = imgPath(pitchbreak.image);
-  html = html.replace(/(<div class="img-placeholder" id="pb-img"><\/div>)/, `<div class="img-placeholder" id="pb-img"><img src="${src}" style="width:100%;height:100%;object-fit:cover;display:block;"></div>`);
-}
+// Bake in show data
+if (pitchbreak.time) html = html.replace(/(<div class="show-time" id="pb-time">)[^<]*/g, '$1' + pitchbreak.time);
+if (pitchbreak.description) html = html.replace(/(<p class="sec-body" id="pb-desc">)[^<]*/g, '$1' + pitchbreak.description);
+if (pitchbreak.image) html = html.replace(/<div class="img-placeholder" id="pb-img"><\/div>/g, `<div class="img-placeholder" id="pb-img"><img src="${imgPath(pitchbreak.image)}" style="width:100%;height:100%;object-fit:cover;"></div>`);
 
-// Spectral Sessions
-if (spectral.time) html = html.replace(/(<div class="show-time" id="ss-time">)[^<]*/, `$1${spectral.time}`);
-if (spectral.description) html = html.replace(/(<p class="sec-body" id="ss-desc">)[^<]*/, `$1${spectral.description}`);
-if (spectral.image) {
-  const src = imgPath(spectral.image);
-  html = html.replace(/(<div class="img-placeholder" id="ss-img"><\/div>)/, `<div class="img-placeholder" id="ss-img"><img src="${src}" style="width:100%;height:100%;object-fit:cover;display:block;"></div>`);
-}
+if (spectral.time) html = html.replace(/(<div class="show-time" id="ss-time">)[^<]*/g, '$1' + spectral.time);
+if (spectral.description) html = html.replace(/(<p class="sec-body" id="ss-desc">)[^<]*/g, '$1' + spectral.description);
+if (spectral.image) html = html.replace(/<div class="img-placeholder" id="ss-img"><\/div>/g, `<div class="img-placeholder" id="ss-img"><img src="${imgPath(spectral.image)}" style="width:100%;height:100%;object-fit:cover;"></div>`);
 
-// Hybrid Creatures
-if (hybrid.description) html = html.replace(/(<p class="sec-body" id="hybrid-desc">)[^<]*/, `$1${hybrid.description}`);
-if (hybrid.image) {
-  const src = imgPath(hybrid.image);
-  html = html.replace(/(<div class="img-placeholder" id="hybrid-img"><\/div>)/, `<div class="img-placeholder" id="hybrid-img"><img src="${src}" style="width:100%;height:100%;object-fit:cover;display:block;"></div>`);
-}
+if (hybrid.description) html = html.replace(/(<p class="sec-body" id="hybrid-desc">)[^<]*/g, '$1' + hybrid.description);
+if (hybrid.image) html = html.replace(/<div class="img-placeholder" id="hybrid-img"><\/div>/g, `<div class="img-placeholder" id="hybrid-img"><img src="${imgPath(hybrid.image)}" style="width:100%;height:100%;object-fit:cover;"></div>`);
 
-// NFTOPIA
-if (nftopia.description) html = html.replace(/(<p class="sec-body" id="nftopia-desc">)[^<]*/, `$1${nftopia.description}`);
-if (nftopia.image) {
-  const src = imgPath(nftopia.image);
-  html = html.replace(/(<div class="img-placeholder" id="nftopia-img"><\/div>)/, `<div class="img-placeholder" id="nftopia-img"><img src="${src}" style="width:100%;height:100%;object-fit:cover;display:block;"></div>`);
-}
+if (nftopia.description) html = html.replace(/(<p class="sec-body" id="nftopia-desc">)[^<]*/g, '$1' + nftopia.description);
+if (nftopia.image) html = html.replace(/<div class="img-placeholder" id="nftopia-img"><\/div>/g, `<div class="img-placeholder" id="nftopia-img"><img src="${imgPath(nftopia.image)}" style="width:100%;height:100%;object-fit:cover;"></div>`);
 
-// Breakery tagline
-if (breakery.tagline) {
-  html = html.replace(/(<p[^>]*id="breakery-tagline"[^>]*>)[^<]*/, `$1${breakery.tagline}`);
-}
+if (breakery.tagline) html = html.replace(/(<p[^>]*id="breakery-tagline"[^>]*>)[^<]*/g, '$1' + breakery.tagline);
 
-// Community
-if (community.title) html = html.replace(/(<div class="comm-title" id="community-title">)[^<]*/, `$1${community.title}`);
-if (community.description) html = html.replace(/(<p class="sec-body" id="community-desc">)[^<]*/, `$1${community.description}`);
+if (community.title) html = html.replace(/(<div class="comm-title" id="community-title">)[^<]*/g, '$1' + community.title);
+if (community.description) html = html.replace(/(<p class="sec-body" id="community-desc">)[^<]*/g, '$1' + community.description);
 if (community.earn_items && community.earn_items.length) {
-  const items = community.earn_items.map(item =>
-    `<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">${item}</div></div>`
-  ).join('\n    ');
+  const items = community.earn_items.map(i =>
+    `<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">${i}</div></div>`
+  ).join('\n');
   html = html.replace(
     /(<div id="earn-items-list">)([\s\S]*?)(<\/div>)/,
-    `$1\n    ${items}\n    $3`
+    `$1${items}$3`
   );
 }
 
-// Write output
-fs.writeFileSync('index.html', html);
-console.log('Build complete! index.html updated with CMS data.');
+// Write to dist
+fs.writeFileSync(path.join('dist', 'index.html'), html);
+
+// Copy admin folder
+console.log('Build complete! Files written to dist/');
