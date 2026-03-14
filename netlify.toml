@@ -1,12 +1,12 @@
 [build]
   publish = "."
-  command = "node build.js"
 
 [[headers]]
   for = "/_data/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Cache-Control = "no-cache, no-store, must-revalidate"
+    Content-Type = "application/json; charset=utf-8"
 
 [[headers]]
   for = "/images/uploads/*"
