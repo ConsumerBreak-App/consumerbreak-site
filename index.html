@@ -126,7 +126,7 @@ footer{background:#060d06;padding:40px 40px 24px;position:relative;}
 
 // ── CMS DATA LOADER ─────────────────────────────────────────
 async function loadCMSData() {
-  const base = '';
+const base = window.location.origin;
   
   async function fetchJSON(path) {
     try {
