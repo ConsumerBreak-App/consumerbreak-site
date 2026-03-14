@@ -23,7 +23,7 @@ a{text-decoration:none;}
 
 /* NAV */
 nav{background:#0b110b;border-bottom:1px solid #1c361c;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;position:relative;z-index:10;}
-.nlogo img{height:72px;width:auto;mix-blend-mode:screen;}
+.nlogo img{height:38px;width:auto;mix-blend-mode:screen;}
 .nlinks{display:flex;gap:24px;align-items:center;}
 .nlinks a{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#6a9e6a;}
 .nlinks a:hover{color:#5fcf6e;}
@@ -126,25 +126,33 @@ footer{background:#060d06;padding:40px 40px 24px;position:relative;}
 
 // ── CMS DATA LOADER ─────────────────────────────────────────
 async function loadCMSData() {
-const base = window.location.origin;
+  const base = window.location.origin;
   
   async function fetchJSON(path) {
     try {
-      const r = await fetch(base + path + '?v=' + Date.now());
+      const r = await fetch(path + '?cb=' + Date.now(), {
+        cache: 'no-store',
+        headers: {'Accept': 'application/json'}
+      });
       if (!r.ok) return null;
-const text = await r.text();
-if (!text || text.trim().startsWith('<')) return null;
-return JSON.parse(text);
-    } catch(e) { return null; }
+      const text = await r.text();
+      if (!text || text.trim() === '' || text.trim().startsWith('<')) return null;
+      return JSON.parse(text);
+    } catch(e) { 
+      console.log('Fetch error for', path, e);
+      return null; 
+    }
   }
 
   function setImg(id, src) {
     if (!src) return;
     const el = document.getElementById(id);
     if (!el) return;
+    const imgSrc = src.startsWith('http') ? src : (src.startsWith('/') ? src : '/' + src);
     el.style.background = 'transparent';
     el.style.minHeight = '0';
-    el.innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+    el.style.height = 'auto';
+    el.innerHTML = `<img src="${imgSrc}" style="width:100%;height:100%;object-fit:cover;display:block;min-height:160px;">`;
   }
 
   function setText(id, val) {
@@ -154,18 +162,25 @@ return JSON.parse(text);
   }
 
   // HERO
-  const hero = await fetchJSON('/_data/hero.json');
+  const hero = await fetchJSON(base + '/_data/hero.json');
   if (hero) {
     setText('hero-badge', hero.badge);
     setText('hero-tagline', hero.tagline);
     if (hero.hero_image) {
       const col = document.getElementById('hero-img-col');
-      if (col) col.innerHTML = `<img src="${hero.hero_image}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+      if (col) {
+        col.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = hero.hero_image.startsWith('http') ? hero.hero_image : (hero.hero_image.startsWith('/') ? hero.hero_image : '/' + hero.hero_image);
+        img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;';
+        col.style.position = 'relative';
+        col.appendChild(img);
+      }
     }
   }
 
   // PITCHBREAK
-  const pb = await fetchJSON('/_data/pitchbreak.json');
+  const pb = await fetchJSON(base + '/_data/pitchbreak.json');
   if (pb) {
     setText('pb-time', pb.time);
     setText('pb-desc', pb.description);
@@ -173,7 +188,7 @@ return JSON.parse(text);
   }
 
   // SPECTRAL SESSIONS
-  const ss = await fetchJSON('/_data/spectral.json');
+  const ss = await fetchJSON(base + '/_data/spectral.json');
   if (ss) {
     setText('ss-time', ss.time);
     setText('ss-desc', ss.description);
@@ -181,21 +196,21 @@ return JSON.parse(text);
   }
 
   // HYBRID CREATURES
-  const hybrid = await fetchJSON('/_data/hybrid.json');
+  const hybrid = await fetchJSON(base + '/_data/hybrid.json');
   if (hybrid) {
     setText('hybrid-desc', hybrid.description);
     if (hybrid.image) setImg('hybrid-img', hybrid.image);
   }
 
   // NFTOPIA
-  const nftopia = await fetchJSON('/_data/nftopia.json');
+  const nftopia = await fetchJSON(base + '/_data/nftopia.json');
   if (nftopia) {
     setText('nftopia-desc', nftopia.description);
     if (nftopia.image) setImg('nftopia-img', nftopia.image);
   }
 
   // BREAKERY
-  const breakery = await fetchJSON('/_data/breakery.json');
+  const breakery = await fetchJSON(base + '/_data/breakery.json');
   if (breakery) {
     setText('breakery-tagline', breakery.tagline);
     if (breakery.apps && breakery.apps.length) {
@@ -215,7 +230,7 @@ return JSON.parse(text);
   }
 
   // COMMUNITY
-  const community = await fetchJSON('/_data/community.json');
+  const community = await fetchJSON(base + '/_data/community.json');
   if (community) {
     setText('community-title', community.title);
     setText('community-desc', community.description);
