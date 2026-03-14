@@ -1,12 +1,11 @@
 backend:
-  name: github
-  repo: ConsumerBreak-App/consumerbreak-site
+  name: git-gateway
   branch: main
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-site_url: https://consumerbreak.natanel.workers.dev
+site_url: https://consumerbreak-website-2026.netlify.app
 
 collections:
   - name: "homepage"
