@@ -1,5 +1,28 @@
 {
   "badge": "Live Every Wednesday & Sunday",
-  "tagline": "Web3 education · Live art · NFT drops · Community games · Prize-winning apps.",
-  "hero_image": "https://1s4oyld5dc.ucarecd.net/fe2c952c-fac4-494b-8ae9-b3821e3491db/"
+  "tagline": "Web3 education · Live art · NFT drops · Community games · Prize-winning apps."
 }
+```
+
+Click **Commit changes** — this removes the broken image URL.
+
+**Fix 2 — Close GitHub Desktop conflicts:**
+
+In GitHub Desktop click **Abort merge** if still showing, then we'll leave Desktop alone for now.
+
+---
+
+After you commit that JSON fix, go to `/admin` → Hero Section → re-upload your image fresh. This time it should save as `/images/uploads/filename.jpg` (a local path) instead of the Uploadcare CDN URL, because I already removed that config in the last ZIP.
+
+But wait — that ZIP never got pushed because of the Desktop conflicts. So the bad Uploadcare config is still live.
+
+**Fastest fix — edit `admin/config.yml` directly on GitHub too:**
+
+1. Go to your repo → `admin` folder → `config.yml`
+2. Click pencil edit
+3. Make sure this line is **NOT** in the file:
+```
+media_library:
+  name: uploadcare
+  config:
+    publicKey: demopublickey
