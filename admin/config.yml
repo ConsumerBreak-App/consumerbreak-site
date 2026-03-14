@@ -1,6 +1,8 @@
 backend:
   name: git-gateway
   branch: main
+  base_url: https://consumerbreak-website-2026.netlify.app
+  auth_endpoint: /.netlify/identity
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
