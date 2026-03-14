@@ -5,7 +5,7 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-site_url: https://consumerbreak-website-2026.netlify.app
+site_url: https://consumerbreak.natanel.workers.dev
 
 collections:
   - name: "homepage"
