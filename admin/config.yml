@@ -4,7 +4,6 @@ backend:
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
-
 site_url: https://consumerbreak-website-2026.netlify.app
 
 collections:
@@ -17,34 +16,59 @@ collections:
         fields:
           - {label: "Live Badge Text", name: "badge", widget: "string"}
           - {label: "Tagline", name: "tagline", widget: "string"}
-          - {label: "Site Logo (nav + hero)", name: "site_logo", widget: "image", required: false}
-          - {label: "Hero Image right side (jpg, png, gif)", name: "hero_image", widget: "image", required: false}
+          - label: "Nav & Footer Logo (small — header/footer)"
+            name: "nav_logo"
+            widget: "image"
+            required: false
+            hint: "White/transparent PNG. Shown in nav bar and footer."
+          - label: "Hero Logo (large — homepage left side)"
+            name: "hero_logo"
+            widget: "image"
+            required: false
+            hint: "Large logo shown on homepage. Can be same file or larger version."
+          - label: "Hero Background Image (right side, gif ok)"
+            name: "hero_image"
+            widget: "image"
+            required: false
       - name: "pitchbreak"
         label: "PitchBreak Show"
         file: "_data/pitchbreak.json"
         fields:
           - {label: "Time", name: "time", widget: "string"}
           - {label: "Description", name: "description", widget: "text"}
-          - {label: "Show Image (jpg, png, gif)", name: "image", widget: "image", required: false}
+          - label: "Show Image (gif ok)"
+            name: "image"
+            widget: "image"
+            required: false
       - name: "spectral"
         label: "Spectral Sessions Show"
         file: "_data/spectral.json"
         fields:
           - {label: "Time", name: "time", widget: "string"}
           - {label: "Description", name: "description", widget: "text"}
-          - {label: "Show Image (jpg, png, gif)", name: "image", widget: "image", required: false}
+          - label: "Show Image (gif ok)"
+            name: "image"
+            widget: "image"
+            required: false
       - name: "hybrid"
         label: "Hybrid Creatures"
         file: "_data/hybrid.json"
         fields:
           - {label: "Description", name: "description", widget: "text"}
-          - {label: "Image (jpg, png, gif)", name: "image", widget: "image", required: false}
+          - {label: "Movie YouTube URL", name: "movie_url", widget: "string", required: false, hint: "e.g. https://www.youtube.com/embed/VIDEO_ID"}
+          - label: "Card Art Image (gif ok)"
+            name: "image"
+            widget: "image"
+            required: false
       - name: "nftopia"
         label: "NFTOPIA"
         file: "_data/nftopia.json"
         fields:
           - {label: "Description", name: "description", widget: "text"}
-          - {label: "Image (jpg, png, gif)", name: "image", widget: "image", required: false}
+          - label: "Image (gif ok)"
+            name: "image"
+            widget: "image"
+            required: false
       - name: "breakery"
         label: "The Breakery"
         file: "_data/breakery.json"
@@ -57,7 +81,11 @@ collections:
               - {label: "Name", name: "name", widget: "string"}
               - {label: "Description", name: "description", widget: "text"}
               - {label: "Status", name: "status", widget: "select", options: ["Live", "Beta", "Era 2 Beta", "Coming Soon"]}
-              - {label: "App Image (gif supported)", name: "image", widget: "image", required: false}
+              - {label: "Category", name: "category", widget: "select", options: ["main", "brandbreak", "games", "tools"]}
+              - label: "App Icon (gif ok)"
+                name: "image"
+                widget: "image"
+                required: false
       - name: "community"
         label: "Community / Breakverse"
         file: "_data/community.json"
