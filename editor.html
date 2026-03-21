@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ConsumerBreak — Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    :root{--bg:#060c06;--green:#5fcf6e;--muted:#4a6b4a;--white:#f0f7f0}
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--white);font-family:'Barlow',sans-serif}
+    .wrap{display:grid;grid-template-columns:1fr 420px;height:100vh;gap:8px}
+    .pane{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-left:1px solid rgba(255,255,255,0.03);padding:12px;display:flex;flex-direction:column}
+    .left{padding:0}
+    iframe{width:100%;height:100%;border:0;background:#000}
+    .right{overflow:auto}
+    h1{font-size:18px;margin:6px 0 12px;color:var(--green)}
+    label{display:block;font-size:12px;color:var(--muted);margin-top:12px}
+    input[type=text],textarea,select{width:100%;padding:8px;margin-top:6px;border-radius:4px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--white);font-size:13px}
+    textarea{min-height:64px;resize:vertical}
+    .row{display:flex;gap:8px}
+    .btn{display:inline-block;padding:10px 14px;margin-top:14px;border-radius:4px;border:2px solid var(--green);background:var(--green);color:#060c06;font-weight:700;text-decoration:none;cursor:pointer}
+    .btn.ghost{background:transparent;color:var(--white);border-color:rgba(255,255,255,0.08)}
+    .small{font-size:12px;padding:8px 10px}
+    .notice{font-size:12px;color:var(--muted);margin-top:6px}
+    .flex-between{display:flex;justify-content:space-between;align-items:center}
+    .section{border-top:1px solid rgba(255,255,255,0.02);padding-top:12px;margin-top:12px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="pane left">
+      <iframe id="live-frame" src="/index.html"></iframe>
+    </div>
+    <div class="pane right">
+      <div class="flex-between">
+        <h1>ConsumerBreak — Visual Editor</h1>
+        <div id="auth-area">
+          <button id="login-btn" class="btn small">Log in</button>
+        </div>
+      </div>
+
+      <div id="gate" class="section">
+        <div class="notice">Please sign in with Netlify Identity to access the editor.</div>
+      </div>
+
+      <div id="editor-ui" style="display:none">
+        <div class="section">
+          <div style="font-weight:700">Site settings</div>
+          <label>Site ID (Netlify) — required for publish</label>
+          <input type="text" id="site-id" placeholder="Paste your Netlify Site ID">
+          <label>Branch</label>
+          <input type="text" id="site-branch" value="main">
+        </div>
+
+        <div class="section">
+          <div style="font-weight:700">Hero</div>
+          <label>Badge</label>
+          <input id="hero-badge" type="text">
+          <label>Tagline</label>
+          <input id="hero-tagline" type="text">
+          <label>Nav Logo (nav_logo)</label>
+          <input id="hero-nav_logo" type="text" placeholder="/images/logo.png or https://...">
+          <label>Hero Logo (hero_logo)</label>
+          <input id="hero-hero_logo" type="text">
+          <label>Hero Image (hero_image)</label>
+          <input id="hero-hero_image" type="text">
+        </div>
+
+        <div class="section">
+          <div style="font-weight:700">PitchBreak</div>
+          <label>Time</label><input id="pb-time" type="text">
+          <label>Description</label><textarea id="pb-description"></textarea>
+          <label>Image</label><input id="pb-image" type="text">
+        </div>
+
+        <div class="section">
+          <div style="font-weight:700">Spectral Sessions</div>
+          <label>Time</label><input id="ss-time" type="text">
+          <label>Description</label><textarea id="ss-description"></textarea>
+          <label>Image</label><input id="ss-image" type="text">
+        </div>
+
+        <div class="section">
+          <div style="font-weight:700">Hybrid Creatures</div>
+          <label>Description</label><textarea id="hybrid-description"></textarea>
+          <label>Movie URL</label><input id="hybrid-movie_url" type="text">
+          <label>Image</label><input id="hybrid-image" type="text">
+        </div>
+
+        <div class="section">
+          <div style="font-weight:700">NFTOPIA</div>
+          <label>Description</label><textarea id="nftopia-description"></textarea>
+          <label>Image</label><input id="nftopia-image" type="text">
+        </div>
+
+        <div class="section">
+          <div style="font-weight:700">Breakery</div>
+          <label>Tagline</label><input id="breakery-tagline" type="text">
+        </div>
+
+        <div class="section">
+          <div style="font-weight:700">Community</div>
+          <label>Title</label><input id="comm-title" type="text">
+          <label>Description</label><textarea id="comm-description"></textarea>
+        </div>
+
+        <div class="section flex-between">
+          <div>
+            <button id="load-btn" class="btn ghost small">Load from _data</button>
+            <button id="publish-btn" class="btn small">Publish changes</button>
+          </div>
+          <div id="save-status" class="notice"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Netlify Identity
+    const loginBtn = document.getElementById('login-btn');
+    const editorUI = document.getElementById('editor-ui');
+    const gate = document.getElementById('gate');
+    let currentUser = null;
+
+    function showGate(){ gate.style.display = 'block'; editorUI.style.display = 'none'; }
+    function showEditor(){ gate.style.display = 'none'; editorUI.style.display = 'block'; }
+
+    if (window.netlifyIdentity) window.netlifyIdentity.on('init', user => {
+      currentUser = user;
+      updateAuth();
+    });
+    if (window.netlifyIdentity) window.netlifyIdentity.on('login', user => { currentUser = user; updateAuth(); window.netlifyIdentity.close(); });
+    if (window.netlifyIdentity) window.netlifyIdentity.on('logout', () => { currentUser = null; updateAuth(); });
+    if (window.netlifyIdentity) window.netlifyIdentity.init();
+
+    loginBtn.addEventListener('click', () => { if (!window.netlifyIdentity) return alert('Netlify Identity not loaded'); window.netlifyIdentity.open(); });
+
+    function isAdmin(user){ try { return user && user.app_metadata && user.app_metadata.roles && user.app_metadata.roles.indexOf('admin') !== -1; } catch(e){ return false; } }
+
+    function updateAuth(){
+      const authArea = document.getElementById('auth-area');
+      authArea.innerHTML = '';
+      if (!currentUser){
+        authArea.appendChild(loginBtn);
+        showGate();
+        return;
+      }
+      const span = document.createElement('span'); span.textContent = currentUser.email; span.style.marginRight='8px';
+      const out = document.createElement('button'); out.className='btn small ghost'; out.textContent='Log out'; out.addEventListener('click', ()=>{ window.netlifyIdentity.logout(); });
+      authArea.appendChild(span); authArea.appendChild(out);
+      if (isAdmin(currentUser)) showEditor(); else showGate();
+    }
+
+    // Data helpers
+    async function fetchJSON(path){ try{ const r = await fetch(path + '?cb=' + Date.now(),{cache:'no-store'}); if(!r.ok) return null; return await r.json(); }catch(e){ return null; } }
+
+    async function loadAll(){
+      // HERO
+      const hero = await fetchJSON('/_data/hero.json') || {};
+      document.getElementById('hero-badge').value = hero.badge || '';
+      document.getElementById('hero-tagline').value = hero.tagline || '';
+      document.getElementById('hero-nav_logo').value = hero.nav_logo || hero.site_logo || '';
+      document.getElementById('hero-hero_logo').value = hero.hero_logo || '';
+      document.getElementById('hero-hero_image').value = hero.hero_image || '';
+
+      // PitchBreak
+      const pb = await fetchJSON('/_data/pitchbreak.json') || {};
+      document.getElementById('pb-time').value = pb.time || '';
+      document.getElementById('pb-description').value = pb.description || '';
+      document.getElementById('pb-image').value = pb.image || '';
+
+      // Spectral
+      const ss = await fetchJSON('/_data/spectral.json') || {};
+      document.getElementById('ss-time').value = ss.time || '';
+      document.getElementById('ss-description').value = ss.description || '';
+      document.getElementById('ss-image').value = ss.image || '';
+
+      // Hybrid
+      const hybrid = await fetchJSON('/_data/hybrid.json') || {};
+      document.getElementById('hybrid-description').value = hybrid.description || '';
+      document.getElementById('hybrid-movie_url').value = hybrid.movie_url || '';
+      document.getElementById('hybrid-image').value = hybrid.image || '';
+
+      // NFTOPIA
+      const nftopia = await fetchJSON('/_data/nftopia.json') || {};
+      document.getElementById('nftopia-description').value = nftopia.description || '';
+      document.getElementById('nftopia-image').value = nftopia.image || '';
+
+      // Breakery
+      const breakery = await fetchJSON('/_data/breakery.json') || {};
+      document.getElementById('breakery-tagline').value = breakery.tagline || '';
+
+      // Community
+      const comm = await fetchJSON('/_data/community.json') || {};
+      document.getElementById('comm-title').value = comm.title || '';
+      document.getElementById('comm-description').value = comm.description || '';
+    }
+
+    document.getElementById('load-btn').addEventListener('click', loadAll);
+
+    async function saveFile(siteId, branch, path, content){
+      // Use Netlify API to update site files. Requires Site ID and a JWT from Netlify Identity with Git Gateway enabled.
+      // This uses the Netlify "site files" endpoint: PUT /api/v1/sites/:site_id/files/:path
+      const token = await window.netlifyIdentity.currentUser().jwt();
+      const filePath = path.replace(/^\//, '');
+      const putUrl = 'https://api.netlify.com/api/v1/sites/' + encodeURIComponent(siteId) + '/files/' + encodeURIComponent(filePath);
+      const body = { content: JSON.stringify(content, null, 2) };
+      const r = await fetch(putUrl, { method: 'PUT', headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      if (!r.ok) throw new Error('Save failed: ' + r.status + ' ' + await r.text());
+      return await r.json();
+    }
+
+    document.getElementById('publish-btn').addEventListener('click', async function(){
+      const siteId = document.getElementById('site-id').value.trim();
+      const branch = document.getElementById('site-branch').value.trim() || 'main';
+      if (!siteId) return alert('Please provide your Netlify Site ID before publishing.');
+      document.getElementById('save-status').textContent = 'Publishing...';
+      try{
+        // Build objects
+        const hero = { badge: document.getElementById('hero-badge').value, tagline: document.getElementById('hero-tagline').value, nav_logo: document.getElementById('hero-nav_logo').value, hero_logo: document.getElementById('hero-hero_logo').value, hero_image: document.getElementById('hero-hero_image').value };
+        const pb = { time: document.getElementById('pb-time').value, description: document.getElementById('pb-description').value, image: document.getElementById('pb-image').value };
+        const ss = { time: document.getElementById('ss-time').value, description: document.getElementById('ss-description').value, image: document.getElementById('ss-image').value };
+        const hybrid = { description: document.getElementById('hybrid-description').value, movie_url: document.getElementById('hybrid-movie_url').value, image: document.getElementById('hybrid-image').value };
+        const nftopia = { description: document.getElementById('nftopia-description').value, image: document.getElementById('nftopia-image').value };
+        const breakery = { tagline: document.getElementById('breakery-tagline').value };
+        const community = { title: document.getElementById('comm-title').value, description: document.getElementById('comm-description').value };
+
+        // Save each file
+        await saveFile(siteId, branch, '/_data/hero.json', hero);
+        await saveFile(siteId, branch, '/_data/pitchbreak.json', pb);
+        await saveFile(siteId, branch, '/_data/spectral.json', ss);
+        await saveFile(siteId, branch, '/_data/hybrid.json', hybrid);
+        await saveFile(siteId, branch, '/_data/nftopia.json', nftopia);
+        await saveFile(siteId, branch, '/_data/breakery.json', breakery);
+        await saveFile(siteId, branch, '/_data/community.json', community);
+
+        document.getElementById('save-status').textContent = 'Published — refresh the site to see changes.';
+        // reload iframe
+        document.getElementById('live-frame').src = document.getElementById('live-frame').src.split('#')[0] + '#cb' + Date.now();
+      }catch(e){
+        console.error(e); document.getElementById('save-status').textContent = 'Error: ' + e.message; alert('Publish failed. See console for details.');
+      }
+    });
+
+  </script>
+</body>
+</html>

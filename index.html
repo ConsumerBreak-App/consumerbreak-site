@@ -638,11 +638,41 @@ document.getElementById('hc-play-btn')?.addEventListener('click', function() {
 });
 
 if (window.netlifyIdentity) {
+  // Initialize Identity and add an admin-only editor button when appropriate
   window.netlifyIdentity.on('init', user => {
+    // If a non-logged-in visitor logs in, redirect admin logins to /admin/
     if (!user) {
       window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
     }
+
+    // Inject admin Edit button for users with role 'admin'
+    function addEditorButton(){
+      if (document.getElementById('admin-edit-btn')) return;
+      const btn = document.createElement('a');
+      btn.id = 'admin-edit-btn';
+      btn.href = '/editor.html';
+      btn.className = 'btn-outline';
+      btn.textContent = 'Edit (Admin)';
+      btn.style.position = 'fixed';
+      btn.style.bottom = '18px';
+      btn.style.right = '18px';
+      btn.style.zIndex = '9999';
+      btn.style.background = 'rgba(6,12,6,.94)';
+      btn.style.color = 'var(--green)';
+      btn.style.padding = '10px 12px';
+      btn.style.border = '2px solid var(--green)';
+      document.body.appendChild(btn);
+    }
+
+    if (user && user.app_metadata && user.app_metadata.roles && user.app_metadata.roles.indexOf('admin') !== -1) {
+      addEditorButton();
+    }
+
+    // On login/logout, refresh so UI updates (or add/remove button)
+    window.netlifyIdentity.on('login', () => { window.location.reload(); });
+    window.netlifyIdentity.on('logout', () => { const el = document.getElementById('admin-edit-btn'); if (el) el.remove(); window.location.reload(); });
   });
+  window.netlifyIdentity.init();
 }
 </script>
 </body>
