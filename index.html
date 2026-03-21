@@ -265,19 +265,19 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
 
 <!-- STATS BAR -->
 <div class="statsbar">
-  <div class="statitem"><div class="stat-label">PitchBreak</div><div class="stat-value">WEDNESDAYS</div><div class="stat-sub">2PM EST · 7PM UTC</div></div>
-  <div class="statitem"><div class="stat-label">Spectral Sessions</div><div class="stat-value">SUNDAYS</div><div class="stat-sub">2PM EST · 7PM UTC</div></div>
-  <div class="statitem"><div class="stat-label">NFT Assets</div><div class="stat-value">1.7M+</div><div class="stat-sub">WAX Blockchain</div></div>
-  <div class="statitem"><div class="stat-label">WAX Status</div><div class="stat-value">GOLD</div><div class="stat-sub">Ambassador · cbreakgaming</div></div>
-  <div class="statitem"><div class="stat-label">Convention</div><div class="stat-value">NFTOPIA 5</div><div class="stat-sub">Aug 16–17, 2025</div></div>
+  <div class="statitem"><div class="stat-label" id="stat1-label">PitchBreak</div><div class="stat-value" id="stat1-value">WEDNESDAYS</div><div class="stat-sub" id="stat1-sub">2PM EST · 7PM UTC</div></div>
+  <div class="statitem"><div class="stat-label" id="stat2-label">Spectral Sessions</div><div class="stat-value" id="stat2-value">SUNDAYS</div><div class="stat-sub" id="stat2-sub">2PM EST · 7PM UTC</div></div>
+  <div class="statitem"><div class="stat-label" id="stat3-label">NFT Assets</div><div class="stat-value" id="stat3-value">1.7M+</div><div class="stat-sub" id="stat3-sub">WAX Blockchain</div></div>
+  <div class="statitem"><div class="stat-label" id="stat4-label">WAX Status</div><div class="stat-value" id="stat4-value">GOLD</div><div class="stat-sub" id="stat4-sub">Ambassador · cbreakgaming</div></div>
+  <div class="statitem"><div class="stat-label" id="stat5-label">Convention</div><div class="stat-value" id="stat5-value">NFTOPIA 5</div><div class="stat-sub" id="stat5-sub">Aug 16–17, 2025</div></div>
 </div>
 
 <!-- BREAKFEST BANNER -->
 <div class="breakfest-banner">
   <div class="breakfest-left">
-    <div class="breakfest-badge">🔥 Beta Launch</div>
-    <div class="breakfest-title">BREAKFEST</div>
-    <p class="breakfest-sub">The ConsumerBreak community campaign — play games, complete tasks, earn rewards in the Breakverse. Powered by BrandBreak.</p>
+    <div id="breakfest-badge" class="breakfest-badge">🔥 Beta Launch</div>
+    <div id="breakfest-title" class="breakfest-title">BREAKFEST</div>
+    <p id="breakfest-sub" class="breakfest-sub">The ConsumerBreak community campaign — play games, complete tasks, earn rewards in the Breakverse. Powered by BrandBreak.</p>
   </div>
   <a href="breakery.html" class="btn-solid" style="flex-shrink:0;white-space:nowrap;">Join BREAKFEST →</a>
 </div>
@@ -585,6 +585,24 @@ async function loadCMSData() {
       const wrap = document.getElementById('hero-img-wrap');
       if (wrap) wrap.innerHTML = `<img src="${fixSrc(hero.hero_image)}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
     }
+    if (hero.breakfest_badge) setText('breakfest-badge', hero.breakfest_badge);
+    if (hero.breakfest_title) setText('breakfest-title', hero.breakfest_title);
+    if (hero.breakfest_sub) setText('breakfest-sub', hero.breakfest_sub);
+    if (hero.stat1_label) setText('stat1-label', hero.stat1_label);
+    if (hero.stat1_value) setText('stat1-value', hero.stat1_value);
+    if (hero.stat1_sub) setText('stat1-sub', hero.stat1_sub);
+    if (hero.stat2_label) setText('stat2-label', hero.stat2_label);
+    if (hero.stat2_value) setText('stat2-value', hero.stat2_value);
+    if (hero.stat2_sub) setText('stat2-sub', hero.stat2_sub);
+    if (hero.stat3_label) setText('stat3-label', hero.stat3_label);
+    if (hero.stat3_value) setText('stat3-value', hero.stat3_value);
+    if (hero.stat3_sub) setText('stat3-sub', hero.stat3_sub);
+    if (hero.stat4_label) setText('stat4-label', hero.stat4_label);
+    if (hero.stat4_value) setText('stat4-value', hero.stat4_value);
+    if (hero.stat4_sub) setText('stat4-sub', hero.stat4_sub);
+    if (hero.stat5_label) setText('stat5-label', hero.stat5_label);
+    if (hero.stat5_value) setText('stat5-value', hero.stat5_value);
+    if (hero.stat5_sub) setText('stat5-sub', hero.stat5_sub);
   }
 
   // PITCHBREAK
@@ -653,12 +671,12 @@ async function loadCMSData() {
       const strip = document.getElementById('app-strip');
       if (strip) {
         strip.innerHTML = breakery.apps.map(a => `
-          <div class="appcard">
-            <div class="appcard-icon">${a.image ? `<img src="${fixSrc(a.image)}">` : '🎮'}</div>
+          <a class="appcard" href="${a.link || '#'}" target="_blank" style="text-decoration:none;">
+            <div class="appcard-icon">${a.icon ? `<img src="${a.icon.startsWith('http') ? a.icon : '/'+a.icon.replace(/^\//,'')}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">` : '🎮'}</div>
             <div class="appcard-name">${a.name || ''}</div>
             <div class="appcard-desc">${a.description || a.desc || ''}</div>
             <span class="appcard-status">${a.status || ''}</span>
-          </div>`).join('') + `<div class="appcard" style="opacity:.4;border-style:dashed;"><div class="appcard-icon">+</div><div class="appcard-name">More Soon</div><div class="appcard-desc">15+ mini games launching</div><span class="appcard-status">Coming</span></div>`;
+          </a>`).join('') + `<div class="appcard" style="opacity:.4;border-style:dashed;"><div class="appcard-icon">+</div><div class="appcard-name">More Soon</div><div class="appcard-desc">15+ mini games launching</div><span class="appcard-status">Coming</span></div>`;
       }
     }
   }
