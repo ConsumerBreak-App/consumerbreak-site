@@ -298,9 +298,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <div class="show-time" id="ss-time">2:00 PM EST · 7:00 PM UTC</div>
       <div class="show-img" id="ss-img"><img src="" alt="" style="display:none;"></div>
       <p class="show-desc" id="ss-desc">Live art show featuring Jumbie Art & guest artists drawing simultaneously — themes and attributes voted by viewers in real time. Learn the Spectral Art movement and Web3 through creativity.</p>
-      <div style="margin-top:14px;padding:12px 14px;border:1px solid rgba(167,139,250,0.25);border-radius:4px;background:rgba(167,139,250,0.06);">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#a78bfa;margin-bottom:6px;">Powered by S.A.F.E.</div>
-        <p style="font-size:12px;color:rgba(240,247,240,0.5);margin:0;line-height:1.6;">Spectral Art Foundation Enterprises — 501(c)(3) nonprofit. Artist grants, workshops, youth education &amp; live exhibitions. Co-produced with <a href="https://jumbieart.com/pages/safe" target="_blank" style="color:#a78bfa;text-decoration:none;">Jumbie Art →</a></p>
+      <div style="margin-top:14px;padding:14px 16px;border:1px solid rgba(167,139,250,0.35);border-radius:4px;background:rgba(167,139,250,0.06);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#a78bfa;margin-bottom:6px;">Powered by S.A.F.E.</div>
+        <p style="font-size:13px;color:rgba(240,247,240,0.5);margin:0;line-height:1.6;">Spectral Art Foundation Enterprises — 501(c)(3) nonprofit. Artist grants, workshops, youth education &amp; live exhibitions. Co-produced with <a href="https://jumbieart.com/pages/safe" target="_blank" style="color:#a78bfa;text-decoration:none;">Jumbie Art →</a></p>
       </div>
       <div class="pills">
         <span class="pill pill-tw">Twitch</span>
@@ -711,26 +711,104 @@ function openModalFor(spec){
           Object.assign(upBtn.style, { marginTop:'6px', background:'transparent', border:'1px solid #5fcf6e', color:'#5fcf6e', padding:'5px 10px', borderRadius:'4px', fontSize:'11px', cursor:'pointer', display:'block' });
           upBtn.addEventListener('click', (e) => { e.preventDefault(); fileInput.click(); });
           
-          fileInput.addEventListener('change', () => {
+          fileInput.addEventListener('change', async () => {
             const file = fileInput.files[0];
             if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (ev) => {
+
+            upBtn.textContent = '⏳ Uploading...';
+            upBtn.disabled = true;
+
+            try {
+              const user = window.netlifyIdentity.currentUser();
+              const token = await user.jwt();
+
+              const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+              const filename = 'images/uploads/' + Date.now() + '_' + safeName;
+
+              // Read file as binary and encode to base64 for GitHub API
+              const arrayBuffer = await file.arrayBuffer();
+              const bytes = new Uint8Array(arrayBuffer);
+              let binary = '';
+              const chunkSize = 8192;
+              for (let i = 0; i < bytes.byteLength; i += chunkSize) {
+                const chunk = bytes.subarray(i, i + chunkSize);
+                binary += String.fromCharCode.apply(null, chunk);
+              }
+              const base64Content = btoa(binary);
+
+              // Check if file already exists (need SHA for update)
+              let sha = undefined;
+              try {
+                const checkRes = await fetch('/.netlify/git/github/contents/' + filename, {
+                  headers: { 'Authorization': 'Bearer ' + token }
+                });
+                if (checkRes.ok) {
+                  const checkJson = await checkRes.json();
+                  sha = checkJson.sha;
+                }
+              } catch(e) {}
+
+              const body = { message: 'Upload image via editor: ' + safeName, content: base64Content };
+              if (sha) body.sha = sha;
+
+              const uploadRes = await fetch('/.netlify/git/github/contents/' + filename, {
+                method: 'PUT',
+                headers: {
+                  'Authorization': 'Bearer ' + token,
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+              });
+
+              if (!uploadRes.ok) {
+                const errText = await uploadRes.text();
+                throw new Error('Upload failed ' + uploadRes.status + ': ' + errText);
+              }
+
+              // Store only the clean path — NOT base64 — in the field
+              const publicPath = '/' + filename;
               const field = document.getElementById('cb-field-' + f);
               if (field) {
-                field.value = ev.target.result;
-                // show preview
+                field.value = publicPath;
+
+                // Show preview
                 let preview = document.getElementById('cb-preview-' + f);
                 if (!preview) {
                   preview = document.createElement('img');
                   preview.id = 'cb-preview-' + f;
-                  Object.assign(preview.style, { display:'block', maxWidth:'100%', maxHeight:'120px', marginTop:'8px', borderRadius:'4px', border:'1px solid #1a2e1a', objectFit:'cover' });
+                  Object.assign(preview.style, {
+                    display: 'block',
+                    maxWidth: '100%',
+                    maxHeight: '120px',
+                    marginTop: '8px',
+                    borderRadius: '4px',
+                    border: '1px solid #1a2e1a',
+                    objectFit: 'cover'
+                  });
                   field.parentNode.insertBefore(preview, field.nextSibling);
                 }
-                preview.src = ev.target.result;
+                // GitHub takes ~30s to deploy — show path as confirmation
+                preview.alt = '✓ Uploaded: ' + publicPath;
+                preview.src = publicPath + '?cb=' + Date.now();
+                preview.onerror = () => {
+                  preview.style.display = 'none';
+                  const note = document.createElement('div');
+                  note.style.cssText = 'color:#5fcf6e;font-size:11px;margin-top:4px;';
+                  note.textContent = '✓ Uploaded: ' + publicPath + ' (live in ~30s after deploy)';
+                  preview.parentNode.insertBefore(note, preview.nextSibling);
+                };
               }
-            };
-            reader.readAsDataURL(file);
+
+              upBtn.textContent = '✓ Uploaded — Save to apply';
+              upBtn.style.color = '#5fcf6e';
+              upBtn.disabled = false;
+
+            } catch(err) {
+              console.error('[Editor] Upload error:', err);
+              upBtn.textContent = '📁 Upload from computer';
+              upBtn.disabled = false;
+              alert('Upload error: ' + err.message);
+            }
           });
           
           wrap.appendChild(upBtn);
