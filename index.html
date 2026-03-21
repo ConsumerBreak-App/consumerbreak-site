@@ -715,8 +715,7 @@ if (window.netlifyIdentity) {
     }
 
     // On login/logout, refresh so UI updates (or add/remove button)
-    window.netlifyIdentity.on('login', () => { window.location.reload(); });
-    window.netlifyIdentity.on('logout', () => { const el = document.getElementById('admin-edit-btn'); if (el) el.remove(); window.location.reload(); });
+    window.netlifyIdentity.on('logout', () => { const el = document.getElementById('admin-edit-btn'); if (el) el.remove(); });
   });
   window.netlifyIdentity.init();
 }
