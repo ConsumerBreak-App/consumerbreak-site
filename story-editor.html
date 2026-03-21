@@ -9,39 +9,44 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#060c06;color:#c8e6c8;font-family:'Barlow',sans-serif;opacity:0;transition:opacity .12s;}
+a{text-decoration:none;}
 .editor-banner{background:#1a3a1a;border-bottom:2px solid #5fcf6e;padding:10px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
 .editor-banner-text{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5fcf6e;}
 .editor-banner-btns a{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:3px;color:#060c06;background:#5fcf6e;text-decoration:none;margin-left:8px;}
 .editor-banner-btns a.out{background:transparent;color:#5fcf6e;border:1px solid #5fcf6e;}
-nav{background:#0a110a;border-bottom:1px solid #1a2e1a;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;}
+nav{background:#060c06;border-bottom:1px solid #1a2e1a;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;}
 .nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;color:#5fcf6e;letter-spacing:3px;}
 .nlinks{display:flex;gap:24px;align-items:center;}
-.nlinks a{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#7aaa7a;text-decoration:none;}
+.nlinks a{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#7aaa7a;}
 .nlinks a:hover{color:#5fcf6e;}
-.ncta{background:#5fcf6e;color:#060c06 !important;font-size:11px;padding:8px 18px;border-radius:3px;}
-.page-content{max-width:900px;margin:0 auto;padding:60px 40px;}
-.section-block{background:#0a110a;border:1px solid #1a2e1a;border-radius:8px;padding:32px;margin-bottom:24px;position:relative;}
-.section-block:hover .edit-btn{opacity:1;}
-.edit-btn{position:absolute;top:12px;right:12px;background:#5fcf6e;color:#060c06;border:none;border-radius:4px;padding:6px 14px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;opacity:0;transition:opacity .15s;}
+.ncta{background:#5fcf6e;color:#060c06 !important;font-size:12px;padding:8px 18px;border-radius:3px;}
+.page-wrap{max-width:960px;margin:0 auto;padding:40px;}
+.notice{background:#0a110a;border:1px solid #2a5a2a;border-radius:6px;padding:20px 24px;margin-bottom:24px;font-size:15px;color:#c8e6c8;line-height:1.7;}
+.notice strong{color:#5fcf6e;}
+.section-block{background:#0a110a;border:1px solid #1a2e1a;border-radius:8px;padding:28px 32px;margin-bottom:20px;position:relative;}
+.section-block:hover .edit-btn-overlay{opacity:1;}
+.edit-btn-overlay{position:absolute;top:12px;right:12px;background:#5fcf6e;color:#060c06;border:none;border-radius:4px;padding:6px 14px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;opacity:0;transition:opacity .15s;}
 .eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#5fcf6e;margin-bottom:8px;}
 .story-title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;color:#f0f7f0;margin-bottom:16px;}
-.story-body{font-size:16px;color:#c8e6c8;line-height:1.75;margin-bottom:20px;}
-.story-quote{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:rgba(200,230,200,.35);line-height:1.35;margin-top:12px;}
+.story-body{font-size:17px;color:#c8e6c8;line-height:1.75;margin-bottom:20px;white-space:pre-wrap;}
+.story-quote{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:rgba(200,230,200,.35);line-height:1.35;}
 .story-quote em{font-style:normal;color:#5fcf6e;}
-.memorial-block{text-align:center;padding:28px;background:rgba(95,207,110,.03);border:1px solid #1a2e1a;border-radius:6px;}
-.mem-names{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:#f0f7f0;margin-bottom:6px;}
-.mem-dates{font-size:13px;color:#7aaa7a;}
-.mem-note{margin-top:12px;font-size:13px;color:rgba(122,170,122,.7);font-style:italic;}
-/* MODAL */
+.memorial-inner{text-align:center;padding:24px;background:rgba(95,207,110,.03);border:1px solid #1a2e1a;border-radius:6px;}
+.mem-names{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:#f0f7f0;margin-bottom:8px;}
+.mem-dates{font-size:14px;color:#7aaa7a;}
+.mem-note{margin-top:12px;font-size:14px;color:rgba(122,170,122,.7);font-style:italic;}
+.timeline-note{background:#0f1a0f;border:1px solid #1c361c;border-radius:6px;padding:20px 24px;margin-bottom:20px;}
+.timeline-note h3{font-family:'Bebas Neue',sans-serif;font-size:24px;color:#f0f7f0;margin-bottom:8px;}
+.timeline-note p{font-size:15px;color:#c8e6c8;line-height:1.7;}
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;align-items:flex-start;justify-content:center;z-index:99999;overflow-y:auto;padding:5vh 0;}
 .modal{background:#0a110a;border:1px solid #5fcf6e;border-radius:8px;padding:24px;max-width:520px;width:95%;max-height:82vh;overflow-y:auto;position:relative;}
 .modal h2{font-family:'Bebas Neue',sans-serif;color:#5fcf6e;font-size:28px;letter-spacing:2px;margin-bottom:16px;}
-.modal label{display:block;color:#9fbf9f;font-size:12px;margin-bottom:4px;margin-top:12px;}
-.modal input,.modal textarea{width:100%;padding:8px;background:rgba(255,255,255,.05);border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:14px;font-family:'Barlow',sans-serif;}
-.modal textarea{min-height:100px;resize:vertical;}
+.modal label{display:block;color:#9fbf9f;font-size:13px;margin-bottom:4px;margin-top:12px;}
+.modal input,.modal textarea{width:100%;padding:9px;background:rgba(255,255,255,.05);border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:14px;font-family:'Barlow',sans-serif;}
+.modal textarea{min-height:120px;resize:vertical;}
 .modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px;padding-top:14px;border-top:1px solid #1a2e1a;}
-.btn-cancel{background:transparent;border:1px solid rgba(255,255,255,.1);color:#f0f7f0;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px;}
-.btn-save{background:#5fcf6e;border:none;color:#060c06;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:700;}
+.btn-cancel{background:transparent;border:1px solid rgba(255,255,255,.1);color:#f0f7f0;padding:9px 18px;border-radius:6px;cursor:pointer;font-size:14px;}
+.btn-save{background:#5fcf6e;border:none;color:#060c06;padding:9px 18px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:700;}
 .close-x{position:absolute;right:12px;top:12px;background:transparent;border:none;color:#f0f7f0;font-size:18px;cursor:pointer;}
 </style>
 </head>
@@ -65,23 +70,35 @@ nav{background:#0a110a;border-bottom:1px solid #1a2e1a;display:flex;align-items:
   </div>
 </nav>
 
-<div class="page-content">
+<div class="page-wrap">
 
-  <div class="section-block">
-    <button class="edit-btn" onclick="openModal('story')">✏ Edit</button>
-    <div class="eyebrow" id="display-eyebrow">Since 2011</div>
-    <div class="story-title" id="display-title">Our Story</div>
-    <p class="story-body" id="display-body">A decade of relentless building. Five development companies. Six figures invested. Two parents lost. One vision that never died.</p>
-    <div class="story-quote" id="display-quote">"What if you turned an <em>advertisement</em> into a puzzle?"</div>
+  <div class="notice">
+    <strong>Story Page Editor</strong> — Edit the opening section, pull quote, and memorial. The full timeline below is part of the story.html file structure and requires direct code editing to modify individual year entries.
   </div>
 
+  <!-- STORY OPENER — editable -->
   <div class="section-block">
-    <button class="edit-btn" onclick="openModal('memorial')">✏ Edit</button>
+    <button class="edit-btn-overlay" onclick="openModal('story')">✏ Edit</button>
+    <div class="eyebrow" id="d-eyebrow">Since 2011</div>
+    <div class="story-title" id="d-title">Our Story</div>
+    <p class="story-body" id="d-body">A decade of relentless building. Five development companies. Six figures invested. Two parents lost. One vision that never died.</p>
+    <div class="story-quote">"<span id="d-quote">What if you turned an <em>advertisement</em> into a puzzle?</span>"</div>
+  </div>
+
+  <!-- TIMELINE PREVIEW — not editable here -->
+  <div class="timeline-note">
+    <h3>Timeline (15 Years)</h3>
+    <p>The full timeline — from 2011 to 2026 — is displayed on the public story page. Individual year entries are part of the story.html file. To edit specific timeline events, open story.html directly in VS Code and find the year section you want to change.</p>
+  </div>
+
+  <!-- MEMORIAL — editable -->
+  <div class="section-block">
+    <button class="edit-btn-overlay" onclick="openModal('memorial')">✏ Edit</button>
     <div class="eyebrow">In Loving Memory</div>
-    <div class="memorial-block">
-      <div class="mem-names" id="display-names">Michael &amp; Barbara Eisenberg</div>
-      <div class="mem-dates" id="display-dates">February 12 &amp; 14, 2018</div>
-      <div class="mem-note" id="display-note">"Dedicated to the two who believed before anyone else did."</div>
+    <div class="memorial-inner">
+      <div class="mem-names" id="d-names">Michael &amp; Barbara Eisenberg</div>
+      <div class="mem-dates" id="d-dates">February 12 &amp; February 14, 2018 · Same Hospice Room · Two Days Apart</div>
+      <div class="mem-note" id="d-note">"They believed before anyone else did. Every line of code, every contest, every creature, every show — it's all dedicated to them."</div>
     </div>
   </div>
 
@@ -92,35 +109,34 @@ nav{background:#0a110a;border-bottom:1px solid #1a2e1a;display:flex;align-items:
 </div>
 
 <script>
-let currentData = {
+let sData = {
   eyebrow: 'Since 2011',
   title: 'Our Story',
   body: 'A decade of relentless building. Five development companies. Six figures invested. Two parents lost. One vision that never died.',
   quote: 'What if you turned an advertisement into a puzzle?',
   memorial_names: 'Michael & Barbara Eisenberg',
-  memorial_dates: 'February 12 & 14, 2018',
-  memorial_note: 'Dedicated to the two who believed before anyone else did.'
+  memorial_dates: 'February 12 & February 14, 2018 · Same Hospice Room · Two Days Apart',
+  memorial_note: 'They believed before anyone else did. Every line of code, every contest, every creature, every show — it\'s all dedicated to them.'
 };
 
 async function loadData() {
   try {
-    const r = await fetch('/_data/story.json?cb=' + Date.now(), { cache: 'no-store' });
+    const r = await fetch('/_data/story.json?cb=' + Date.now(), { cache:'no-store' });
     if (!r.ok) return;
-    const t = await r.text();
-    const d = JSON.parse(t);
-    currentData = Object.assign(currentData, d);
+    const d = JSON.parse(await r.text());
+    sData = Object.assign(sData, d);
     renderDisplay();
   } catch(e) {}
 }
 
 function renderDisplay() {
-  document.getElementById('display-eyebrow').textContent = currentData.eyebrow || '';
-  document.getElementById('display-title').textContent = currentData.title || '';
-  document.getElementById('display-body').textContent = currentData.body || '';
-  document.getElementById('display-quote').innerHTML = '"' + (currentData.quote || '') + '"';
-  document.getElementById('display-names').textContent = currentData.memorial_names || '';
-  document.getElementById('display-dates').textContent = currentData.memorial_dates || '';
-  document.getElementById('display-note').textContent = '"' + (currentData.memorial_note || '') + '"';
+  document.getElementById('d-eyebrow').textContent = sData.eyebrow || '';
+  document.getElementById('d-title').textContent = sData.title || '';
+  document.getElementById('d-body').textContent = sData.body || '';
+  document.getElementById('d-quote').textContent = sData.quote || '';
+  document.getElementById('d-names').textContent = sData.memorial_names || '';
+  document.getElementById('d-dates').textContent = sData.memorial_dates || '';
+  document.getElementById('d-note').textContent = '"' + (sData.memorial_note || '') + '"';
 }
 
 function closeModal() { document.getElementById('modal-overlay').style.display = 'none'; }
@@ -129,16 +145,15 @@ function openModal(type) {
   const modal = document.getElementById('modal-content');
   const overlay = document.getElementById('modal-overlay');
   modal.innerHTML = '';
-  const closeX = document.createElement('button'); closeX.className = 'close-x'; closeX.textContent = '✕'; closeX.onclick = closeModal; modal.appendChild(closeX);
-
+  const cx = document.createElement('button'); cx.className = 'close-x'; cx.textContent = '✕'; cx.onclick = closeModal; modal.appendChild(cx);
   let getOut;
   if (type === 'story') {
-    modal.innerHTML += '<h2>Story Section</h2>';
-    modal.innerHTML += '<label>Eyebrow</label><input id="f-eyebrow" value="' + (currentData.eyebrow||'').replace(/"/g,'&quot;') + '">';
-    modal.innerHTML += '<label>Title</label><input id="f-title" value="' + (currentData.title||'').replace(/"/g,'&quot;') + '">';
-    modal.innerHTML += '<label>Body Text</label><textarea id="f-body">' + (currentData.body||'') + '</textarea>';
-    modal.innerHTML += '<label>Pull Quote</label><input id="f-quote" value="' + (currentData.quote||'').replace(/"/g,'&quot;') + '">';
-    getOut = () => Object.assign({}, currentData, {
+    modal.innerHTML += '<h2>Story Opener</h2>';
+    modal.innerHTML += '<label>Eyebrow (e.g. "Since 2011")</label><input id="f-eyebrow" value="' + (sData.eyebrow||'').replace(/"/g,'&quot;') + '">';
+    modal.innerHTML += '<label>Title</label><input id="f-title" value="' + (sData.title||'').replace(/"/g,'&quot;') + '">';
+    modal.innerHTML += '<label>Body Text</label><textarea id="f-body">' + (sData.body||'') + '</textarea>';
+    modal.innerHTML += '<label>Pull Quote</label><input id="f-quote" value="' + (sData.quote||'').replace(/"/g,'&quot;') + '">';
+    getOut = () => Object.assign({}, sData, {
       eyebrow: document.getElementById('f-eyebrow').value,
       title: document.getElementById('f-title').value,
       body: document.getElementById('f-body').value,
@@ -146,16 +161,15 @@ function openModal(type) {
     });
   } else {
     modal.innerHTML += '<h2>Memorial Section</h2>';
-    modal.innerHTML += '<label>Names</label><input id="f-names" value="' + (currentData.memorial_names||'').replace(/"/g,'&quot;') + '">';
-    modal.innerHTML += '<label>Dates</label><input id="f-dates" value="' + (currentData.memorial_dates||'').replace(/"/g,'&quot;') + '">';
-    modal.innerHTML += '<label>Note</label><input id="f-note" value="' + (currentData.memorial_note||'').replace(/"/g,'&quot;') + '">';
-    getOut = () => Object.assign({}, currentData, {
+    modal.innerHTML += '<label>Names</label><input id="f-names" value="' + (sData.memorial_names||'').replace(/"/g,'&quot;') + '">';
+    modal.innerHTML += '<label>Dates / Subtitle</label><input id="f-dates" value="' + (sData.memorial_dates||'').replace(/"/g,'&quot;') + '">';
+    modal.innerHTML += '<label>Note / Quote</label><textarea id="f-note">' + (sData.memorial_note||'') + '</textarea>';
+    getOut = () => Object.assign({}, sData, {
       memorial_names: document.getElementById('f-names').value,
       memorial_dates: document.getElementById('f-dates').value,
       memorial_note: document.getElementById('f-note').value
     });
   }
-
   const actions = document.createElement('div'); actions.className = 'modal-actions';
   const cancel = document.createElement('button'); cancel.className = 'btn-cancel'; cancel.textContent = 'Cancel'; cancel.onclick = closeModal;
   const save = document.createElement('button'); save.className = 'btn-save'; save.textContent = 'Save';
@@ -164,25 +178,20 @@ function openModal(type) {
       const out = getOut();
       const user = window.netlifyIdentity.currentUser();
       const token = await user.jwt();
-      let sha = undefined;
-      try { const gr = await fetch('/.netlify/git/github/contents/_data/story.json', { headers: { 'Authorization': 'Bearer ' + token } }); if (gr.ok) { const gj = await gr.json(); sha = gj.sha; } } catch(e) {}
+      let sha;
+      try { const gr = await fetch('/.netlify/git/github/contents/_data/story.json', { headers: { 'Authorization': 'Bearer ' + token } }); if (gr.ok) sha = (await gr.json()).sha; } catch(e) {}
       const content = btoa(unescape(encodeURIComponent(JSON.stringify(out, null, 2))));
-      const body = { message: 'Edit story via editor', content };
-      if (sha) body.sha = sha;
+      const body = { message: 'Edit story via editor', content }; if (sha) body.sha = sha;
       const pr = await fetch('/.netlify/git/github/contents/_data/story.json', {
-        method: 'PUT',
-        headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+        method:'PUT', headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},
         body: JSON.stringify(body)
       });
       if (!pr.ok) throw new Error('Save failed: ' + pr.status);
-      currentData = out;
-      renderDisplay();
-      closeModal();
+      sData = out; renderDisplay(); closeModal();
       alert('✓ Saved! Deploying in ~30 seconds.');
     } catch(e) { alert('Save error: ' + e.message); }
   };
-  actions.appendChild(cancel); actions.appendChild(save);
-  modal.appendChild(actions);
+  actions.appendChild(cancel); actions.appendChild(save); modal.appendChild(actions);
   overlay.style.display = 'flex';
 }
 
