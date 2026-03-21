@@ -626,6 +626,7 @@ document.getElementById('hc-play-btn')?.addEventListener('click', function() {
 </script>
 
 <script>
+console.log('[Editor] Page loaded');
 // Movie URL from CMS
 window._movieUrl = '';
 document.getElementById('hc-play-btn')?.addEventListener('click', function() {
@@ -640,6 +641,7 @@ document.getElementById('hc-play-btn')?.addEventListener('click', function() {
 if (window.netlifyIdentity) {
   // Initialize Identity and add an admin-only editor button when appropriate
   window.netlifyIdentity.on('init', user => {
+    console.log('[Editor] Auth check - user:', user);
     // If a non-logged-in visitor logs in, redirect admin logins to /admin/
     if (!user) {
       window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
@@ -647,12 +649,13 @@ if (window.netlifyIdentity) {
 
     // Inject admin Edit button for users with role 'admin'
     function addEditorButton(){
+      console.log('[Editor] Injecting edit overlay button');
       if (document.getElementById('admin-edit-btn')) return;
       const btn = document.createElement('a');
       btn.id = 'admin-edit-btn';
       btn.href = '/editor.html';
       btn.className = 'btn-outline';
-      btn.textContent = 'Edit (Admin)';
+      btn.textContent = '✏ Edit Site';
       btn.style.position = 'fixed';
       btn.style.bottom = '18px';
       btn.style.right = '18px';
