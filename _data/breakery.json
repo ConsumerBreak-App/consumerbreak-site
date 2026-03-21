@@ -2,18 +2,18 @@
   "tagline": "30 apps. One Breakverse account. Play games, earn points, build campaigns, and connect your wallet across everything we make.",
   "apps": [
     {
-      "name": "ConsumerBreak App",
-      "desc": "Your all-in-one Breakverse hub. Watch live streams, access all 30 Breakery apps, connect your WAX wallet, manage your Breakverse account, and participate in BrandBreak campaigns.",
-      "status": "COMING SOON",
-      "icon": "",
-      "link": "#"
-    },
-    {
       "name": "PuzzleBreak",
       "desc": "The core puzzle engine powering the Breakverse. Classic puzzle gameplay with community challenges and daily rewards.",
       "status": "Live",
       "icon": "",
       "link": "https://puzzlebreak.base44.app"
+    },
+    {
+      "name": "ConsumerBreak App",
+      "desc": "Your all-in-one Breakverse hub. Watch live streams, access all 30 Breakery apps, connect your WAX wallet, manage your Breakverse account, and participate in BrandBreak campaigns.",
+      "status": "COMING SOON",
+      "icon": "",
+      "link": "#"
     },
     {
       "name": "KeyBreak",
