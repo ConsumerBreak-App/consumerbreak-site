@@ -25,15 +25,28 @@
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--white);font-family:'Barlow',sans-serif;font-weight:400;overflow-x:hidden;opacity:0;transition:opacity .12s linear;}
 
+/* TOKEN BAR */
+#token-bar{position:fixed;top:0;left:0;right:0;z-index:200;background:#0a1a0a;border-bottom:1px solid #2a5a2a;padding:7px 20px;display:flex;align-items:center;gap:10px;font-size:12px;}
+#token-bar label{color:#5fcf6e;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;}
+#token-input{flex:1;max-width:380px;background:rgba(95,207,110,0.06);border:1px solid #2a5a2a;border-radius:4px;color:#f0f7f0;padding:4px 8px;font-size:12px;font-family:'Barlow',sans-serif;}
+#token-input::placeholder{color:#4a6b4a;}
+#token-save-btn{background:#5fcf6e;color:#060c06;border:none;border-radius:4px;padding:4px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;cursor:pointer;white-space:nowrap;}
+#token-save-btn:hover{background:#7ae888;}
+#token-clear-btn{background:transparent;color:#4a6b4a;border:1px solid #1a2e1a;border-radius:4px;padding:4px 10px;font-size:11px;cursor:pointer;}
+#token-clear-btn:hover{color:#f0f7f0;border-color:#4a6b4a;}
+#token-status{color:#5fcf6e;font-size:11px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;}
+#token-status.warn{color:#f5c842;}
+#token-status.err{color:#f07a7a;}
+
 .glass-fixed{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cpolygon points='0,200 150,0 300,180 200,350' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='150,0 400,50 300,180' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='300,180 400,50 550,200 450,350' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='0,200 200,350 100,500' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='200,350 450,350 400,550 150,550' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='450,350 550,200 600,400 500,600' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3C/svg%3E");background-size:600px 600px;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 40px;background:rgba(6,12,6,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+nav{position:fixed;top:36px;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 40px;background:rgba(6,12,6,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
 .nav-logo{display:flex;align-items:center;}
 .nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--green);letter-spacing:3px;}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
 .nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);text-decoration:none;opacity:.7;transition:all .2s;}
 .nav-links a:hover{opacity:1;color:var(--green);}
 .btn-watch{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bg);background:var(--green);padding:10px 22px;border-radius:3px;text-decoration:none;}
-.hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
+.hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;margin-top:36px;}
 .hero-left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:120px 60px 80px;}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(95,207,110,.08);border:1px solid rgba(95,207,110,.25);border-radius:3px;padding:6px 14px;margin-bottom:28px;width:fit-content;}
 .hero-badge-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
@@ -98,7 +111,6 @@ section{position:relative;padding:80px 60px;}
 .hc-stat{background:rgba(95,207,110,.04);border:1px solid var(--border);border-radius:4px;padding:14px;}
 .hc-stat-val{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--green);letter-spacing:2px;}
 .hc-stat-lbl{font-size:12px;color:var(--muted);margin-top:2px;}
-.hc-btns{display:flex;gap:12px;margin-top:24px;}
 .nft-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px;}
 .nft-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:30px;transition:all .2s;}
 .nft-img{height:150px;margin-bottom:18px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid var(--border);}
@@ -126,7 +138,6 @@ section{position:relative;padding:80px 60px;}
 .story-quote{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:rgba(240,247,240,.3);line-height:1.35;margin-top:18px;max-width:480px;}
 .story-quote em{font-style:normal;color:var(--green);}
 .year-bg{font-family:'Bebas Neue',sans-serif;font-size:130px;color:rgba(95,207,110,.05);line-height:1;position:absolute;right:-20px;bottom:-30px;pointer-events:none;letter-spacing:-4px;z-index:0;}
-.memorial{text-align:center;padding:30px;background:rgba(95,207,110,.03);border:1px solid var(--border);border-radius:6px;position:relative;z-index:1;}
 footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60px 28px;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
 .footer-brand-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--green);margin-bottom:12px;}
@@ -148,9 +159,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
 .spectral-footer{margin-top:32px;text-align:center;}
 .streaming-on{font-size:12px;color:#4a6b4a;margin-bottom:16px;}
 @media(max-width:900px){
-  nav{padding:12px 20px;}
+  nav{padding:12px 20px;top:36px;}
   .nav-links{display:none;}
-  .hero{grid-template-columns:1fr;}
+  .hero{grid-template-columns:1fr;margin-top:36px;}
   .hero-right{display:none;}
   .hero-left{padding:100px 24px 60px;}
   section{padding:60px 24px;}
@@ -162,6 +173,16 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
 </style>
 </head>
 <body>
+
+<!-- TOKEN BAR -->
+<div id="token-bar">
+  <label>GitHub Token:</label>
+  <input id="token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxx" autocomplete="off">
+  <button id="token-save-btn">Save Token</button>
+  <button id="token-clear-btn">Clear</button>
+  <span id="token-status" class="warn">No token saved</span>
+</div>
+
 <div class="glass-fixed"></div>
 
 <nav>
@@ -223,7 +244,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <div class="show-day">PitchBreak</div>
       <div class="show-time" id="pb-time">2:00 PM EST · 7:00 PM UTC</div>
       <div class="show-img" id="pb-img"><img src="" alt="" style="display:none;"></div>
-      <p class="show-desc" id="pb-desc">Live Web3 variety show — community games, NFT drops, crypto education, and prizes. Multi-streamed across Twitch, NFTOPIA, and Twitter Spaces every Wednesday.</p>
+      <p class="show-desc" id="pb-desc">Live Web3 variety show — community games, NFT drops, crypto education, and prizes.</p>
       <div class="pills">
         <span class="pill pill-tw">Twitch</span><span class="pill pill-nf">NFTOPIA</span><span class="pill pill-x">Twitter Spaces</span><span class="pill pill-ar">Watch2Earn</span>
       </div>
@@ -233,11 +254,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <div class="show-day">Spectral Sessions</div>
       <div class="show-time" id="ss-time">2:00 PM EST · 7:00 PM UTC</div>
       <div class="show-img" id="ss-img"><img src="" alt="" style="display:none;"></div>
-      <p class="show-desc" id="ss-desc">Live art show featuring Jumbie Art & guest artists drawing simultaneously — themes and attributes voted by viewers in real time. Learn the Spectral Art movement and Web3 through creativity.</p>
-      <div style="margin-top:14px;padding:14px 16px;border:1px solid rgba(167,139,250,0.35);border-radius:4px;background:rgba(167,139,250,0.06);">
-        <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#a78bfa;margin-bottom:6px;">Powered by S.A.F.E.</div>
-        <p style="font-size:13px;color:rgba(240,247,240,0.6);margin:0;line-height:1.65;">Spectral Art Foundation Enterprises &#8212; 501(c)(3) nonprofit. Artist grants, workshops, youth education &amp; live exhibitions. Co-produced with <a href="https://jumbieart.com/pages/safe" target="_blank" style="color:#a78bfa;text-decoration:none;font-weight:600;">Jumbie Art &#8594;</a></p>
-      </div>
+      <p class="show-desc" id="ss-desc">Live art show featuring Jumbie Art & guest artists drawing simultaneously.</p>
       <div class="pills" style="margin-top:14px;">
         <span class="pill pill-tw">Twitch</span><span class="pill pill-bl">Blaze.stream</span><span class="pill pill-ar">Arena Social</span>
       </div>
@@ -250,8 +267,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
     <div>
       <div class="eyebrow" id="hc-eyebrow">4 Seasons · 1.7M+ Assets · WAX Blockchain</div>
       <div class="sec-title" id="hc-title">Hybrid Creatures NFT</div>
-      <p class="sec-body" id="hc-desc">Hand-drawn trading cards. Cryptids, mythology, and sci-fi collide in a universe powered by Mystery Matter — blending any creature into something new. Now with an AI feature film.</p>
-      <div id="hc-feature-img" style="display:none;margin:18px 0;border-radius:6px;overflow:hidden;border:1px solid var(--border);max-height:200px;"><img id="hc-feature-img-el" src="" style="width:100%;height:200px;object-fit:cover;display:block;"></div>
+      <p class="sec-body" id="hc-desc">Hand-drawn trading cards. Cryptids, mythology, and sci-fi collide.</p>
       <div class="season-chips">
         <span class="schip">S1 · Cryptids</span><span class="schip">S2 · Folklore</span><span class="schip">S3 · Animals</span><span class="schip">S3.5 · Hybrids</span><span class="schip">S4 · Mythology</span><span class="schip">S4.5 · The Movie</span>
       </div>
@@ -261,7 +277,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
         <div class="hc-stat"><div class="hc-stat-val" id="hc-stat3-val">4 YRS</div><div class="hc-stat-lbl" id="hc-stat3-lbl">Of Lore Building</div></div>
         <div class="hc-stat"><div class="hc-stat-val" id="hc-stat4-val">17 MIN</div><div class="hc-stat-lbl" id="hc-stat4-lbl">AI Feature Film</div></div>
       </div>
-      <div class="hc-btns">
+      <div style="display:flex;gap:12px;margin-top:24px;">
         <a href="https://hybridcreaturesnft.com" target="_blank" class="btn-solid">Explore Lore</a>
         <a href="https://wax.atomichub.io/explorer/collection/cbreakgaming" target="_blank" class="btn-outline">Buy on AtomicHub</a>
       </div>
@@ -270,13 +286,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <div class="hc-movie" id="hc-movie" onclick="playHCMovie()">
         <img id="hc-thumb" src="" alt="Hybrid Creatures: The Movie" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
         <div style="position:absolute;inset:0;background:rgba(0,0,0,0.15);display:flex;flex-direction:column;justify-content:space-between;padding:12px 16px;z-index:2;">
-          <div style="font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.8);max-width:70%;">Hybrid Creatures: The Movie</div>
-          <div style="display:flex;align-items:flex-end;justify-content:space-between;">
-            <div style="display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.75);padding:5px 10px;border-radius:3px;">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z"/></svg>
-              <span style="font-size:11px;color:#fff;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;">Watch on YouTube</span>
-            </div>
-            <div style="width:56px;height:40px;background:#ff0000;border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.5);">
+          <div style="font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Hybrid Creatures: The Movie</div>
+          <div style="display:flex;align-items:flex-end;justify-content:flex-end;">
+            <div style="width:56px;height:40px;background:#ff0000;border-radius:8px;display:flex;align-items:center;justify-content:center;">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M8 5v14l11-7z"/></svg>
             </div>
           </div>
@@ -289,10 +301,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
 <section id="spectral">
   <div class="eyebrow purple">Every Sunday · In Partnership with Jumbie Art</div>
   <div class="sec-title">SPECTRAL SESSIONS</div>
-  <p class="sec-body">Live collaborative art creation streamed every Sunday at 2PM EST. Multiple artists draw simultaneously while viewers vote on attributes — color, subject, mood.</p>
+  <p class="sec-body">Live collaborative art creation streamed every Sunday at 2PM EST.</p>
   <div class="spectral-grid">
-    <div class="spectral-card"><h3>The Show</h3><p>Artists share their screens and create original work over 4 hours while we discuss Spectral Art technique, color theory, and XRPL provenance.</p></div>
-    <div class="spectral-card"><h3>S.A.F.E.</h3><p class="safe-subtitle">Spectral Art Foundation Enterprises · 501(c)(3)</p><p>SAFE empowers artists through grants, workshops, exhibitions, and zero-barrier access to patented Spectral Frame technology.</p><a href="https://jumbieart.com/pages/safe" target="_blank" class="safe-link">Learn about SAFE →</a></div>
+    <div class="spectral-card"><h3>The Show</h3><p>Artists share their screens and create original work over 4 hours while viewers vote on attributes.</p></div>
+    <div class="spectral-card"><h3>S.A.F.E.</h3><p class="safe-subtitle">Spectral Art Foundation Enterprises · 501(c)(3)</p><p>SAFE empowers artists through grants, workshops, and exhibitions.</p><a href="https://jumbieart.com/pages/safe" target="_blank" class="safe-link">Learn about SAFE →</a></div>
   </div>
   <div class="spectral-footer">
     <p class="streaming-on">Streaming on: Twitch · X Spaces · Arena Social · Blaze.stream</p>
@@ -305,12 +317,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
   <div class="sec-title">The Breakery</div>
   <p class="sec-body" id="breakery-tagline">30 apps. One Breakverse account.</p>
   <div class="app-strip" id="app-strip">
-    <a class="appcard" href="#"><div class="appcard-icon">🎮</div><div class="appcard-name">ConsumerBreak</div><div class="appcard-desc">Jigsaw ad puzzles with cash & NFT prizes</div><span class="appcard-status">Era 2 Beta</span></a>
-    <a class="appcard" href="https://puzzlebreak.base44.app" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">PuzzleBreak</div><div class="appcard-desc">The core puzzle engine</div><span class="appcard-status">Live</span></a>
-    <a class="appcard" href="https://keybreak.base44.app" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">KeyBreak</div><div class="appcard-desc">Keyboard puzzle challenges</div><span class="appcard-status">Beta</span></a>
-    <a class="appcard" href="https://bingobreak.base44.app" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">BingoBreak</div><div class="appcard-desc">Live bingo with rewards</div><span class="appcard-status">Beta</span></a>
-    <a class="appcard" href="https://triviabreak.base44.app" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">TriviaBreak</div><div class="appcard-desc">Web3 trivia & learn-to-earn</div><span class="appcard-status">Beta</span></a>
-    <div class="appcard" style="opacity:.4;border-style:dashed;"><div class="appcard-icon">+</div><div class="appcard-name">More Soon</div><div class="appcard-desc">15+ mini games launching</div><span class="appcard-status">Coming</span></div>
+    <a class="appcard" href="#"><div class="appcard-icon">🎮</div><div class="appcard-name">ConsumerBreak</div><div class="appcard-desc">Unified hub</div><span class="appcard-status">Coming Soon</span></a>
   </div>
   <div class="breakery-foot">
     <p>One Breakverse account · Every app · Earn across all of them</p>
@@ -325,7 +332,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
     <div class="nft-card">
       <div class="nft-img" id="nftopia-img"></div>
       <div class="nft-name">NFTOPIA</div>
-      <p class="nft-desc" id="nftopia-desc">Co-founded metaverse convention onboarding the world into Web3, blockchain, digital art, and community. 5 events, 50+ past exhibitors.</p>
+      <p class="nft-desc" id="nftopia-desc">Co-founded metaverse convention onboarding the world into Web3.</p>
       <a href="https://nftopia.weebly.com" target="_blank" class="nft-link">nftopia.weebly.com</a>
     </div>
   </div>
@@ -336,13 +343,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
     <div>
       <div class="eyebrow">The Breakverse</div>
       <div class="sec-title" id="community-title">Join The Breakverse</div>
-      <p class="sec-body" id="community-desc">Discord, Twitch, Twitter — the ConsumerBreak community is where Web3 explorers, NFT collectors, live art fans, and puzzle players come together.</p>
+      <p class="sec-body" id="community-desc">The ConsumerBreak community — Web3 explorers, NFT collectors, live art fans, and puzzle players.</p>
       <div class="earn-list" id="earn-items-list">
-        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">500+ free WAX NFTs distributed every week via stream</div></div>
-        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Weekly 50M $WUF airdrop split to Scroll holders</div></div>
-        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Watch2Earn — tune in and get rewarded live</div></div>
-        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Vote on Spectral Sessions art themes every Sunday</div></div>
-        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Play Breakery games and earn across the Breakverse</div></div>
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">500+ free WAX NFTs every week via stream</div></div>
       </div>
     </div>
   </div>
@@ -357,7 +360,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <div class="story-quote">"What if you turned an <em>advertisement</em> into a puzzle?"</div>
       <a href="story.html" class="btn-outline" style="margin-top:28px;display:inline-block;">Read The Full Story →</a>
     </div>
-    <div class="memorial" style="text-align:center;padding:30px;background:rgba(95,207,110,.03);border:1px solid var(--border);border-radius:6px;position:relative;z-index:1;">
+    <div style="text-align:center;padding:30px;background:rgba(95,207,110,.03);border:1px solid var(--border);border-radius:6px;position:relative;z-index:1;">
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">In Loving Memory</div>
       <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--white);margin-bottom:6px;">Michael &amp; Barbara<br>Eisenberg</div>
       <div style="font-size:11px;color:var(--muted);letter-spacing:1px;">February 12 &amp; 14, 2018</div>
@@ -385,13 +388,67 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
 </footer>
 
 <script>
+// ============================================================
+// GITHUB API CONFIG
+// ============================================================
+const GITHUB_REPO = 'ConsumerBreak-App/consumerbreak-site';
+const GITHUB_BRANCH = 'main';
+const GITHUB_API = 'https://api.github.com/repos/' + GITHUB_REPO + '/contents/';
+
+function getToken() { return localStorage.getItem('cb_github_token') || ''; }
+
+// ============================================================
+// TOKEN BAR
+// ============================================================
+(function initTokenBar() {
+  const input = document.getElementById('token-input');
+  const saveBtn = document.getElementById('token-save-btn');
+  const clearBtn = document.getElementById('token-clear-btn');
+  const status = document.getElementById('token-status');
+
+  function updateStatus() {
+    const t = getToken();
+    if (t) {
+      status.textContent = '✓ Token saved (ends in …' + t.slice(-4) + ')';
+      status.className = '';
+      input.value = '';
+      input.placeholder = '••••••••••••••••••••••••••••••••••••••••';
+    } else {
+      status.textContent = 'No token — saves will fail';
+      status.className = 'warn';
+      input.placeholder = 'ghp_xxxxxxxxxxxxxxxx';
+    }
+  }
+
+  saveBtn.addEventListener('click', () => {
+    const val = input.value.trim();
+    if (!val) { status.textContent = 'Paste your token first'; status.className = 'err'; return; }
+    if (!val.startsWith('ghp_') && !val.startsWith('github_pat_')) {
+      status.textContent = 'Token looks wrong — should start with ghp_ or github_pat_';
+      status.className = 'err'; return;
+    }
+    localStorage.setItem('cb_github_token', val);
+    updateStatus();
+  });
+
+  clearBtn.addEventListener('click', () => {
+    localStorage.removeItem('cb_github_token');
+    updateStatus();
+  });
+
+  updateStatus();
+})();
+
+// ============================================================
+// CMS DATA LOADER
+// ============================================================
 window._movieUrl = '';
 
 function playHCMovie() {
   const frame = document.getElementById('hc-movie');
   if (!frame) return;
   const url = window._movieUrl || '';
-  if (!url) { alert('No movie URL set.'); return; }
+  if (!url) { alert('No movie URL set. Edit the Hybrid Creatures section.'); return; }
   const videoId = url.includes('v=') ? url.split('v=')[1].split('&')[0] : url.split('/').pop();
   frame.style.cursor = 'default';
   frame.onclick = null;
@@ -487,11 +544,6 @@ async function loadCMSData() {
         thumb.onerror = function() { this.src = 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg'; this.onerror = null; };
       }
     }
-    if (hybrid.image) {
-      const wrap = document.getElementById('hc-feature-img');
-      const img = document.getElementById('hc-feature-img-el');
-      if (wrap && img) { img.src = fixSrc(hybrid.image); wrap.style.display = 'block'; }
-    }
   }
 
   const nftopia = await get('/_data/nftopia.json');
@@ -504,7 +556,7 @@ async function loadCMSData() {
       const strip = document.getElementById('app-strip');
       if (strip) {
         strip.innerHTML = breakery.apps.map(a => `
-          <a class="appcard" href="${a.link || '#'}" target="_blank">
+          <a class="appcard" href="${a.link || '#'}" ${a.link ? 'target="_blank"' : ''}>
             <div class="appcard-icon">${a.icon ? `<img src="${fixSrc(a.icon)}">` : '🎮'}</div>
             <div class="appcard-name">${a.name || ''}</div>
             <div class="appcard-desc">${a.description || a.desc || ''}</div>
@@ -527,15 +579,75 @@ async function loadCMSData() {
 
 loadCMSData();
 
+// ============================================================
+// GITHUB API HELPERS
+// ============================================================
+function base64EncodeUnicode(str) { return btoa(unescape(encodeURIComponent(str))); }
+
+async function githubGet(path) {
+  const token = getToken();
+  if (!token) throw new Error('No GitHub token saved. Paste your token in the bar at the top.');
+  const res = await fetch(GITHUB_API + path, {
+    headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+  });
+  if (!res.ok) throw new Error('GitHub GET failed (' + res.status + '): ' + await res.text());
+  return res.json();
+}
+
+async function githubPut(path, content, sha, message) {
+  const token = getToken();
+  if (!token) throw new Error('No GitHub token saved. Paste your token in the bar at the top.');
+  const body = { message: message || 'Edit via ConsumerBreak editor', content: base64EncodeUnicode(content), branch: GITHUB_BRANCH };
+  if (sha) body.sha = sha;
+  const res = await fetch(GITHUB_API + path, {
+    method: 'PUT',
+    headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) throw new Error('GitHub PUT failed (' + res.status + '): ' + await res.text());
+  return res.json();
+}
+
+async function githubUploadImage(filename, arrayBuffer) {
+  const token = getToken();
+  if (!token) throw new Error('No GitHub token saved.');
+  const bytes = new Uint8Array(arrayBuffer);
+  let binary = '';
+  const chunkSize = 8192;
+  for (let i = 0; i < bytes.byteLength; i += chunkSize) {
+    binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunkSize));
+  }
+  const base64Content = btoa(binary);
+  const filePath = 'images/uploads/' + filename;
+
+  // Check if file exists (get sha)
+  let sha;
+  try {
+    const existing = await githubGet(filePath);
+    sha = existing.sha;
+  } catch(e) { /* new file */ }
+
+  const body = { message: 'Upload image: ' + filename, content: base64Content, branch: GITHUB_BRANCH };
+  if (sha) body.sha = sha;
+
+  const res = await fetch(GITHUB_API + filePath, {
+    method: 'PUT',
+    headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) throw new Error('Image upload failed (' + res.status + '): ' + await res.text());
+  return '/' + filePath;
+}
+
+// ============================================================
 // EDITOR MODAL
+// ============================================================
 const modalOverlay = document.createElement('div');
 Object.assign(modalOverlay.style, { position:'fixed', inset:0, background:'rgba(0,0,0,0.7)', display:'none', alignItems:'flex-start', justifyContent:'center', zIndex:99999, overflowY:'auto', paddingTop:'5vh', paddingBottom:'5vh' });
 const modal = document.createElement('div');
 Object.assign(modal.style, { background:'#0a110a', border:'1px solid #5fcf6e', borderRadius:'8px', padding:'24px', maxWidth:'520px', width:'95%', maxHeight:'82vh', overflowY:'auto', color:'#f0f7f0', position:'relative' });
 modalOverlay.appendChild(modal);
 document.body.appendChild(modalOverlay);
-
-function base64EncodeUnicode(str) { return btoa(unescape(encodeURIComponent(str))); }
 
 function closeModal() { modalOverlay.style.display = 'none'; }
 
@@ -552,6 +664,9 @@ function openModalFor(spec) {
   closeX.addEventListener('click', closeModal);
   modal.appendChild(closeX);
 
+  // Strip leading slash for GitHub API
+  const apiPath = spec.file.replace(/^\//, '');
+
   fetch(spec.file + '?cb=' + Date.now(), { cache:'no-store' })
     .then(r => r.json())
     .then(data => {
@@ -565,7 +680,7 @@ function openModalFor(spec) {
           appsLabel.style.cssText = 'color:#9fbf9f;font-size:13px;font-weight:700;margin-bottom:8px;';
           appsWrap.appendChild(appsLabel);
           const apps = data.apps || [];
-          appsWrap.dataset.count = apps.length;
+
           apps.forEach((app, i) => {
             const appBlock = document.createElement('div');
             appBlock.draggable = true;
@@ -634,6 +749,7 @@ function openModalFor(spec) {
           inp.id = 'cb-field-' + f;
           wrap.appendChild(inp);
 
+          // Image upload fields
           if (f === 'image' || f === 'nav_logo' || f === 'hero_logo' || f === 'hero_image') {
             const fileInput = document.createElement('input');
             fileInput.type = 'file';
@@ -652,32 +768,11 @@ function openModalFor(spec) {
               upBtn.textContent = '⏳ Uploading...';
               upBtn.disabled = true;
               try {
-                const user = window.netlifyIdentity.currentUser();
-                const token = await user.jwt();
                 const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-                const filename = 'images/uploads/' + Date.now() + '_' + safeName;
+                const filename = Date.now() + '_' + safeName;
                 const arrayBuffer = await file.arrayBuffer();
-                const bytes = new Uint8Array(arrayBuffer);
-                let binary = '';
-                const chunkSize = 8192;
-                for (let i = 0; i < bytes.byteLength; i += chunkSize) {
-                  binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunkSize));
-                }
-                const base64Content = btoa(binary);
-                let sha = undefined;
-                try {
-                  const checkRes = await fetch('/.netlify/git/github/contents/' + filename, { headers: { 'Authorization': 'Bearer ' + token } });
-                  if (checkRes.ok) { const cj = await checkRes.json(); sha = cj.sha; }
-                } catch(e) {}
-                const body = { message: 'Upload image via editor: ' + safeName, content: base64Content };
-                if (sha) body.sha = sha;
-                const uploadRes = await fetch('/.netlify/git/github/contents/' + filename, {
-                  method: 'PUT',
-                  headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
-                  body: JSON.stringify(body)
-                });
-                if (!uploadRes.ok) throw new Error('Upload failed ' + uploadRes.status + ': ' + await uploadRes.text());
-                const publicPath = '/' + filename;
+                const publicPath = await githubUploadImage(filename, arrayBuffer);
+
                 const field = document.getElementById('cb-field-' + f);
                 if (field) {
                   field.value = publicPath;
@@ -688,16 +783,17 @@ function openModalFor(spec) {
                     preview.style.cssText = 'display:block;max-width:100%;max-height:120px;margin-top:8px;border-radius:4px;border:1px solid #1a2e1a;object-fit:cover;';
                     field.parentNode.insertBefore(preview, field.nextSibling);
                   }
-                  preview.src = publicPath + '?cb=' + Date.now();
-                  preview.onerror = () => {
-                    preview.style.display = 'none';
-                    const note = document.createElement('div');
-                    note.style.cssText = 'color:#5fcf6e;font-size:11px;margin-top:4px;';
-                    note.textContent = '✓ Uploaded: ' + publicPath + ' (live in ~30s after deploy)';
-                    if (!preview.nextSibling || preview.nextSibling.tagName !== 'DIV') preview.parentNode.insertBefore(note, preview.nextSibling);
-                  };
+                  // GitHub CDN takes ~30s to be available after push — show path instead
+                  preview.style.display = 'none';
+                  const note = document.createElement('div');
+                  note.style.cssText = 'color:#5fcf6e;font-size:11px;margin-top:4px;';
+                  note.textContent = '✓ Uploaded: ' + publicPath + ' (live after Cloudflare deploys ~30s)';
+                  if (!document.getElementById('cb-note-' + f)) {
+                    note.id = 'cb-note-' + f;
+                    field.parentNode.insertBefore(note, preview.nextSibling || field.nextSibling);
+                  }
                 }
-                upBtn.textContent = '✓ Uploaded — Save to apply';
+                upBtn.textContent = '✓ Uploaded — click Save to apply';
                 upBtn.style.color = '#5fcf6e';
                 upBtn.disabled = false;
               } catch(err) {
@@ -732,16 +828,16 @@ function openModalFor(spec) {
       const save = document.createElement('button');
       save.textContent = 'Save';
       save.style.cssText = 'background:#5fcf6e;border:none;color:#060c06;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:700;';
-      save.addEventListener('click', () => saveSpec(spec));
+      save.addEventListener('click', () => saveSpec(spec, apiPath));
       actions.appendChild(cancel);
       actions.appendChild(save);
       modal.appendChild(actions);
       modalOverlay.style.display = 'flex';
     })
-    .catch(e => { console.error('[Editor] Failed to load data for', spec.name, e); alert('Failed to load data for ' + spec.name + ': ' + e.message); });
+    .catch(e => { alert('Failed to load data for ' + spec.name + ': ' + e.message); });
 }
 
-async function saveSpec(spec) {
+async function saveSpec(spec, apiPath) {
   const out = {};
   spec.fields.forEach(f => {
     if (f === 'apps') {
@@ -766,31 +862,28 @@ async function saveSpec(spec) {
     }
   });
 
-  console.log('[Editor] Saving to:', spec.file, out);
+  const saveBtn = modal.querySelector('button:last-child');
+  if (saveBtn) { saveBtn.textContent = 'Saving...'; saveBtn.disabled = true; }
+
   try {
-    const user = window.netlifyIdentity.currentUser();
-    const token = await user.jwt();
-    const getUrl = '/.netlify/git/github/contents' + spec.file;
-    const gr = await fetch(getUrl, { headers: { 'Authorization': 'Bearer ' + token } });
-    if (!gr.ok) throw new Error('Failed to fetch file info: ' + gr.status);
-    const gjson = await gr.json();
-    const sha = gjson.sha;
-    const content = base64EncodeUnicode(JSON.stringify(out, null, 2));
-    const pr = await fetch('/.netlify/git/github/contents' + spec.file, {
-      method: 'PUT',
-      headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: 'Edit via editor', content: content, sha: sha })
-    });
-    if (!pr.ok) throw new Error('Save failed: ' + pr.status + ' ' + await pr.text());
-    console.log('[Editor] Save complete');
+    // Get current file SHA from GitHub
+    const fileInfo = await githubGet(apiPath);
+    const sha = fileInfo.sha;
+    await githubPut(apiPath, JSON.stringify(out, null, 2), sha, 'Edit ' + spec.name + ' via editor');
+    console.log('[Editor] Saved:', apiPath);
     closeModal();
-    setTimeout(() => window.location.reload(), 500);
-  } catch(e) { alert('Save error: ' + e.message); console.error(e); }
+    // Small delay then reload to show updated content
+    setTimeout(() => window.location.reload(), 800);
+  } catch(e) {
+    alert('Save error: ' + e.message);
+    console.error('[Editor] Save error:', e);
+    if (saveBtn) { saveBtn.textContent = 'Save'; saveBtn.disabled = false; }
+  }
 }
 
 function injectEditButtons() {
   console.log('[Editor] Injecting edit overlays');
-  const spec = [
+  const specs = [
     { sel: 'section.hero', name: 'Hero', file: '/_data/hero.json', fields: ['badge','tagline','nav_logo','hero_logo','hero_image'] },
     { sel: '#shows .show-card.pb', name: 'PitchBreak', file: '/_data/pitchbreak.json', fields: ['time','description','image'] },
     { sel: '#shows .show-card.ss', name: 'Spectral Sessions', file: '/_data/spectral.json', fields: ['time','description','image'] },
@@ -800,12 +893,11 @@ function injectEditButtons() {
     { sel: '#community', name: 'Community', file: '/_data/community.json', fields: ['title','description'] }
   ];
 
-  spec.forEach(s => {
+  specs.forEach(s => {
     const nodes = document.querySelectorAll(s.sel);
     nodes.forEach(node => {
       node.style.position = node.style.position || 'relative';
       const btn = document.createElement('button');
-      btn.className = 'cb-edit-btn-inline';
       btn.textContent = '✏ Edit';
       Object.assign(btn.style, { position:'absolute', top:'8px', right:'8px', background:'#5fcf6e', color:'#060c06', borderRadius:'4px', padding:'4px 10px', fontSize:'11px', cursor:'pointer', zIndex:'9999', border:'none', opacity:'0', transition:'opacity .12s' });
       btn.addEventListener('click', (e) => { e.stopPropagation(); openModalFor(s); });
@@ -816,8 +908,11 @@ function injectEditButtons() {
   });
 }
 
+// ============================================================
+// AUTH GATE — Netlify Identity (login only, no Git Gateway)
+// ============================================================
 console.log('[Editor] Page loaded');
-window.netlifyIdentity.on('init', async (user) => {
+window.netlifyIdentity.on('init', (user) => {
   console.log('[Editor] init - user:', user && user.email);
   if (!user) { window.location.replace('/index.html'); return; }
   document.body.style.opacity = '1';
