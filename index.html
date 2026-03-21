@@ -304,6 +304,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <div class="show-time" id="ss-time">2:00 PM EST · 7:00 PM UTC</div>
       <div class="show-img" id="ss-img"><img src="" alt="" style="display:none;"></div>
       <p class="show-desc" id="ss-desc">Live art show featuring Jumbie Art & guest artists drawing simultaneously — themes and attributes voted by viewers in real time. Learn the Spectral Art movement and Web3 through creativity.</p>
+      <div style="margin-top:14px;padding:12px 14px;border:1px solid rgba(167,139,250,0.25);border-radius:4px;background:rgba(167,139,250,0.06);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#a78bfa;margin-bottom:6px;">Powered by S.A.F.E.</div>
+        <p style="font-size:12px;color:rgba(240,247,240,0.5);margin:0;line-height:1.6;">Spectral Art Foundation Enterprises — 501(c)(3) nonprofit. Artist grants, workshops, youth education &amp; live exhibitions. Co-produced with <a href="https://jumbieart.com/pages/safe" target="_blank" style="color:#a78bfa;text-decoration:none;">Jumbie Art →</a></p>
+      </div>
       <div class="pills">
         <span class="pill pill-tw">Twitch</span>
         <span class="pill pill-bl">Blaze.stream</span>
@@ -375,26 +379,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
   </div>
 </section>
 
-<!-- NFTs -->
-<section id="nfts" style="background:var(--bg);">
-  <div class="eyebrow">Web3 Projects</div>
-  <div class="sec-title">NFTs &amp; Art</div>
-  <div class="nft-grid">
-    <div class="nft-card">
-      <div class="nft-img" id="hybrid-img"></div>
-      <div class="nft-name">Hybrid Creatures</div>
-      <p class="nft-desc" id="hybrid-desc">Hand-drawn digital trading cards on the carbon-neutral WAX blockchain. Collect, blend, stake, and earn — 500+ free NFTs distributed every week on stream. Now in Season 4.5: Scrolls & Maps.</p>
-      <a href="https://hybridcreaturesnft.com" target="_blank" class="nft-link">hybridcreaturesnft.com</a>
-    </div>
-    <div class="nft-card">
-      <div class="nft-img" id="nftopia-img"></div>
-      <div class="nft-name">NFTOPIA</div>
-      <p class="nft-desc" id="nftopia-desc">Co-founded metaverse convention onboarding the world into Web3, blockchain, digital art, and community. 5 events, 50+ past exhibitors including WAX, Splinterlands, NeftyBlocks, and more.</p>
-      <a href="https://nftopia.weebly.com" target="_blank" class="nft-link">nftopia.weebly.com</a>
-    </div>
-  </div>
-</section>
-
 <!-- BREAKERY -->
 <section class="breakery-section" id="breakery">
   <div class="eyebrow">The App Suite</div>
@@ -440,6 +424,20 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
   <div class="breakery-foot">
     <p>One Breakverse account · Every app · Earn across all of them</p>
     <a href="breakery.html" class="btn-solid">See All Apps →</a>
+  </div>
+</section>
+
+<!-- NFTOPIA -->
+<section id="nfts" style="background:var(--bg);">
+  <div class="eyebrow">Metaverse Convention</div>
+  <div class="sec-title">NFTOPIA</div>
+  <div class="nft-grid">
+    <div class="nft-card">
+      <div class="nft-img" id="nftopia-img"></div>
+      <div class="nft-name">NFTOPIA</div>
+      <p class="nft-desc" id="nftopia-desc">Co-founded metaverse convention onboarding the world into Web3, blockchain, digital art, and community. 5 events, 50+ past exhibitors including WAX, Splinterlands, NeftyBlocks, and more.</p>
+      <a href="https://nftopia.weebly.com" target="_blank" class="nft-link">nftopia.weebly.com</a>
+    </div>
   </div>
 </section>
 
@@ -676,10 +674,6 @@ if (window.netlifyIdentity) {
   // Initialize Identity and add an admin-only editor button when appropriate
   window.netlifyIdentity.on('init', user => {
     console.log('[Editor] Auth check - user:', user);
-    // If a non-logged-in visitor logs in, redirect admin logins to /admin/
-    if (!user) {
-      window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
-    }
 
     // Inject admin Edit button for users with role 'admin'
     function addEditorButton(){

@@ -298,6 +298,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <div class="show-time" id="ss-time">2:00 PM EST · 7:00 PM UTC</div>
       <div class="show-img" id="ss-img"><img src="" alt="" style="display:none;"></div>
       <p class="show-desc" id="ss-desc">Live art show featuring Jumbie Art & guest artists drawing simultaneously — themes and attributes voted by viewers in real time. Learn the Spectral Art movement and Web3 through creativity.</p>
+      <div style="margin-top:14px;padding:12px 14px;border:1px solid rgba(167,139,250,0.25);border-radius:4px;background:rgba(167,139,250,0.06);">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#a78bfa;margin-bottom:6px;">Powered by S.A.F.E.</div>
+        <p style="font-size:12px;color:rgba(240,247,240,0.5);margin:0;line-height:1.6;">Spectral Art Foundation Enterprises — 501(c)(3) nonprofit. Artist grants, workshops, youth education &amp; live exhibitions. Co-produced with <a href="https://jumbieart.com/pages/safe" target="_blank" style="color:#a78bfa;text-decoration:none;">Jumbie Art →</a></p>
+      </div>
       <div class="pills">
         <span class="pill pill-tw">Twitch</span>
         <span class="pill pill-bl">Blaze.stream</span>
@@ -342,26 +346,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
           <div class="hc-movie-label">Hybrid Creatures: The Movie</div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- NFTs -->
-<section id="nfts" style="background:var(--bg);">
-  <div class="eyebrow">Web3 Projects</div>
-  <div class="sec-title">NFTs &amp; Art</div>
-  <div class="nft-grid">
-    <div class="nft-card">
-      <div class="nft-img" id="hybrid-img"></div>
-      <div class="nft-name">Hybrid Creatures</div>
-      <p class="nft-desc" id="hybrid-desc">Hand-drawn digital trading cards on the carbon-neutral WAX blockchain. Collect, blend, stake, and earn — 500+ free NFTs distributed every week on stream. Now in Season 4.5: Scrolls & Maps.</p>
-      <a href="https://hybridcreaturesnft.com" target="_blank" class="nft-link">hybridcreaturesnft.com</a>
-    </div>
-    <div class="nft-card">
-      <div class="nft-img" id="nftopia-img"></div>
-      <div class="nft-name">NFTOPIA</div>
-      <p class="nft-desc" id="nftopia-desc">Co-founded metaverse convention onboarding the world into Web3, blockchain, digital art, and community. 5 events, 50+ past exhibitors including WAX, Splinterlands, NeftyBlocks, and more.</p>
-      <a href="https://nftopia.weebly.com" target="_blank" class="nft-link">nftopia.weebly.com</a>
     </div>
   </div>
 </section>
@@ -411,6 +395,20 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
   <div class="breakery-foot">
     <p>One Breakverse account · Every app · Earn across all of them</p>
     <a href="breakery.html" class="btn-solid">See All Apps →</a>
+  </div>
+</section>
+
+<!-- NFTOPIA -->
+<section id="nfts" style="background:var(--bg);">
+  <div class="eyebrow">Metaverse Convention</div>
+  <div class="sec-title">NFTOPIA</div>
+  <div class="nft-grid">
+    <div class="nft-card">
+      <div class="nft-img" id="nftopia-img"></div>
+      <div class="nft-name">NFTOPIA</div>
+      <p class="nft-desc" id="nftopia-desc">Co-founded metaverse convention onboarding the world into Web3, blockchain, digital art, and community. 5 events, 50+ past exhibitors including WAX, Splinterlands, NeftyBlocks, and more.</p>
+      <a href="https://nftopia.weebly.com" target="_blank" class="nft-link">nftopia.weebly.com</a>
+    </div>
   </div>
 </section>
 
@@ -701,9 +699,52 @@ function openModalFor(spec){
       } else {
         const inp = document.createElement('input'); inp.type='text'; inp.value = data[f] || ''; inp.style.width='100%'; inp.style.padding='8px'; inp.style.borderRadius='6px'; inp.style.background='transparent'; inp.style.color='#f0f7f0'; inp.id='cb-field-'+f; wrap.appendChild(inp);
         if (f==='image' || f==='nav_logo' || f==='hero_logo' || f==='hero_image'){
-          const up = document.createElement('button'); up.textContent='Upload'; up.style.marginTop='6px'; up.addEventListener('click', ()=>{
-            const url = prompt('Paste image URL'); if (url) document.getElementById('cb-field-'+f).value = url;
-          }); wrap.appendChild(up);
+          // File upload button
+          const fileInput = document.createElement('input');
+          fileInput.type = 'file';
+          fileInput.accept = 'image/*,.gif';
+          fileInput.style.display = 'none';
+          fileInput.id = 'cb-file-' + f;
+          
+          const upBtn = document.createElement('button');
+          upBtn.textContent = '📁 Upload from computer';
+          Object.assign(upBtn.style, { marginTop:'6px', background:'transparent', border:'1px solid #5fcf6e', color:'#5fcf6e', padding:'5px 10px', borderRadius:'4px', fontSize:'11px', cursor:'pointer', display:'block' });
+          upBtn.addEventListener('click', (e) => { e.preventDefault(); fileInput.click(); });
+          
+          fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+              const field = document.getElementById('cb-field-' + f);
+              if (field) {
+                field.value = ev.target.result;
+                // show preview
+                let preview = document.getElementById('cb-preview-' + f);
+                if (!preview) {
+                  preview = document.createElement('img');
+                  preview.id = 'cb-preview-' + f;
+                  Object.assign(preview.style, { display:'block', maxWidth:'100%', maxHeight:'120px', marginTop:'8px', borderRadius:'4px', border:'1px solid #1a2e1a', objectFit:'cover' });
+                  field.parentNode.insertBefore(preview, field.nextSibling);
+                }
+                preview.src = ev.target.result;
+              }
+            };
+            reader.readAsDataURL(file);
+          });
+          
+          wrap.appendChild(upBtn);
+          wrap.appendChild(fileInput);
+          
+          // also show preview if existing value is a URL
+          const existingVal = data[f];
+          if (existingVal) {
+            const preview = document.createElement('img');
+            preview.id = 'cb-preview-' + f;
+            Object.assign(preview.style, { display:'block', maxWidth:'100%', maxHeight:'120px', marginTop:'8px', borderRadius:'4px', border:'1px solid #1a2e1a', objectFit:'cover' });
+            preview.src = existingVal.startsWith('http') ? existingVal : existingVal;
+            wrap.appendChild(preview);
+          }
         }
       }
       modal.appendChild(wrap);
