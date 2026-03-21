@@ -10,35 +10,36 @@
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9148277996258336" crossorigin="anonymous"></script>
 <style>
-:root{--bg:#060c06;--bg2:#0a110a;--green:#5fcf6e;--purple:#a78bfa;--gold:#f5c842;--white:#f0f7f0;--text:#c8e6c8;--muted:#7aaa7a;--border:#1a2e1a;}
+:root{--bg:#060c06;--bg2:#0a110a;--green:#5fcf6e;--purple:#a78bfa;--gold:#f5c842;--white:#f0f7f0;--muted:#4a6b4a;--border:#1a2e1a;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--white);font-family:'Barlow',sans-serif;font-weight:400;overflow-x:hidden;}
 .glass-fixed{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cpolygon points='0,200 150,0 300,180 200,350' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='150,0 400,50 300,180' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='300,180 400,50 550,200 450,350' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='0,200 200,350 100,500' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='200,350 450,350 400,550 150,550' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='450,350 550,200 600,400 500,600' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3C/svg%3E");background-size:600px 600px;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 40px;background:rgba(6,12,6,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 40px;background:rgba(6,12,6,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
 .nav-logo{display:flex;align-items:center;}
 .nav-logo img{height:54px;width:auto;display:block;mix-blend-mode:screen;}
 .nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--green);letter-spacing:3px;}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
-.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(200,230,200,0.8);text-decoration:none;transition:all .2s;}
-.nav-links a:hover,.nav-links a.active{color:var(--green);}
-.btn-watch{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bg);background:var(--green);padding:10px 22px;border-radius:3px;text-decoration:none;transition:all .2s;white-space:nowrap;}
-.btn-watch:hover{background:#7ae888;}
+.nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);text-decoration:none;opacity:.7;transition:all .2s;}
+.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--green);}
+.btn-watch{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bg);background:var(--green);padding:10px 22px;border-radius:3px;text-decoration:none;transition:all .2s;white-space:nowrap;}
+.btn-watch:hover{background:#7ae888;transform:translateY(-1px);}
+/* HERO */
 .hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
 .hero-left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:120px 60px 80px;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(95,207,110,.1);border:1px solid rgba(95,207,110,.3);border-radius:3px;padding:6px 14px;margin-bottom:28px;width:fit-content;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(95,207,110,.08);border:1px solid rgba(95,207,110,.25);border-radius:3px;padding:6px 14px;margin-bottom:28px;width:fit-content;}
 .hero-badge-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(1.4);}}
-.hero-badge span{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);}
+.hero-badge span{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);}
 .hero-logo-wrap{margin-bottom:24px;}
 .hero-logo-wrap img{max-width:400px;width:100%;mix-blend-mode:screen;display:block;}
 .logo-fallback{font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:.9;color:var(--white);letter-spacing:3px;}
 .logo-fallback em{font-style:normal;color:var(--green);}
-.hero-tagline{font-size:16px;font-weight:400;color:var(--text);letter-spacing:.3px;margin-bottom:36px;max-width:420px;line-height:1.75;}
+.hero-tagline{font-size:16px;font-weight:300;color:rgba(240,247,240,.65);letter-spacing:.5px;margin-bottom:36px;max-width:400px;line-height:1.7;}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
 .btn-solid{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bg);background:var(--green);padding:13px 28px;border-radius:3px;text-decoration:none;transition:all .2s;border:2px solid var(--green);}
 .btn-solid:hover{background:#7ae888;border-color:#7ae888;transform:translateY(-2px);}
-.btn-outline{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text);background:transparent;padding:13px 28px;border-radius:3px;text-decoration:none;transition:all .2s;border:2px solid rgba(200,230,200,.3);}
+.btn-outline{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:transparent;padding:13px 28px;border-radius:3px;text-decoration:none;transition:all .2s;border:2px solid rgba(240,247,240,.2);}
 .btn-outline:hover{border-color:var(--green);color:var(--green);}
 .hero-right{position:relative;overflow:hidden;border-left:1px solid var(--border);}
 #hero-img-wrap{position:absolute;inset:0;background:linear-gradient(135deg,#0a160a,#0f200f);display:flex;align-items:center;justify-content:center;}
@@ -46,22 +47,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-right-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,transparent 35%);z-index:1;pointer-events:none;}
 .hero-placeholder-icon{opacity:.08;}
 .hero-placeholder-icon svg{width:90px;height:90px;fill:var(--green);}
+/* STATS BAR */
 .statsbar{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;}
-.statitem{flex:1;min-width:150px;padding:18px 22px;border-right:1px solid var(--border);text-align:center;}
+.statitem{flex:1;min-width:150px;padding:16px 22px;border-right:1px solid var(--border);text-align:center;}
 .statitem:last-child{border-right:none;}
 .stat-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
-.stat-value{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--white);}
-.stat-sub{font-size:13px;color:var(--muted);margin-top:2px;}
+.stat-value{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--white);}
+.stat-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+/* BREAKFEST */
 .breakfest-banner{background:linear-gradient(135deg,#0c180c,#111f11);border-bottom:1px solid var(--border);padding:28px 60px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative;overflow:hidden;}
-.breakfest-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 50%,rgba(95,207,110,.08) 0%,transparent 60%);pointer-events:none;}
+.breakfest-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 50%,rgba(95,207,110,.06) 0%,transparent 60%);pointer-events:none;}
 .breakfest-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:var(--bg);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;padding:4px 10px;border-radius:2px;margin-bottom:8px;}
 .breakfest-title{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:5px;color:var(--white);line-height:1;}
-.breakfest-sub{font-size:15px;color:var(--text);margin-top:6px;max-width:480px;}
+.breakfest-sub{font-size:15px;color:rgba(240,247,240,.55);margin-top:6px;max-width:480px;}
+/* SECTIONS */
 section{position:relative;padding:80px 60px;}
 .eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
 .eyebrow.purple{color:var(--purple);}
 .sec-title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;color:var(--white);line-height:1;margin-bottom:16px;}
-.sec-body{font-size:16px;font-weight:400;color:var(--text);line-height:1.75;max-width:560px;}
+.sec-body{font-size:16px;font-weight:300;color:rgba(240,247,240,.65);line-height:1.75;max-width:540px;}
+/* SHOWS */
 .shows-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:36px;}
 .show-card{background:var(--bg2);padding:40px;position:relative;overflow:hidden;}
 .show-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
@@ -70,74 +75,108 @@ section{position:relative;padding:80px 60px;}
 .show-day{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:3px;margin-bottom:4px;}
 .show-card.pb .show-day{color:var(--green);}
 .show-card.ss .show-day{color:var(--purple);}
-.show-time{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;letter-spacing:2px;color:var(--muted);margin-bottom:20px;text-transform:uppercase;}
+.show-time{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:2px;color:var(--muted);margin-bottom:20px;text-transform:uppercase;}
 .show-img{height:180px;margin-bottom:20px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid var(--border);}
 .show-img img{width:100%;height:100%;object-fit:cover;display:block;}
-.show-desc{font-size:15px;font-weight:400;color:var(--text);line-height:1.75;margin-bottom:20px;}
+.show-desc{font-size:15px;font-weight:300;color:rgba(240,247,240,.65);line-height:1.75;margin-bottom:20px;}
 .pills{display:flex;gap:6px;flex-wrap:wrap;}
 .pill{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 9px;border-radius:2px;}
 .pill-tw{background:rgba(145,70,255,.15);color:#bf94ff;border:1px solid rgba(145,70,255,.25);}
 .pill-nf{background:rgba(95,207,110,.1);color:var(--green);border:1px solid rgba(95,207,110,.2);}
 .pill-x{background:rgba(29,161,242,.1);color:#1da1f2;border:1px solid rgba(29,161,242,.2);}
 .pill-bl{background:rgba(245,200,66,.1);color:var(--gold);border:1px solid rgba(245,200,66,.2);}
-.pill-ar{background:rgba(200,230,200,.05);color:rgba(200,230,200,.5);border:1px solid var(--border);}
-.breakery-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.app-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:36px;}
-.appcard{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:18px 14px;text-align:center;transition:all .2s;text-decoration:none;color:var(--white);display:block;}
-.appcard:hover{border-color:rgba(95,207,110,.4);background:rgba(95,207,110,.04);transform:translateY(-2px);}
-.appcard-icon{width:48px;height:48px;margin:0 auto 12px;border-radius:10px;background:rgba(95,207,110,.07);border:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:22px;}
-.appcard-icon img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
-.appcard-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:700;letter-spacing:1px;color:var(--white);margin-bottom:5px;}
-.appcard-desc{font-size:13px;color:var(--muted);line-height:1.4;}
-.appcard-status{display:inline-block;margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:2px;background:rgba(95,207,110,.1);color:var(--green);border:1px solid rgba(95,207,110,.2);}
-.breakery-foot{margin-top:28px;padding-top:22px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-.breakery-foot p{font-size:15px;color:var(--muted);}
+.pill-ar{background:rgba(240,247,240,.05);color:rgba(240,247,240,.4);border:1px solid var(--border);}
+/* HYBRID */
 .hc-section{background:linear-gradient(180deg,var(--bg) 0%,#070d10 50%,var(--bg) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .hc-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
 .hc-movie{position:relative;aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden;border:1px solid rgba(95,207,110,.2);box-shadow:0 0 60px rgba(95,207,110,.06);cursor:pointer;}
+.hc-movie-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
 .season-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:22px;}
 .schip{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 9px;border-radius:2px;border:1px solid var(--border);color:var(--muted);}
 .hc-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px;}
-.hc-stat{background:rgba(95,207,110,.04);border:1px solid var(--border);border-radius:4px;padding:16px;}
-.hc-stat-val{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--green);letter-spacing:2px;}
+.hc-stat{background:rgba(95,207,110,.04);border:1px solid var(--border);border-radius:4px;padding:14px;}
+.hc-stat-val{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--green);letter-spacing:2px;}
 .hc-stat-lbl{font-size:13px;color:var(--muted);margin-top:2px;}
 .hc-btns{display:flex;gap:12px;margin-top:24px;}
-.nft-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:30px;transition:all .2s;}
-.nft-card:hover{border-color:rgba(95,207,110,.3);transform:translateY(-2px);}
-.nft-img{height:160px;margin-bottom:18px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid var(--border);}
+/* SPECTRAL */
+.spectral-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px;}
+.spectral-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:30px;}
+.spectral-card h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--purple);margin-bottom:12px;}
+.spectral-card p{font-size:15px;color:rgba(200,230,200,.7);line-height:1.65;}
+.safe-subtitle{font-size:13px;color:#4a6b4a;margin-bottom:12px;}
+.safe-link{color:var(--purple);text-decoration:none;font-weight:600;}
+.safe-link::after{content:' →';}
+.spectral-footer{margin-top:32px;text-align:center;}
+.streaming-on{font-size:13px;color:#4a6b4a;margin-bottom:16px;}
+/* BREAKERY */
+.breakery-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.app-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:10px;margin-top:36px;}
+.appcard{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:18px 14px;text-align:center;transition:all .2s;text-decoration:none;color:var(--white);display:block;}
+.appcard:hover{border-color:rgba(95,207,110,.3);background:rgba(95,207,110,.03);transform:translateY(-2px);}
+.appcard-icon{width:46px;height:46px;margin:0 auto 10px;border-radius:10px;background:rgba(95,207,110,.07);border:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.appcard-icon img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
+.appcard-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;color:var(--white);margin-bottom:4px;}
+.appcard-desc{font-size:13px;color:var(--muted);line-height:1.4;}
+.appcard-status{display:inline-block;margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:2px;background:rgba(95,207,110,.1);color:var(--green);border:1px solid rgba(95,207,110,.2);}
+.breakery-foot{margin-top:28px;padding-top:22px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.breakery-foot p{font-size:15px;color:var(--muted);}
+/* NFTOPIA + COMMUNITY SIDE BY SIDE */
+.nftopia-community-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.nftopia-panel{background:var(--bg);padding:60px;}
+.community-panel{background:var(--bg2);padding:60px;}
+.nft-img{height:150px;margin-bottom:18px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid var(--border);}
 .nft-img img{width:100%;height:100%;object-fit:cover;display:block;}
-.nft-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;margin-bottom:10px;}
-.nft-desc{font-size:15px;font-weight:400;color:var(--text);line-height:1.65;margin-bottom:16px;}
+.nft-name{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;margin-bottom:8px;}
+.nft-desc{font-size:15px;font-weight:300;color:rgba(240,247,240,.55);line-height:1.65;margin-bottom:14px;}
 .nft-link{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);text-decoration:none;}
 .nft-link::after{content:' →';}
-.comm-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
 .earn-list{margin-top:22px;display:flex;flex-direction:column;gap:9px;}
-.earn-item{display:flex;align-items:center;gap:12px;background:rgba(95,207,110,.04);border:1px solid var(--border);border-radius:4px;padding:13px 16px;}
-.earn-dot{width:6px;height:6px;background:var(--green);border-radius:50%;flex-shrink:0;}
-.earn-text{font-size:15px;color:var(--text);}
+.earn-item{display:flex;align-items:center;gap:12px;background:rgba(95,207,110,.04);border:1px solid var(--border);border-radius:4px;padding:12px 14px;}
+.earn-dot{width:5px;height:5px;background:var(--green);border-radius:50%;flex-shrink:0;}
+.earn-text{font-size:15px;color:rgba(240,247,240,.7);}
+/* STORY */
 .story-section{background:linear-gradient(135deg,var(--bg),#08100a,var(--bg));border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .story-grid{display:grid;grid-template-columns:2fr 1fr;gap:60px;align-items:center;position:relative;}
-.story-quote{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:rgba(200,230,200,.3);line-height:1.35;margin-top:18px;max-width:480px;}
+.story-quote{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:rgba(240,247,240,.3);line-height:1.35;margin-top:18px;max-width:480px;}
 .story-quote em{font-style:normal;color:var(--green);}
 .year-bg{font-family:'Bebas Neue',sans-serif;font-size:130px;color:rgba(95,207,110,.05);line-height:1;position:absolute;right:-20px;bottom:-30px;pointer-events:none;letter-spacing:-4px;z-index:0;}
 .memorial{text-align:center;padding:30px;background:rgba(95,207,110,.03);border:1px solid var(--border);border-radius:6px;position:relative;z-index:1;}
+.mem-label{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.mem-names{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--white);margin-bottom:6px;}
+.mem-dates{font-size:13px;color:var(--muted);letter-spacing:1px;}
+.mem-note{margin-top:14px;font-size:13px;color:rgba(74,107,74,.7);font-style:italic;line-height:1.6;}
+/* FOOTER */
 footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60px 28px;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-brand img{height:42px;mix-blend-mode:screen;margin-bottom:12px;display:block;}
 .footer-brand-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--green);margin-bottom:12px;}
-.footer-desc{font-size:13px;color:var(--muted);line-height:1.7;max-width:230px;}
+.footer-desc{font-size:14px;color:var(--muted);line-height:1.7;max-width:230px;}
 .fc-title{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
 .footer-links{list-style:none;display:flex;flex-direction:column;gap:9px;}
-.footer-links a{font-size:14px;color:rgba(200,230,200,.55);text-decoration:none;transition:color .2s;}
+.footer-links a{font-size:14px;color:rgba(240,247,240,.45);text-decoration:none;transition:color .2s;}
 .footer-links a:hover{color:var(--green);}
 .footer-bottom{padding-top:22px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
 .footer-copy{font-size:12px;color:var(--muted);}
-.footer-tm{font-size:11px;color:rgba(122,170,122,.4);}
-@media(max-width:900px){nav{padding:12px 20px;}.nav-links{display:none;}.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:100px 24px 60px;}section{padding:60px 24px;}.shows-grid,.hc-inner,.comm-grid,.story-grid,.footer-grid{grid-template-columns:1fr;}.breakfest-banner{flex-direction:column;align-items:flex-start;padding:24px;}.statsbar{gap:0;}.year-bg{display:none;}}
+.footer-tm{font-size:11px;color:rgba(74,107,74,.4);}
+@media(max-width:900px){
+  nav{padding:12px 20px;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:100px 24px 60px;}
+  section{padding:60px 24px;}
+  .shows-grid,.hc-inner,.story-grid,.footer-grid,.nftopia-community-grid{grid-template-columns:1fr;}
+  .nftopia-panel,.community-panel{padding:40px 24px;}
+  .breakfest-banner{flex-direction:column;align-items:flex-start;padding:24px;}
+  .statsbar{gap:0;}
+  .year-bg{display:none;}
+}
 </style>
 </head>
 <body>
 <div class="glass-fixed"></div>
 
+<!-- NAV -->
 <nav>
   <div class="nav-logo">
     <img id="nav-logo-img" src="" alt="ConsumerBreak" style="display:none;">
@@ -145,15 +184,19 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
   </div>
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="breakery.html">The Breakery</a></li>
+    <li><a href="breakery.html">Breakery</a></li>
     <li><a href="community.html">Community</a></li>
   </ul>
   <a href="https://twitch.tv/consumerbreak" target="_blank" class="btn-watch">Watch Live</a>
 </nav>
 
+<!-- HERO -->
 <section class="hero" style="padding:0;">
   <div class="hero-left">
-    <div class="hero-badge"><div class="hero-badge-dot"></div><span id="hero-badge">Live Every Wednesday & Sunday</span></div>
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span id="hero-badge">Live Every Wednesday & Sunday</span>
+    </div>
     <div class="hero-logo-wrap">
       <img id="hero-logo" src="" alt="ConsumerBreak" style="display:none;">
       <div class="logo-fallback" id="hero-logo-fallback">CON<em>$</em>UMER<br>BREAK</div>
@@ -165,19 +208,25 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
     </div>
   </div>
   <div class="hero-right">
-    <div id="hero-img-wrap"><div class="hero-placeholder-icon"><svg viewBox="0 0 100 100"><path d="M50 5 L95 27.5 L95 72.5 L50 95 L5 72.5 L5 27.5 Z"/></svg></div></div>
+    <div id="hero-img-wrap">
+      <div class="hero-placeholder-icon">
+        <svg viewBox="0 0 100 100"><path d="M50 5 L95 27.5 L95 72.5 L50 95 L5 72.5 L5 27.5 Z"/></svg>
+      </div>
+    </div>
     <div class="hero-right-overlay"></div>
   </div>
 </section>
 
+<!-- STATS BAR -->
 <div class="statsbar">
   <div class="statitem"><div class="stat-label">PitchBreak</div><div class="stat-value">WEDNESDAYS</div><div class="stat-sub">2PM EST · 7PM UTC</div></div>
   <div class="statitem"><div class="stat-label">Spectral Sessions</div><div class="stat-value">SUNDAYS</div><div class="stat-sub">2PM EST · 7PM UTC</div></div>
   <div class="statitem"><div class="stat-label">NFT Assets</div><div class="stat-value">1.7M+</div><div class="stat-sub">WAX Blockchain</div></div>
   <div class="statitem"><div class="stat-label">WAX Status</div><div class="stat-value">GOLD</div><div class="stat-sub">Ambassador · cbreakgaming</div></div>
-  <div class="statitem"><div class="stat-label">Convention</div><div class="stat-value">NFTOPIA 5</div><div class="stat-sub">Aug 16-17, 2025</div></div>
+  <div class="statitem"><div class="stat-label">Convention</div><div class="stat-value">NFTOPIA 5</div><div class="stat-sub">Aug 16–17, 2025</div></div>
 </div>
 
+<!-- BREAKFEST BANNER -->
 <div class="breakfest-banner">
   <div>
     <div class="breakfest-badge" id="breakfest-badge">🔥 Beta Launch</div>
@@ -187,7 +236,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
   <a href="breakery.html" class="btn-solid" style="flex-shrink:0;white-space:nowrap;">Join BREAKFEST →</a>
 </div>
 
-<!-- LIVE SHOWS -->
+<!-- SHOWS -->
 <section id="shows">
   <div class="eyebrow">Every Week</div>
   <div class="sec-title">Live Shows</div>
@@ -199,7 +248,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <div class="show-img" id="pb-img"><img src="" alt="" style="display:none;"></div>
       <p class="show-desc" id="pb-desc">Live Web3 variety show — community games, NFT drops, crypto education, and prizes. Multi-streamed across Twitch, NFTOPIA, and Twitter Spaces every Wednesday.</p>
       <div class="pills">
-        <span class="pill pill-tw">Twitch</span><span class="pill pill-nf">NFTOPIA</span><span class="pill pill-x">Twitter Spaces</span><span class="pill pill-ar">Watch2Earn</span>
+        <span class="pill pill-tw">Twitch</span>
+        <span class="pill pill-nf">NFTOPIA</span>
+        <span class="pill pill-x">Twitter Spaces</span>
+        <span class="pill pill-ar">Watch2Earn</span>
       </div>
     </div>
     <div class="show-card ss">
@@ -210,35 +262,18 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <p class="show-desc" id="ss-desc">Live art show featuring Jumbie Art & guest artists drawing simultaneously — themes and attributes voted by viewers in real time. Learn the Spectral Art movement and Web3 through creativity.</p>
       <div style="margin-top:14px;padding:14px 16px;border:1px solid rgba(167,139,250,0.35);border-radius:4px;background:rgba(167,139,250,0.06);">
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#a78bfa;margin-bottom:6px;">Powered by S.A.F.E.</div>
-        <p style="font-size:14px;color:rgba(200,230,200,0.8);margin:0;line-height:1.65;">Spectral Art Foundation Enterprises &#8212; 501(c)(3) nonprofit. Artist grants, workshops, youth education &amp; live exhibitions. Co-produced with <a href="https://jumbieart.com/pages/safe" target="_blank" style="color:#a78bfa;text-decoration:none;font-weight:600;">Jumbie Art &#8594;</a></p>
+        <p style="font-size:14px;color:rgba(240,247,240,0.65);margin:0;line-height:1.65;">Spectral Art Foundation Enterprises — 501(c)(3) nonprofit. Artist grants, workshops, youth education &amp; live exhibitions. Co-produced with <a href="https://jumbieart.com/pages/safe" target="_blank" style="color:#a78bfa;text-decoration:none;font-weight:600;">Jumbie Art →</a></p>
       </div>
       <div class="pills" style="margin-top:14px;">
-        <span class="pill pill-tw">Twitch</span><span class="pill pill-bl">Blaze.stream</span><span class="pill pill-ar">Arena Social</span>
+        <span class="pill pill-tw">Twitch</span>
+        <span class="pill pill-bl">Blaze.stream</span>
+        <span class="pill pill-ar">Arena Social</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BREAKERY — above Hybrid Creatures -->
-<section class="breakery-section" id="breakery">
-  <div class="eyebrow">The App Suite</div>
-  <div class="sec-title">The Breakery</div>
-  <p class="sec-body" id="breakery-tagline">30 apps. One Breakverse account. Play games, earn points, build campaigns, and connect your wallet across everything we make.</p>
-  <div class="app-strip" id="app-strip">
-    <a class="appcard" href="#" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">ConsumerBreak</div><div class="appcard-desc">Jigsaw ad puzzles with cash & NFT prizes</div><span class="appcard-status">Era 2 Beta</span></a>
-    <a class="appcard" href="https://puzzlebreak.base44.app" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">PuzzleBreak</div><div class="appcard-desc">The core puzzle engine</div><span class="appcard-status">Live</span></a>
-    <a class="appcard" href="https://keybreak.base44.app" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">KeyBreak</div><div class="appcard-desc">Keyboard puzzle challenges</div><span class="appcard-status">Beta</span></a>
-    <a class="appcard" href="https://bingobreak.base44.app" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">BingoBreak</div><div class="appcard-desc">Live bingo with rewards</div><span class="appcard-status">Beta</span></a>
-    <a class="appcard" href="https://triviabreak.base44.app" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">TriviaBreak</div><div class="appcard-desc">Web3 trivia & learn-to-earn</div><span class="appcard-status">Beta</span></a>
-    <div class="appcard" style="opacity:.4;border-style:dashed;"><div class="appcard-icon">+</div><div class="appcard-name">More Soon</div><div class="appcard-desc">15+ mini games launching</div><span class="appcard-status">Coming</span></div>
-  </div>
-  <div class="breakery-foot">
-    <p>One Breakverse account · Every app · Earn across all of them</p>
-    <a href="breakery.html" class="btn-solid">See All Apps →</a>
-  </div>
-</section>
-
-<!-- HYBRID CREATURES — now below Breakery -->
+<!-- HYBRID CREATURES -->
 <section class="hc-section" id="hybrid">
   <div class="hc-inner">
     <div>
@@ -247,7 +282,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <p class="sec-body" id="hc-desc">Hand-drawn trading cards. Cryptids, mythology, and sci-fi collide in a universe powered by Mystery Matter — blending any creature into something new. Now with an AI feature film.</p>
       <div id="hc-feature-img" style="display:none;margin:18px 0;border-radius:6px;overflow:hidden;border:1px solid var(--border);max-height:200px;"><img id="hc-feature-img-el" src="" style="width:100%;height:200px;object-fit:cover;display:block;"></div>
       <div class="season-chips">
-        <span class="schip">S1 · Cryptids</span><span class="schip">S2 · Folklore</span><span class="schip">S3 · Animals</span><span class="schip">S3.5 · Hybrids</span><span class="schip">S4 · Mythology</span><span class="schip">S4.5 · The Movie</span>
+        <span class="schip">S1 · Cryptids</span>
+        <span class="schip">S2 · Folklore</span>
+        <span class="schip">S3 · Animals</span>
+        <span class="schip">S3.5 · Hybrids</span>
+        <span class="schip">S4 · Mythology</span>
+        <span class="schip">S4.5 · The Movie</span>
       </div>
       <div class="hc-stats-grid">
         <div class="hc-stat"><div class="hc-stat-val" id="hc-stat1-val">1.7M+</div><div class="hc-stat-lbl" id="hc-stat1-lbl">Total Assets Minted</div></div>
@@ -264,13 +304,13 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <div class="hc-movie" id="hc-movie" onclick="playHCMovie()">
         <img id="hc-thumb" src="" alt="Hybrid Creatures: The Movie" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
         <div style="position:absolute;inset:0;background:rgba(0,0,0,0.15);display:flex;flex-direction:column;justify-content:space-between;padding:12px 16px;z-index:2;">
-          <div style="font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.8);">Hybrid Creatures: The Movie</div>
+          <div style="font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.8);max-width:70%;">Hybrid Creatures: The Movie</div>
           <div style="display:flex;align-items:flex-end;justify-content:space-between;">
             <div style="display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.75);padding:5px 10px;border-radius:3px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z"/></svg>
               <span style="font-size:11px;color:#fff;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;">Watch on YouTube</span>
             </div>
-            <div style="width:56px;height:40px;background:#ff0000;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+            <div style="width:56px;height:40px;background:#ff0000;border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.5);">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M8 5v14l11-7z"/></svg>
             </div>
           </div>
@@ -280,39 +320,75 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
   </div>
 </section>
 
-<!-- NFTOPIA -->
-<section id="nfts" style="background:var(--bg);">
-  <div class="eyebrow">Metaverse Convention</div>
-  <div class="sec-title">NFTOPIA</div>
-  <div style="max-width:600px;">
-    <div class="nft-card">
-      <div class="nft-img" id="nftopia-img"></div>
-      <div class="nft-name">NFTOPIA</div>
-      <p class="nft-desc" id="nftopia-desc">Co-founded metaverse convention onboarding the world into Web3, blockchain, digital art, and community. 5 events, 50+ past exhibitors including WAX, Splinterlands, NeftyBlocks, and more.</p>
-      <a href="https://nftopia.weebly.com" target="_blank" class="nft-link">nftopia.weebly.com →</a>
+<!-- SPECTRAL SESSIONS -->
+<section id="spectral">
+  <div class="eyebrow purple">Every Sunday · In Partnership with Jumbie Art</div>
+  <div class="sec-title">SPECTRAL SESSIONS</div>
+  <p class="sec-body">Live collaborative art creation streamed every Sunday at 2PM EST. Multiple artists draw simultaneously while viewers vote on attributes — color, subject, mood. At the end of each session, a hue-shifting color effect transforms all artwork live.</p>
+  <div class="spectral-grid">
+    <div class="spectral-card">
+      <h3>The Show</h3>
+      <p>Artists share their screens and create original work over 4 hours while we discuss Spectral Art technique, color theory, and XRPL provenance. The audience shapes the art through live voting.</p>
     </div>
+    <div class="spectral-card">
+      <h3>S.A.F.E.</h3>
+      <p class="safe-subtitle">Spectral Art Foundation Enterprises · 501(c)(3)</p>
+      <p>SAFE empowers artists through grants, workshops, exhibitions, and zero-barrier access to patented Spectral Frame technology. Physical artwork engineered to come alive through LED hue-cycling. XRPL-verified provenance.</p>
+      <a href="https://jumbieart.com/pages/safe" target="_blank" class="safe-link">Learn about SAFE</a>
+    </div>
+  </div>
+  <div class="spectral-footer">
+    <p class="streaming-on">Streaming on: Twitch · X Spaces · Arena Social · Blaze.stream</p>
+    <a href="https://twitch.tv/consumerbreak" target="_blank" class="btn-solid">Watch Live</a>
   </div>
 </section>
 
-<!-- COMMUNITY -->
-<section id="community" style="background:var(--bg2);">
-  <div class="comm-grid">
-    <div>
-      <div class="eyebrow">The Breakverse</div>
-      <div class="sec-title" id="community-title">Join The Breakverse</div>
-      <p class="sec-body" id="community-desc">Discord, Twitch, Twitter — the ConsumerBreak community is where Web3 explorers, NFT collectors, live art fans, and puzzle players come together.</p>
-      <div class="earn-list" id="earn-items-list">
-        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">500+ free WAX NFTs distributed every week via stream</div></div>
-        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Weekly 50M $WUF airdrop split to Scroll holders</div></div>
-        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Watch2Earn — tune in and get rewarded live</div></div>
-        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Vote on Spectral Sessions art themes every Sunday</div></div>
-        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Play Breakery games and earn across the Breakverse</div></div>
-      </div>
-    </div>
+<!-- BREAKERY -->
+<section class="breakery-section" id="breakery">
+  <div class="eyebrow">The App Suite</div>
+  <div class="sec-title">The Breakery</div>
+  <p class="sec-body" id="breakery-tagline">30 apps. One Breakverse account. Play games, earn points, build campaigns, and connect your wallet across everything we make.</p>
+  <div class="app-strip" id="app-strip">
+    <a class="appcard" href="#" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">ConsumerBreak</div><div class="appcard-desc">Jigsaw ad puzzles with cash & NFT prizes</div><span class="appcard-status">Era 2 Beta</span></a>
+    <a class="appcard" href="https://puzzlebreak.base44.app" target="_blank"><div class="appcard-icon">🧩</div><div class="appcard-name">PuzzleBreak</div><div class="appcard-desc">The core puzzle engine</div><span class="appcard-status">Live</span></a>
+    <a class="appcard" href="https://keybreak.base44.app" target="_blank"><div class="appcard-icon">⌨️</div><div class="appcard-name">KeyBreak</div><div class="appcard-desc">Keyboard puzzle challenges</div><span class="appcard-status">Beta</span></a>
+    <a class="appcard" href="https://bingobreak.base44.app" target="_blank"><div class="appcard-icon">🎱</div><div class="appcard-name">BingoBreak</div><div class="appcard-desc">Live bingo with rewards</div><span class="appcard-status">Beta</span></a>
+    <a class="appcard" href="https://triviabreak.base44.app" target="_blank"><div class="appcard-icon">❓</div><div class="appcard-name">TriviaBreak</div><div class="appcard-desc">Web3 trivia & learn-to-earn</div><span class="appcard-status">Beta</span></a>
+    <div class="appcard" style="opacity:.4;border-style:dashed;"><div class="appcard-icon">+</div><div class="appcard-name">More Soon</div><div class="appcard-desc">15+ mini games launching</div><span class="appcard-status">Coming</span></div>
+  </div>
+  <div class="breakery-foot">
+    <p>One Breakverse account · Every app · Earn across all of them</p>
+    <a href="breakery.html" class="btn-solid">See All Apps →</a>
   </div>
 </section>
 
-<!-- STORY -->
+<!-- NFTOPIA + COMMUNITY SIDE BY SIDE -->
+<div class="nftopia-community-grid">
+  <!-- NFTOPIA -->
+  <div class="nftopia-panel">
+    <div class="eyebrow">Metaverse Convention</div>
+    <div class="sec-title">NFTOPIA</div>
+    <div class="nft-img" id="nftopia-img"></div>
+    <div class="nft-name">NFTOPIA</div>
+    <p class="nft-desc" id="nftopia-desc">Co-founded metaverse convention onboarding the world into Web3, blockchain, digital art, and community. 5 events, 50+ past exhibitors including WAX, Splinterlands, NeftyBlocks, and more.</p>
+    <a href="https://nftopia.weebly.com" target="_blank" class="nft-link">nftopia.weebly.com</a>
+  </div>
+  <!-- COMMUNITY -->
+  <div class="community-panel">
+    <div class="eyebrow">The Breakverse</div>
+    <div class="sec-title" id="community-title">Join The Breakverse</div>
+    <p class="sec-body" id="community-desc">Discord, Twitch, Twitter — the ConsumerBreak community is where Web3 explorers, NFT collectors, live art fans, and puzzle players come together.</p>
+    <div class="earn-list" id="earn-items-list">
+      <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">500+ free WAX NFTs distributed every week via stream</div></div>
+      <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Weekly 50M $WUF airdrop split to Scroll holders</div></div>
+      <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Watch2Earn — tune in and get rewarded live</div></div>
+      <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Vote on Spectral Sessions art themes every Sunday</div></div>
+      <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Play Breakery games and earn across the Breakverse</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- STORY TEASER -->
 <section class="story-section" id="story">
   <div class="story-grid">
     <div>
@@ -323,25 +399,48 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <a href="story.html" class="btn-outline" style="margin-top:28px;display:inline-block;">Read The Full Story →</a>
     </div>
     <div class="memorial">
-      <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">In Loving Memory</div>
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:var(--white);margin-bottom:6px;">Michael &amp; Barbara<br>Eisenberg</div>
-      <div style="font-size:13px;color:var(--muted);letter-spacing:1px;">February 12 &amp; 14, 2018</div>
-      <div style="margin-top:14px;font-size:13px;color:rgba(122,170,122,.7);font-style:italic;line-height:1.6;">"Dedicated to the two who believed<br>before anyone else did."</div>
+      <div class="mem-label">In Loving Memory</div>
+      <div class="mem-names">Michael &amp; Barbara<br>Eisenberg</div>
+      <div class="mem-dates">February 12 &amp; 14, 2018</div>
+      <div class="mem-note">"Dedicated to the two who believed<br>before anyone else did."</div>
     </div>
     <div class="year-bg">2011</div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
-    <div>
-      <img id="footer-logo" src="" alt="ConsumerBreak" style="display:none;height:42px;mix-blend-mode:screen;margin-bottom:12px;">
+    <div class="footer-brand">
+      <img id="footer-logo" src="" alt="ConsumerBreak" style="display:none;">
       <div class="footer-brand-name">CON$UMER BREAK®</div>
       <p class="footer-desc">Web3 education, live art, NFT drops, community games, and prize-winning apps. Home of Hybrid Creatures NFT and The Breakery.</p>
     </div>
-    <div><div class="fc-title">Shows</div><ul class="footer-links"><li><a href="#shows">PitchBreak</a></li><li><a href="#shows">Spectral Sessions</a></li><li><a href="https://twitch.tv/consumerbreak" target="_blank">Watch Live</a></li></ul></div>
-    <div><div class="fc-title">NFTs</div><ul class="footer-links"><li><a href="https://hybridcreaturesnft.com" target="_blank">Hybrid Creatures</a></li><li><a href="https://nftopia.weebly.com" target="_blank">NFTOPIA</a></li><li><a href="https://wax.atomichub.io/explorer/collection/cbreakgaming" target="_blank">AtomicHub</a></li></ul></div>
-    <div><div class="fc-title">Platform</div><ul class="footer-links"><li><a href="breakery.html">The Breakery</a></li><li><a href="community.html">Community</a></li><li><a href="story.html">Our Story</a></li></ul></div>
+    <div>
+      <div class="fc-title">Shows</div>
+      <ul class="footer-links">
+        <li><a href="#shows">PitchBreak</a></li>
+        <li><a href="#shows">Spectral Sessions</a></li>
+        <li><a href="https://twitch.tv/consumerbreak" target="_blank">Watch Live</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fc-title">NFTs</div>
+      <ul class="footer-links">
+        <li><a href="https://hybridcreaturesnft.com" target="_blank">Hybrid Creatures</a></li>
+        <li><a href="https://nftopia.weebly.com" target="_blank">NFTOPIA</a></li>
+        <li><a href="https://wax.atomichub.io/explorer/collection/cbreakgaming" target="_blank">AtomicHub</a></li>
+        <li><a href="https://neftyblocks.com/c/cbreakgaming" target="_blank">NeftyBlocks</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fc-title">Platform</div>
+      <ul class="footer-links">
+        <li><a href="breakery.html">Breakery</a></li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="story.html">Our Story</a></li>
+      </ul>
+    </div>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2026 Concept &amp; Innovation Group, LLC. All rights reserved.</span>
@@ -351,11 +450,12 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
 
 <script>
 window._movieUrl = '';
+
 function playHCMovie() {
   const frame = document.getElementById('hc-movie');
   if (!frame) return;
   const url = window._movieUrl || '';
-  if (!url) { alert('No movie URL set.'); return; }
+  if (!url) { alert('No movie URL set yet. Add it in the editor under Hybrid Creatures.'); return; }
   const videoId = url.includes('v=') ? url.split('v=')[1].split('&')[0] : url.split('/').pop();
   frame.style.cursor = 'default'; frame.onclick = null;
   frame.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videoId + '?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:block;position:absolute;inset:0;border:none;"></iframe>';
@@ -368,70 +468,125 @@ async function loadCMSData() {
       if (!r.ok) return null;
       const t = await r.text();
       if (!t || t.trim().startsWith('<')) return null;
-      try { return JSON.parse(t); } catch(je) { console.warn('[CMS] Bad JSON in ' + path); return null; }
-    } catch(e) { return null; }
+      try { return JSON.parse(t); }
+      catch(je) { console.warn('[CMS] Bad JSON in ' + path + ':', je.message); return null; }
+    } catch(e) { console.warn('[CMS] Fetch failed ' + path + ':', e.message); return null; }
   }
-  function fixSrc(s) { if (!s) return ''; if (s.startsWith('http') || s.startsWith('data:')) return s; return s.startsWith('/') ? s : '/' + s; }
-  function setImg(id, src) { const el = document.getElementById(id); if (!el || !src) return; el.innerHTML = '<img src="' + fixSrc(src) + '" style="width:100%;height:100%;object-fit:cover;display:block;">'; }
-  function setText(id, val) { if (!val) return; const el = document.getElementById(id); if (el) el.textContent = val; }
-  function setNavLogo(src) { const s = fixSrc(src); ['nav-logo-img','footer-logo'].forEach(id => { const el = document.getElementById(id); if (el) { el.src = s; el.style.display = 'block'; } }); const nf = document.getElementById('nav-logo-fallback'); if (nf) nf.style.display = 'none'; }
+
+  function fixSrc(s) {
+    if (!s) return '';
+    if (s.startsWith('http') || s.startsWith('data:')) return s;
+    return s.startsWith('/') ? s : '/' + s;
+  }
+
+  function setImg(id, src) {
+    const el = document.getElementById(id); if (!el) return;
+    el.innerHTML = `<img src="${fixSrc(src)}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+  }
+
+  function setText(id, val) {
+    if (!val) return; const el = document.getElementById(id); if (el) el.textContent = val;
+  }
 
   const hero = await get('/_data/hero.json');
   if (hero) {
-    setText('hero-badge', hero.badge); setText('hero-tagline', hero.tagline);
-    if (hero.nav_logo || hero.site_logo) setNavLogo(hero.nav_logo || hero.site_logo);
-    if (hero.hero_logo || hero.site_logo) { const s = fixSrc(hero.hero_logo || hero.site_logo); const hl = document.getElementById('hero-logo'); if (hl) { hl.src = s; hl.style.display = 'block'; } const hf = document.getElementById('hero-logo-fallback'); if (hf) hf.style.display = 'none'; }
-    if (hero.hero_image) { const wrap = document.getElementById('hero-img-wrap'); if (wrap) wrap.innerHTML = '<img src="' + fixSrc(hero.hero_image) + '" style="width:100%;height:100%;object-fit:cover;display:block;">'; }
+    setText('hero-badge', hero.badge);
+    setText('hero-tagline', hero.tagline);
+    if (hero.nav_logo || hero.site_logo) {
+      const s = fixSrc(hero.nav_logo || hero.site_logo);
+      ['nav-logo-img','footer-logo'].forEach(id => { const el=document.getElementById(id); if(el){el.src=s;el.style.display='block';} });
+      const nf = document.getElementById('nav-logo-fallback'); if(nf) nf.style.display='none';
+    }
+    if (hero.hero_logo || hero.site_logo) {
+      const s = fixSrc(hero.hero_logo || hero.site_logo);
+      const hl=document.getElementById('hero-logo'); if(hl){hl.src=s;hl.style.display='block';}
+      const hf=document.getElementById('hero-logo-fallback'); if(hf) hf.style.display='none';
+    }
+    if (hero.hero_image) {
+      const wrap=document.getElementById('hero-img-wrap');
+      if(wrap) wrap.innerHTML=`<img src="${fixSrc(hero.hero_image)}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+    }
   }
+
   const pb = await get('/_data/pitchbreak.json');
-  if (pb) { setText('pb-time', pb.time); setText('pb-desc', pb.description); if (pb.image) setImg('pb-img', pb.image); }
+  if (pb) { setText('pb-time', pb.time); setText('pb-desc', pb.description); if(pb.image) setImg('pb-img', pb.image); }
+
   const ss = await get('/_data/spectral.json');
-  if (ss) { setText('ss-time', ss.time); setText('ss-desc', ss.description); if (ss.image) setImg('ss-img', ss.image); }
+  if (ss) { setText('ss-time', ss.time); setText('ss-desc', ss.description); if(ss.image) setImg('ss-img', ss.image); }
+
   const hybrid = await get('/_data/hybrid.json');
   if (hybrid) {
-    if (hybrid.title) setText('hc-title', hybrid.title);
-    if (hybrid.eyebrow) setText('hc-eyebrow', hybrid.eyebrow);
-    if (hybrid.description) setText('hc-desc', hybrid.description);
-    ['stat1_val','stat1_lbl','stat2_val','stat2_lbl','stat3_val','stat3_lbl','stat4_val','stat4_lbl'].forEach(f => { if (hybrid[f]) setText('hc-' + f.replace('_','-'), hybrid[f]); });
+    if(hybrid.title) setText('hc-title', hybrid.title);
+    if(hybrid.eyebrow) setText('hc-eyebrow', hybrid.eyebrow);
+    if(hybrid.description) setText('hc-desc', hybrid.description);
+    ['stat1','stat2','stat3','stat4'].forEach(k => {
+      if(hybrid[k+'_val']) setText('hc-'+k+'-val', hybrid[k+'_val']);
+      if(hybrid[k+'_lbl']) setText('hc-'+k+'-lbl', hybrid[k+'_lbl']);
+    });
     if (hybrid.movie_url) {
       window._movieUrl = hybrid.movie_url;
-      const vid = hybrid.movie_url.includes('v=') ? hybrid.movie_url.split('v=')[1].split('&')[0] : hybrid.movie_url.split('/').pop();
+      const videoId = hybrid.movie_url.includes('v=') ? hybrid.movie_url.split('v=')[1].split('&')[0] : hybrid.movie_url.split('/').pop();
       const thumb = document.getElementById('hc-thumb');
-      if (thumb) { thumb.src = 'https://img.youtube.com/vi/' + vid + '/maxresdefault.jpg'; thumb.onerror = function() { this.src = 'https://img.youtube.com/vi/' + vid + '/hqdefault.jpg'; this.onerror = null; }; }
+      if (thumb) {
+        thumb.src = 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg';
+        thumb.onerror = function() { this.src='https://img.youtube.com/vi/'+videoId+'/hqdefault.jpg'; this.onerror=null; };
+      }
     }
-    if (hybrid.image) { const w = document.getElementById('hc-feature-img'); const i = document.getElementById('hc-feature-img-el'); if (w && i) { i.src = fixSrc(hybrid.image); w.style.display = 'block'; } }
+    if (hybrid.image) { const w=document.getElementById('hc-feature-img'); const i=document.getElementById('hc-feature-img-el'); if(w&&i){ i.src=fixSrc(hybrid.image); w.style.display='block'; } }
   }
+
   const nftopia = await get('/_data/nftopia.json');
-  if (nftopia) { setText('nftopia-desc', nftopia.description); if (nftopia.image) setImg('nftopia-img', nftopia.image); }
+  if (nftopia) { setText('nftopia-desc', nftopia.description); if(nftopia.image) setImg('nftopia-img', nftopia.image); }
+
   const breakery = await get('/_data/breakery.json');
   if (breakery) {
     setText('breakery-tagline', breakery.tagline);
     if (breakery.apps && breakery.apps.length) {
       const strip = document.getElementById('app-strip');
-      if (strip) strip.innerHTML = breakery.apps.map(a => '<a class="appcard" href="' + (a.link||'#') + '" target="_blank"><div class="appcard-icon">' + (a.icon ? '<img src="' + fixSrc(a.icon) + '">' : '🎮') + '</div><div class="appcard-name">' + (a.name||'') + '</div><div class="appcard-desc">' + (a.description||a.desc||'') + '</div><span class="appcard-status">' + (a.status||'') + '</span></a>').join('') + '<div class="appcard" style="opacity:.4;border-style:dashed;"><div class="appcard-icon">+</div><div class="appcard-name">More Soon</div><div class="appcard-desc">15+ mini games launching</div><span class="appcard-status">Coming</span></div>';
+      if (strip) {
+        strip.innerHTML = breakery.apps.map(a => `
+          <a class="appcard" href="${a.link||'#'}" target="_blank">
+            <div class="appcard-icon">${a.icon ? `<img src="${fixSrc(a.icon)}">` : '🎮'}</div>
+            <div class="appcard-name">${a.name||''}</div>
+            <div class="appcard-desc">${a.description||a.desc||''}</div>
+            <span class="appcard-status">${a.status||''}</span>
+          </a>`).join('') + `<div class="appcard" style="opacity:.4;border-style:dashed;"><div class="appcard-icon">+</div><div class="appcard-name">More Soon</div><div class="appcard-desc">15+ mini games launching</div><span class="appcard-status">Coming</span></div>`;
+      }
     }
   }
+
   const comm = await get('/_data/community.json');
   if (comm) {
-    setText('community-title', comm.title); setText('community-desc', comm.description);
-    if (comm.earn_items && comm.earn_items.length) { const list = document.getElementById('earn-items-list'); if (list) list.innerHTML = comm.earn_items.map(i => '<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">' + i + '</div></div>').join(''); }
+    setText('community-title', comm.title);
+    setText('community-desc', comm.description);
+    if (comm.earn_items && comm.earn_items.length) {
+      const list = document.getElementById('earn-items-list');
+      if (list) list.innerHTML = comm.earn_items.map(i =>
+        `<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">${i}</div></div>`
+      ).join('');
+    }
   }
 }
+
 loadCMSData();
 </script>
+
 <script>
 if (window.netlifyIdentity) {
   window.netlifyIdentity.on('init', user => {
     function addEditorButton() {
       if (document.getElementById('admin-edit-btn')) return;
       const btn = document.createElement('a');
-      btn.id = 'admin-edit-btn'; btn.href = '/editor.html';
+      btn.id = 'admin-edit-btn';
+      btn.href = '/editor.html';
       btn.textContent = '✏ Edit Site';
-      btn.style.cssText = 'position:fixed;bottom:18px;right:18px;z-index:9999;background:rgba(6,12,6,.96);color:#5fcf6e;padding:10px 14px;border:2px solid #5fcf6e;border-radius:3px;font-family:Barlow Condensed,sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;';
+      btn.style.cssText = 'position:fixed;bottom:18px;right:18px;z-index:9999;background:rgba(6,12,6,.94);color:#5fcf6e;padding:10px 14px;border:2px solid #5fcf6e;border-radius:3px;font-family:Barlow Condensed,sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;';
       document.body.appendChild(btn);
     }
-    if (user && user.app_metadata && user.app_metadata.roles && user.app_metadata.roles.indexOf('admin') !== -1) addEditorButton();
-    window.netlifyIdentity.on('logout', () => { const el = document.getElementById('admin-edit-btn'); if (el) el.remove(); });
+    if (user && user.app_metadata && user.app_metadata.roles && user.app_metadata.roles.indexOf('admin') !== -1) {
+      addEditorButton();
+    }
+    window.netlifyIdentity.on('logout', () => { const el=document.getElementById('admin-edit-btn'); if(el) el.remove(); });
   });
   window.netlifyIdentity.init();
 }

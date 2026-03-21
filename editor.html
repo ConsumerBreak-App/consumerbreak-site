@@ -9,13 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <style>
-:root{--bg:#060c06;--bg2:#0a110a;--green:#5fcf6e;--white:#f0f7f0;--muted:#4a6b4a;--border:#1a2e1a}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--white);font-family:'Barlow',sans-serif;margin:0;opacity:0;transition:opacity .12s linear}
-/* reuse site styles (kept minimal here, full styles copied below) */
-/* the full site CSS is copied verbatim to preserve appearance */
-</style>
-<style>
 :root {
   --bg: #060c06;
   --bg2: #0a110a;
@@ -28,25 +21,18 @@ body{background:var(--bg);color:var(--white);font-family:'Barlow',sans-serif;mar
   --muted: #4a6b4a;
   --border: #1a2e1a;
 }
-,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--white);font-family:'Barlow',sans-serif;font-weight:400;overflow-x:hidden;}
+body{background:var(--bg);color:var(--white);font-family:'Barlow',sans-serif;font-weight:400;overflow-x:hidden;opacity:0;transition:opacity .12s linear;}
 
-/* GLASS BG */
 .glass-fixed{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cpolygon points='0,200 150,0 300,180 200,350' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='150,0 400,50 300,180' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='300,180 400,50 550,200 450,350' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='0,200 200,350 100,500' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='200,350 450,350 400,550 150,550' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3Cpolygon points='450,350 550,200 600,400 500,600' fill='none' stroke='%235fcf6e' stroke-width='0.5'/%3E%3C/svg%3E");background-size:600px 600px;}
-
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 40px;background:rgba(6,12,6,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
 .nav-logo{display:flex;align-items:center;}
-.nav-logo img{height:54px;width:auto;display:block;mix-blend-mode:screen;}
 .nav-logo-text{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--green);letter-spacing:3px;}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
 .nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);text-decoration:none;opacity:.7;transition:all .2s;}
-.nav-links a:hover,.nav-links a.active{opacity:1;color:var(--green);}
-.btn-watch{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bg);background:var(--green);padding:10px 22px;border-radius:3px;text-decoration:none;transition:all .2s;white-space:nowrap;}
-.btn-watch:hover{background:#7ae888;transform:translateY(-1px);}
-
-/* HERO */
+.nav-links a:hover{opacity:1;color:var(--green);}
+.btn-watch{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bg);background:var(--green);padding:10px 22px;border-radius:3px;text-decoration:none;}
 .hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
 .hero-left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:120px 60px 80px;}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(95,207,110,.08);border:1px solid rgba(95,207,110,.25);border-radius:3px;padding:6px 14px;margin-bottom:28px;width:fit-content;}
@@ -60,40 +46,29 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-tagline{font-size:14px;font-weight:300;color:rgba(240,247,240,.55);letter-spacing:.5px;margin-bottom:36px;max-width:400px;line-height:1.7;}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
 .btn-solid{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--bg);background:var(--green);padding:13px 28px;border-radius:3px;text-decoration:none;transition:all .2s;border:2px solid var(--green);}
-.btn-solid:hover{background:#7ae888;border-color:#7ae888;transform:translateY(-2px);}
 .btn-outline{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white);background:transparent;padding:13px 28px;border-radius:3px;text-decoration:none;transition:all .2s;border:2px solid rgba(240,247,240,.2);}
-.btn-outline:hover{border-color:var(--green);color:var(--green);}
 .hero-right{position:relative;overflow:hidden;border-left:1px solid var(--border);}
 #hero-img-wrap{position:absolute;inset:0;background:linear-gradient(135deg,#0a160a,#0f200f);display:flex;align-items:center;justify-content:center;}
 #hero-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
 .hero-right-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,transparent 35%);z-index:1;pointer-events:none;}
 .hero-placeholder-icon{opacity:.08;}
 .hero-placeholder-icon svg{width:90px;height:90px;fill:var(--green);}
-
-/* STATS BAR */
 .statsbar{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;}
 .statitem{flex:1;min-width:150px;padding:16px 22px;border-right:1px solid var(--border);text-align:center;}
 .statitem:last-child{border-right:none;}
 .stat-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
 .stat-value{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--white);}
 .stat-sub{font-size:12px;color:var(--muted);margin-top:2px;}
-
-/* BREAKFEST BANNER */
 .breakfest-banner{background:linear-gradient(135deg,#0c180c,#111f11);border-bottom:1px solid var(--border);padding:28px 60px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative;overflow:hidden;}
 .breakfest-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 50%,rgba(95,207,110,.06) 0%,transparent 60%);pointer-events:none;}
-.breakfest-left{}
 .breakfest-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green);color:var(--bg);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:3px;padding:4px 10px;border-radius:2px;margin-bottom:8px;}
 .breakfest-title{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:5px;color:var(--white);line-height:1;}
 .breakfest-sub{font-size:13px;color:rgba(240,247,240,.45);margin-top:6px;max-width:480px;}
-
-/* SECTIONS */
 section{position:relative;padding:80px 60px;}
 .eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
 .eyebrow.purple{color:var(--purple);}
 .sec-title{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:3px;color:var(--white);line-height:1;margin-bottom:16px;}
 .sec-body{font-size:14px;font-weight:300;color:rgba(240,247,240,.55);line-height:1.75;max-width:540px;}
-
-/* SHOWS */
 .shows-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:36px;}
 .show-card{background:var(--bg2);padding:40px;position:relative;overflow:hidden;}
 .show-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
@@ -102,7 +77,7 @@ section{position:relative;padding:80px 60px;}
 .show-day{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:3px;margin-bottom:4px;}
 .show-card.pb .show-day{color:var(--green);}
 .show-card.ss .show-day{color:var(--purple);}
-.show-time{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;color:var(--muted);margin-bottom:20px;text-transform:uppercase;}
+.show-time{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:2px;color:var(--muted);margin-bottom:20px;text-transform:uppercase;}
 .show-img{height:180px;margin-bottom:20px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid var(--border);}
 .show-img img{width:100%;height:100%;object-fit:cover;display:block;}
 .show-desc{font-size:15px;font-weight:300;color:rgba(240,247,240,.5);line-height:1.75;margin-bottom:20px;}
@@ -113,17 +88,9 @@ section{position:relative;padding:80px 60px;}
 .pill-x{background:rgba(29,161,242,.1);color:#1da1f2;border:1px solid rgba(29,161,242,.2);}
 .pill-bl{background:rgba(245,200,66,.1);color:var(--gold);border:1px solid rgba(245,200,66,.2);}
 .pill-ar{background:rgba(240,247,240,.05);color:rgba(240,247,240,.4);border:1px solid var(--border);}
-
-/* HYBRID CREATURES */
 .hc-section{background:linear-gradient(180deg,var(--bg) 0%,#070d10 50%,var(--bg) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .hc-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
-.hc-movie{position:relative;aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden;border:1px solid rgba(95,207,110,.2);box-shadow:0 0 60px rgba(95,207,110,.06);}
-.hc-movie-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#060e12,#0a1820);gap:14px;}
-.hc-feature-img{width:100%;height:300px;border-radius:6px;overflow:hidden;background:#0b161b;margin:16px 0;}
-.hc-feature-img img{width:100%;height:100%;object-fit:cover;display:block;}
-.play-circle{width:64px;height:64px;background:rgba(95,207,110,.12);border:2px solid var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;}
-.play-circle:hover{background:rgba(95,207,110,.22);transform:scale(1.06);}
-.play-circle svg{width:22px;height:22px;fill:var(--green);margin-left:4px;}
+.hc-movie{position:relative;aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden;border:1px solid rgba(95,207,110,.2);box-shadow:0 0 60px rgba(95,207,110,.06);cursor:pointer;}
 .hc-movie-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
 .season-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:22px;}
 .schip{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 9px;border-radius:2px;border:1px solid var(--border);color:var(--muted);}
@@ -132,23 +99,16 @@ section{position:relative;padding:80px 60px;}
 .hc-stat-val{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--green);letter-spacing:2px;}
 .hc-stat-lbl{font-size:12px;color:var(--muted);margin-top:2px;}
 .hc-btns{display:flex;gap:12px;margin-top:24px;}
-
-/* NFT CARDS */
 .nft-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px;}
 .nft-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:30px;transition:all .2s;}
-.nft-card:hover{border-color:rgba(95,207,110,.25);transform:translateY(-2px);}
 .nft-img{height:150px;margin-bottom:18px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid var(--border);}
 .nft-img img{width:100%;height:100%;object-fit:cover;display:block;}
 .nft-name{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;margin-bottom:8px;}
 .nft-desc{font-size:13px;font-weight:300;color:rgba(240,247,240,.45);line-height:1.65;margin-bottom:14px;}
 .nft-link{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green);text-decoration:none;}
-.nft-link:hover{opacity:.7;}
-.nft-link::after{content:' →';}
-
-/* BREAKERY */
 .breakery-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .app-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:10px;margin-top:36px;}
-.appcard{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:18px 14px;text-align:center;transition:all .2s;}
+.appcard{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:18px 14px;text-align:center;transition:all .2s;text-decoration:none;color:var(--white);display:block;}
 .appcard:hover{border-color:rgba(95,207,110,.3);background:rgba(95,207,110,.03);transform:translateY(-2px);}
 .appcard-icon{width:46px;height:46px;margin:0 auto 10px;border-radius:10px;background:rgba(95,207,110,.07);border:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:20px;}
 .appcard-icon img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
@@ -156,48 +116,37 @@ section{position:relative;padding:80px 60px;}
 .appcard-desc{font-size:12px;color:var(--muted);line-height:1.4;}
 .appcard-status{display:inline-block;margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:2px;background:rgba(95,207,110,.1);color:var(--green);border:1px solid rgba(95,207,110,.2);}
 .breakery-foot{margin-top:28px;padding-top:22px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-.breakery-foot p{font-size:13px;color:var(--muted);}
-
-/* COMMUNITY */
 .comm-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
 .earn-list{margin-top:22px;display:flex;flex-direction:column;gap:9px;}
 .earn-item{display:flex;align-items:center;gap:12px;background:rgba(95,207,110,.04);border:1px solid var(--border);border-radius:4px;padding:11px 14px;}
 .earn-dot{width:5px;height:5px;background:var(--green);border-radius:50%;flex-shrink:0;}
 .earn-text{font-size:14px;color:rgba(240,247,240,.6);}
-.plat-col{display:flex;flex-direction:column;gap:12px;padding-top:8px;}
-.plat-row{display:flex;gap:10px;flex-wrap:wrap;}
-.plat-btn{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:10px 18px;border-radius:3px;text-decoration:none;border:1px solid var(--border);color:var(--white);transition:all .2s;}
-.plat-btn:hover{border-color:var(--green);color:var(--green);}
-.disc-btn{background:#5865F2;color:#fff;border-color:#5865F2;}
-.disc-btn:hover{background:#6e7af5;border-color:#6e7af5;color:#fff;}
-
-/* STORY */
 .story-section{background:linear-gradient(135deg,var(--bg),#08100a,var(--bg));border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .story-grid{display:grid;grid-template-columns:2fr 1fr;gap:60px;align-items:center;position:relative;}
 .story-quote{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:rgba(240,247,240,.3);line-height:1.35;margin-top:18px;max-width:480px;}
 .story-quote em{font-style:normal;color:var(--green);}
 .year-bg{font-family:'Bebas Neue',sans-serif;font-size:130px;color:rgba(95,207,110,.05);line-height:1;position:absolute;right:-20px;bottom:-30px;pointer-events:none;letter-spacing:-4px;z-index:0;}
 .memorial{text-align:center;padding:30px;background:rgba(95,207,110,.03);border:1px solid var(--border);border-radius:6px;position:relative;z-index:1;}
-.mem-label{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
-.mem-names{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--white);margin-bottom:6px;}
-.mem-dates{font-size:11px;color:var(--muted);letter-spacing:1px;}
-.mem-note{margin-top:14px;font-size:12px;color:rgba(74,107,74,.7);font-style:italic;line-height:1.6;}
-
-/* FOOTER */
 footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60px 28px;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
-.footer-brand img{height:42px;mix-blend-mode:screen;margin-bottom:12px;display:block;}
 .footer-brand-name{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--green);margin-bottom:12px;}
 .footer-desc{font-size:12px;color:var(--muted);line-height:1.7;max-width:230px;}
 .fc-title{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
 .footer-links{list-style:none;display:flex;flex-direction:column;gap:9px;}
-.footer-links a{font-size:13px;color:rgba(240,247,240,.45);text-decoration:none;transition:color .2s;}
+.footer-links a{font-size:13px;color:rgba(240,247,240,.45);text-decoration:none;}
 .footer-links a:hover{color:var(--green);}
 .footer-bottom{padding-top:22px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
 .footer-copy{font-size:11px;color:var(--muted);}
 .footer-tm{font-size:10px;color:rgba(74,107,74,.4);}
-
-/* RESPONSIVE */
+#spectral{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 0;}
+.spectral-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px;}
+.spectral-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:30px;}
+.spectral-card h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--purple);margin-bottom:12px;}
+.spectral-card p{font-size:14px;color:#7ab07a;line-height:1.6;}
+.safe-subtitle{font-size:12px;color:#4a6b4a;margin-bottom:12px;}
+.safe-link{color:var(--purple);text-decoration:none;font-weight:600;}
+.spectral-footer{margin-top:32px;text-align:center;}
+.streaming-on{font-size:12px;color:#4a6b4a;margin-bottom:16px;}
 @media(max-width:900px){
   nav{padding:12px 20px;}
   .nav-links{display:none;}
@@ -215,14 +164,13 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
 <body>
 <div class="glass-fixed"></div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">
     <img id="nav-logo-img" src="" alt="ConsumerBreak" style="display:none;">
     <span class="nav-logo-text" id="nav-logo-fallback">CON$UMER BREAK</span>
   </div>
   <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="index.html">Home</a></li>
     <li><a href="breakery.html">The Breakery</a></li>
     <li><a href="community.html">Community</a></li>
     <li><a href="hybrid-creatures.html">Hybrid Creatures</a></li>
@@ -230,53 +178,42 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
   <a href="https://twitch.tv/consumerbreak" target="_blank" class="btn-watch">Watch Live</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero" style="padding:0;">
   <div class="hero-left">
-    <div class="hero-badge">
-      <div class="hero-badge-dot"></div>
-      <span id="hero-badge">Live Every Wednesday & Sunday</span>
-    </div>
+    <div class="hero-badge"><div class="hero-badge-dot"></div><span id="hero-badge">Live Every Wednesday & Sunday</span></div>
     <div class="hero-logo-wrap">
       <img id="hero-logo" src="" alt="ConsumerBreak" style="display:none;">
       <div class="logo-fallback" id="hero-logo-fallback">CON<em>$</em>UMER<br>BREAK</div>
     </div>
     <p class="hero-tagline" id="hero-tagline">Web3 education · Live art · NFT drops · Community games · Prize-winning apps.</p>
     <div class="hero-btns">
-      <a href="https://twitch.tv/consumerbreak" target="_blank" class="btn-solid">Watch on Twitch</a>
+      <a href="https://twitch.tv/consumerbreak" target="_blank" class="btn-solid">Watch Live</a>
       <a href="breakery.html" class="btn-outline">Explore The Breakery</a>
     </div>
   </div>
   <div class="hero-right">
-    <div id="hero-img-wrap">
-      <div class="hero-placeholder-icon">
-        <svg viewBox="0 0 100 100"><path d="M50 5 L95 27.5 L95 72.5 L50 95 L5 72.5 L5 27.5 Z"/></svg>
-      </div>
-    </div>
+    <div id="hero-img-wrap"><div class="hero-placeholder-icon"><svg viewBox="0 0 100 100"><path d="M50 5 L95 27.5 L95 72.5 L50 95 L5 72.5 L5 27.5 Z"/></svg></div></div>
     <div class="hero-right-overlay"></div>
   </div>
 </section>
 
-<!-- STATS BAR -->
 <div class="statsbar">
-  <div class="statitem"><div class="stat-label" id="stat1-label">PitchBreak</div><div class="stat-value" id="stat1-value">WEDNESDAYS</div><div class="stat-sub" id="stat1-sub">2PM EST · 7PM UTC</div></div>
-  <div class="statitem"><div class="stat-label" id="stat2-label">Spectral Sessions</div><div class="stat-value" id="stat2-value">SUNDAYS</div><div class="stat-sub" id="stat2-sub">2PM EST · 7PM UTC</div></div>
-  <div class="statitem"><div class="stat-label" id="stat3-label">NFT Assets</div><div class="stat-value" id="stat3-value">1.7M+</div><div class="stat-sub" id="stat3-sub">WAX Blockchain</div></div>
-  <div class="statitem"><div class="stat-label" id="stat4-label">WAX Status</div><div class="stat-value" id="stat4-value">GOLD</div><div class="stat-sub" id="stat4-sub">Ambassador · cbreakgaming</div></div>
-  <div class="statitem"><div class="stat-label" id="stat5-label">Convention</div><div class="stat-value" id="stat5-value">NFTOPIA 5</div><div class="stat-sub" id="stat5-sub">Aug 16–17, 2025</div></div>
+  <div class="statitem"><div class="stat-label">PitchBreak</div><div class="stat-value">WEDNESDAYS</div><div class="stat-sub">2PM EST · 7PM UTC</div></div>
+  <div class="statitem"><div class="stat-label">Spectral Sessions</div><div class="stat-value">SUNDAYS</div><div class="stat-sub">2PM EST · 7PM UTC</div></div>
+  <div class="statitem"><div class="stat-label">NFT Assets</div><div class="stat-value">1.7M+</div><div class="stat-sub">WAX Blockchain</div></div>
+  <div class="statitem"><div class="stat-label">WAX Status</div><div class="stat-value">GOLD</div><div class="stat-sub">Ambassador · cbreakgaming</div></div>
+  <div class="statitem"><div class="stat-label">Convention</div><div class="stat-value">NFTOPIA 5</div><div class="stat-sub">Aug 16–17, 2025</div></div>
 </div>
 
-<!-- BREAKFEST BANNER -->
 <div class="breakfest-banner">
   <div class="breakfest-left">
-    <div id="breakfest-badge" class="breakfest-badge">🔥 Beta Launch</div>
-    <div id="breakfest-title" class="breakfest-title">BREAKFEST</div>
-    <p id="breakfest-sub" class="breakfest-sub">The ConsumerBreak community campaign — play games, complete tasks, earn rewards in the Breakverse. Powered by BrandBreak.</p>
+    <div class="breakfest-badge" id="breakfest-badge">🔥 Beta Launch</div>
+    <div class="breakfest-title" id="breakfest-title">BREAKFEST</div>
+    <p class="breakfest-sub" id="breakfest-sub">The ConsumerBreak community campaign — play games, complete tasks, earn rewards in the Breakverse. Powered by BrandBreak.</p>
   </div>
   <a href="breakery.html" class="btn-solid" style="flex-shrink:0;white-space:nowrap;">Join BREAKFEST →</a>
 </div>
 
-<!-- SHOWS -->
 <section id="shows">
   <div class="eyebrow">Every Week</div>
   <div class="sec-title">Live Shows</div>
@@ -288,10 +225,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <div class="show-img" id="pb-img"><img src="" alt="" style="display:none;"></div>
       <p class="show-desc" id="pb-desc">Live Web3 variety show — community games, NFT drops, crypto education, and prizes. Multi-streamed across Twitch, NFTOPIA, and Twitter Spaces every Wednesday.</p>
       <div class="pills">
-        <span class="pill pill-tw">Twitch</span>
-        <span class="pill pill-nf">NFTOPIA</span>
-        <span class="pill pill-x">Twitter Spaces</span>
-        <span class="pill pill-ar">Watch2Earn</span>
+        <span class="pill pill-tw">Twitch</span><span class="pill pill-nf">NFTOPIA</span><span class="pill pill-x">Twitter Spaces</span><span class="pill pill-ar">Watch2Earn</span>
       </div>
     </div>
     <div class="show-card ss">
@@ -302,32 +236,24 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <p class="show-desc" id="ss-desc">Live art show featuring Jumbie Art & guest artists drawing simultaneously — themes and attributes voted by viewers in real time. Learn the Spectral Art movement and Web3 through creativity.</p>
       <div style="margin-top:14px;padding:14px 16px;border:1px solid rgba(167,139,250,0.35);border-radius:4px;background:rgba(167,139,250,0.06);">
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#a78bfa;margin-bottom:6px;">Powered by S.A.F.E.</div>
-        <p style="font-size:13px;color:rgba(240,247,240,0.55);margin:0;line-height:1.65;">Spectral Art Foundation Enterprises &#8212; 501(c)(3) nonprofit. Artist grants, workshops, youth education &amp; live exhibitions. Co-produced with <a href="https://jumbieart.com/pages/safe" target="_blank" style="color:#a78bfa;text-decoration:none;font-weight:600;">Jumbie Art &#8594;</a></p>
+        <p style="font-size:13px;color:rgba(240,247,240,0.6);margin:0;line-height:1.65;">Spectral Art Foundation Enterprises &#8212; 501(c)(3) nonprofit. Artist grants, workshops, youth education &amp; live exhibitions. Co-produced with <a href="https://jumbieart.com/pages/safe" target="_blank" style="color:#a78bfa;text-decoration:none;font-weight:600;">Jumbie Art &#8594;</a></p>
       </div>
-      <div class="pills">
-        <span class="pill pill-tw">Twitch</span>
-        <span class="pill pill-bl">Blaze.stream</span>
-        <span class="pill pill-ar">Arena Social</span>
+      <div class="pills" style="margin-top:14px;">
+        <span class="pill pill-tw">Twitch</span><span class="pill pill-bl">Blaze.stream</span><span class="pill pill-ar">Arena Social</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HYBRID CREATURES -->
 <section class="hc-section" id="hybrid">
   <div class="hc-inner">
     <div>
       <div class="eyebrow" id="hc-eyebrow">4 Seasons · 1.7M+ Assets · WAX Blockchain</div>
       <div class="sec-title" id="hc-title">Hybrid Creatures NFT</div>
       <p class="sec-body" id="hc-desc">Hand-drawn trading cards. Cryptids, mythology, and sci-fi collide in a universe powered by Mystery Matter — blending any creature into something new. Now with an AI feature film.</p>
-      <div id="hc-feature-img"></div>
+      <div id="hc-feature-img" style="display:none;margin:18px 0;border-radius:6px;overflow:hidden;border:1px solid var(--border);max-height:200px;"><img id="hc-feature-img-el" src="" style="width:100%;height:200px;object-fit:cover;display:block;"></div>
       <div class="season-chips">
-        <span class="schip">S1 · Cryptids</span>
-        <span class="schip">S2 · Folklore</span>
-        <span class="schip">S3 · Animals</span>
-        <span class="schip">S3.5 · Hybrids</span>
-        <span class="schip">S4 · Mythology</span>
-        <span class="schip">S4.5 · The Movie</span>
+        <span class="schip">S1 · Cryptids</span><span class="schip">S2 · Folklore</span><span class="schip">S3 · Animals</span><span class="schip">S3.5 · Hybrids</span><span class="schip">S4 · Mythology</span><span class="schip">S4.5 · The Movie</span>
       </div>
       <div class="hc-stats-grid">
         <div class="hc-stat"><div class="hc-stat-val" id="hc-stat1-val">1.7M+</div><div class="hc-stat-lbl" id="hc-stat1-lbl">Total Assets Minted</div></div>
@@ -341,97 +267,87 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       </div>
     </div>
     <div>
-      <div class="hc-movie" id="hc-movie">
-        <div class="hc-movie-placeholder" id="hc-movie-placeholder" style="position:relative;cursor:pointer;">
-        <img id="hc-thumb" src="" alt="Hybrid Creatures: The Movie" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;border-radius:6px;">
-        <div id="hc-play-btn" class="play-circle" style="position:relative;z-index:2;">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <div class="hc-movie" id="hc-movie" onclick="playHCMovie()">
+        <img id="hc-thumb" src="" alt="Hybrid Creatures: The Movie" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.15);display:flex;flex-direction:column;justify-content:space-between;padding:12px 16px;z-index:2;">
+          <div style="font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.8);max-width:70%;">Hybrid Creatures: The Movie</div>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.75);padding:5px 10px;border-radius:3px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z"/></svg>
+              <span style="font-size:11px;color:#fff;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;">Watch on YouTube</span>
+            </div>
+            <div style="width:56px;height:40px;background:#ff0000;border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.5);">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
         </div>
-        <div class="hc-movie-label" style="position:relative;z-index:2;">Hybrid Creatures: The Movie</div>
-      </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BREAKERY -->
+<section id="spectral">
+  <div class="eyebrow purple">Every Sunday · In Partnership with Jumbie Art</div>
+  <div class="sec-title">SPECTRAL SESSIONS</div>
+  <p class="sec-body">Live collaborative art creation streamed every Sunday at 2PM EST. Multiple artists draw simultaneously while viewers vote on attributes — color, subject, mood.</p>
+  <div class="spectral-grid">
+    <div class="spectral-card"><h3>The Show</h3><p>Artists share their screens and create original work over 4 hours while we discuss Spectral Art technique, color theory, and XRPL provenance.</p></div>
+    <div class="spectral-card"><h3>S.A.F.E.</h3><p class="safe-subtitle">Spectral Art Foundation Enterprises · 501(c)(3)</p><p>SAFE empowers artists through grants, workshops, exhibitions, and zero-barrier access to patented Spectral Frame technology.</p><a href="https://jumbieart.com/pages/safe" target="_blank" class="safe-link">Learn about SAFE →</a></div>
+  </div>
+  <div class="spectral-footer">
+    <p class="streaming-on">Streaming on: Twitch · X Spaces · Arena Social · Blaze.stream</p>
+    <a href="https://twitch.tv/consumerbreak" target="_blank" class="btn-solid">Watch Live</a>
+  </div>
+</section>
+
 <section class="breakery-section" id="breakery">
   <div class="eyebrow">The App Suite</div>
   <div class="sec-title">The Breakery</div>
-  <p class="sec-body" id="breakery-tagline">Puzzle mini-games and interactive tools to play, win, and explore across the Breakverse.</p>
+  <p class="sec-body" id="breakery-tagline">30 apps. One Breakverse account.</p>
   <div class="app-strip" id="app-strip">
-    <div class="appcard">
-      <div class="appcard-icon">🎮</div>
-      <div class="appcard-name">ConsumerBreak</div>
-      <div class="appcard-desc">Jigsaw ad puzzles with cash & NFT prizes</div>
-      <span class="appcard-status">Era 2 Beta</span>
-    </div>
-    <div class="appcard">
-      <div class="appcard-icon">🎮</div>
-      <div class="appcard-name">PuzzleBreak</div>
-      <div class="appcard-desc">The core puzzle engine</div>
-      <span class="appcard-status">Live</span>
-    </div>
-    <div class="appcard">
-      <div class="appcard-icon">🎮</div>
-      <div class="appcard-name">KeyBreak</div>
-      <div class="appcard-desc">Keyboard puzzle challenges</div>
-      <span class="appcard-status">Beta</span>
-    </div>
-    <div class="appcard">
-      <div class="appcard-icon">🎮</div>
-      <div class="appcard-name">BingoBreak</div>
-      <div class="appcard-desc">Live bingo with rewards</div>
-      <span class="appcard-status">Beta</span>
-    </div>
-    <div class="appcard">
-      <div class="appcard-icon">🎮</div>
-      <div class="appcard-name">TriviaBreak</div>
-      <div class="appcard-desc">Web3 trivia & learn-to-earn</div>
-      <span class="appcard-status">Beta</span>
-    </div>
-    <div class="appcard" style="opacity:.4;border-style:dashed;">
-      <div class="appcard-icon">+</div>
-      <div class="appcard-name">More Soon</div>
-      <div class="appcard-desc">15+ mini games launching</div>
-      <span class="appcard-status">Coming</span>
-    </div></div>
+    <a class="appcard" href="#"><div class="appcard-icon">🎮</div><div class="appcard-name">ConsumerBreak</div><div class="appcard-desc">Jigsaw ad puzzles with cash & NFT prizes</div><span class="appcard-status">Era 2 Beta</span></a>
+    <a class="appcard" href="https://puzzlebreak.base44.app" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">PuzzleBreak</div><div class="appcard-desc">The core puzzle engine</div><span class="appcard-status">Live</span></a>
+    <a class="appcard" href="https://keybreak.base44.app" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">KeyBreak</div><div class="appcard-desc">Keyboard puzzle challenges</div><span class="appcard-status">Beta</span></a>
+    <a class="appcard" href="https://bingobreak.base44.app" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">BingoBreak</div><div class="appcard-desc">Live bingo with rewards</div><span class="appcard-status">Beta</span></a>
+    <a class="appcard" href="https://triviabreak.base44.app" target="_blank"><div class="appcard-icon">🎮</div><div class="appcard-name">TriviaBreak</div><div class="appcard-desc">Web3 trivia & learn-to-earn</div><span class="appcard-status">Beta</span></a>
+    <div class="appcard" style="opacity:.4;border-style:dashed;"><div class="appcard-icon">+</div><div class="appcard-name">More Soon</div><div class="appcard-desc">15+ mini games launching</div><span class="appcard-status">Coming</span></div>
+  </div>
   <div class="breakery-foot">
     <p>One Breakverse account · Every app · Earn across all of them</p>
     <a href="breakery.html" class="btn-solid">See All Apps →</a>
   </div>
 </section>
 
-<!-- NFTOPIA -->
 <section id="nfts" style="background:var(--bg);">
   <div class="eyebrow">Metaverse Convention</div>
   <div class="sec-title">NFTOPIA</div>
-  <div class="nft-grid">
+  <div class="nft-grid" style="grid-template-columns:1fr;">
     <div class="nft-card">
       <div class="nft-img" id="nftopia-img"></div>
       <div class="nft-name">NFTOPIA</div>
-      <p class="nft-desc" id="nftopia-desc">Co-founded metaverse convention onboarding the world into Web3, blockchain, digital art, and community. 5 events, 50+ past exhibitors including WAX, Splinterlands, NeftyBlocks, and more.</p>
+      <p class="nft-desc" id="nftopia-desc">Co-founded metaverse convention onboarding the world into Web3, blockchain, digital art, and community. 5 events, 50+ past exhibitors.</p>
       <a href="https://nftopia.weebly.com" target="_blank" class="nft-link">nftopia.weebly.com</a>
     </div>
   </div>
 </section>
 
-<!-- COMMUNITY -->
-<section id="community" style="background:var(--bg);">
+<section id="community" style="background:var(--bg2);">
   <div class="comm-grid">
     <div>
       <div class="eyebrow">The Breakverse</div>
       <div class="sec-title" id="community-title">Join The Breakverse</div>
       <p class="sec-body" id="community-desc">Discord, Twitch, Twitter — the ConsumerBreak community is where Web3 explorers, NFT collectors, live art fans, and puzzle players come together.</p>
-      <div class="earn-list" id="earn-items-list"><div class="earn-item"><div class="earn-dot"></div><div class="earn-text">500+ free WAX NFTs distributed every week via stream</div></div>
-<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Weekly 50M $WUF airdrop split to Scroll holders</div></div>
-<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Watch2Earn — tune in and get rewarded live</div></div>
-<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Vote on Spectral Sessions art themes every Sunday</div></div>
-<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Play Breakery games and earn across the Breakverse</div></div></div>
+      <div class="earn-list" id="earn-items-list">
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">500+ free WAX NFTs distributed every week via stream</div></div>
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Weekly 50M $WUF airdrop split to Scroll holders</div></div>
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Watch2Earn — tune in and get rewarded live</div></div>
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Vote on Spectral Sessions art themes every Sunday</div></div>
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Play Breakery games and earn across the Breakverse</div></div>
+      </div>
     </div>
   </div>
 </section>
-<!-- STORY TEASER -->
+
 <section class="story-section" id="story">
   <div class="story-grid">
     <div>
@@ -441,50 +357,26 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <div class="story-quote">"What if you turned an <em>advertisement</em> into a puzzle?"</div>
       <a href="story.html" class="btn-outline" style="margin-top:28px;display:inline-block;">Read The Full Story →</a>
     </div>
-    <div class="memorial">
-      <div class="mem-label">In Loving Memory</div>
-      <div class="mem-names">Michael &amp; Barbara<br>Eisenberg</div>
-      <div class="mem-dates">February 12 &amp; 14, 2018</div>
-      <div class="mem-note">"Dedicated to the two who believed<br>before anyone else did."</div>
+    <div class="memorial" style="text-align:center;padding:30px;background:rgba(95,207,110,.03);border:1px solid var(--border);border-radius:6px;position:relative;z-index:1;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">In Loving Memory</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:var(--white);margin-bottom:6px;">Michael &amp; Barbara<br>Eisenberg</div>
+      <div style="font-size:11px;color:var(--muted);letter-spacing:1px;">February 12 &amp; 14, 2018</div>
+      <div style="margin-top:14px;font-size:12px;color:rgba(74,107,74,.7);font-style:italic;line-height:1.6;">"Dedicated to the two who believed<br>before anyone else did."</div>
     </div>
     <div class="year-bg">2011</div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
-    <div class="footer-brand">
-      <img id="footer-logo" src="" alt="ConsumerBreak" style="display:none;">
+    <div>
+      <img id="footer-logo" src="" alt="ConsumerBreak" style="display:none;height:42px;mix-blend-mode:screen;margin-bottom:12px;">
       <div class="footer-brand-name">CON$UMER BREAK®</div>
-      <p class="footer-desc">Web3 education, live art, NFT drops, community games, and prize-winning apps. Home of Hybrid Creatures NFT and The Breakery.</p>
+      <p class="footer-desc">Web3 education, live art, NFT drops, community games, and prize-winning apps.</p>
     </div>
-    <div>
-      <div class="fc-title">Shows</div>
-      <ul class="footer-links">
-        <li><a href="#shows">PitchBreak</a></li>
-        <li><a href="#shows">Spectral Sessions</a></li>
-        <li><a href="https://twitch.tv/consumerbreak" target="_blank">Watch Live</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="fc-title">NFTs</div>
-      <ul class="footer-links">
-        <li><a href="https://hybridcreaturesnft.com" target="_blank">Hybrid Creatures</a></li>
-        <li><a href="https://nftopia.weebly.com" target="_blank">NFTOPIA</a></li>
-        <li><a href="https://wax.atomichub.io/explorer/collection/cbreakgaming" target="_blank">AtomicHub</a></li>
-        <li><a href="https://neftyblocks.com/c/cbreakgaming" target="_blank">NeftyBlocks</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="fc-title">Platform</div>
-      <ul class="footer-links">
-        <li><a href="breakery.html">The Breakery</a></li>
-        <li><a href="#community">Community</a></li>
-        <li><a href="#story">Our Story</a></li>
-        <li><a href="/admin">Admin</a></li>
-      </ul>
-    </div>
+    <div><div class="fc-title">Shows</div><ul class="footer-links"><li><a href="#shows">PitchBreak</a></li><li><a href="#shows">Spectral Sessions</a></li><li><a href="https://twitch.tv/consumerbreak" target="_blank">Watch Live</a></li></ul></div>
+    <div><div class="fc-title">NFTs</div><ul class="footer-links"><li><a href="https://hybridcreaturesnft.com" target="_blank">Hybrid Creatures</a></li><li><a href="https://nftopia.weebly.com" target="_blank">NFTOPIA</a></li><li><a href="https://wax.atomichub.io/explorer/collection/cbreakgaming" target="_blank">AtomicHub</a></li></ul></div>
+    <div><div class="fc-title">Platform</div><ul class="footer-links"><li><a href="breakery.html">The Breakery</a></li><li><a href="#community">Community</a></li><li><a href="/admin">Admin</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2026 Concept &amp; Innovation Group, LLC. All rights reserved.</span>
@@ -493,7 +385,19 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
 </footer>
 
 <script>
-// CMS DATA LOADER (copied verbatim)
+window._movieUrl = '';
+
+function playHCMovie() {
+  const frame = document.getElementById('hc-movie');
+  if (!frame) return;
+  const url = window._movieUrl || '';
+  if (!url) { alert('No movie URL set.'); return; }
+  const videoId = url.includes('v=') ? url.split('v=')[1].split('&')[0] : url.split('/').pop();
+  frame.style.cursor = 'default';
+  frame.onclick = null;
+  frame.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videoId + '?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:block;position:absolute;inset:0;border:none;"></iframe>';
+}
+
 async function loadCMSData() {
   async function get(path) {
     try {
@@ -501,13 +405,14 @@ async function loadCMSData() {
       if (!r.ok) return null;
       const t = await r.text();
       if (!t || t.trim().startsWith('<')) return null;
-      return JSON.parse(t);
-    } catch(e) { return null; }
+      try { return JSON.parse(t); }
+      catch(je) { console.warn('[CMS] Bad JSON in ' + path + ':', je.message); return null; }
+    } catch(e) { console.warn('[CMS] Fetch failed ' + path + ':', e.message); return null; }
   }
 
   function fixSrc(s) {
     if (!s) return '';
-    if (s.startsWith('http')) return s;
+    if (s.startsWith('http') || s.startsWith('data:')) return s;
     return s.startsWith('/') ? s : '/' + s;
   }
 
@@ -515,8 +420,7 @@ async function loadCMSData() {
     if (!src) return;
     const el = document.getElementById(id);
     if (!el) return;
-    const s = fixSrc(src);
-    el.innerHTML = `<img src="${s}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+    el.innerHTML = `<img src="${fixSrc(src)}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
   }
 
   function setText(id, val) {
@@ -543,7 +447,6 @@ async function loadCMSData() {
     if (hf) hf.style.display = 'none';
   }
 
-  // HERO
   const hero = await get('/_data/hero.json');
   if (hero) {
     setText('hero-badge', hero.badge);
@@ -554,43 +457,14 @@ async function loadCMSData() {
       const wrap = document.getElementById('hero-img-wrap');
       if (wrap) wrap.innerHTML = `<img src="${fixSrc(hero.hero_image)}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
     }
-    if (hero.breakfest_badge) setText('breakfest-badge', hero.breakfest_badge);
-    if (hero.breakfest_title) setText('breakfest-title', hero.breakfest_title);
-    if (hero.breakfest_sub) setText('breakfest-sub', hero.breakfest_sub);
-    if (hero.stat1_label) setText('stat1-label', hero.stat1_label);
-    if (hero.stat1_value) setText('stat1-value', hero.stat1_value);
-    if (hero.stat1_sub) setText('stat1-sub', hero.stat1_sub);
-    if (hero.stat2_label) setText('stat2-label', hero.stat2_label);
-    if (hero.stat2_value) setText('stat2-value', hero.stat2_value);
-    if (hero.stat2_sub) setText('stat2-sub', hero.stat2_sub);
-    if (hero.stat3_label) setText('stat3-label', hero.stat3_label);
-    if (hero.stat3_value) setText('stat3-value', hero.stat3_value);
-    if (hero.stat3_sub) setText('stat3-sub', hero.stat3_sub);
-    if (hero.stat4_label) setText('stat4-label', hero.stat4_label);
-    if (hero.stat4_value) setText('stat4-value', hero.stat4_value);
-    if (hero.stat4_sub) setText('stat4-sub', hero.stat4_sub);
-    if (hero.stat5_label) setText('stat5-label', hero.stat5_label);
-    if (hero.stat5_value) setText('stat5-value', hero.stat5_value);
-    if (hero.stat5_sub) setText('stat5-sub', hero.stat5_sub);
   }
 
-  // PITCHBREAK
   const pb = await get('/_data/pitchbreak.json');
-  if (pb) {
-    setText('pb-time', pb.time);
-    setText('pb-desc', pb.description);
-    if (pb.image) setImg('pb-img', pb.image);
-  }
+  if (pb) { setText('pb-time', pb.time); setText('pb-desc', pb.description); if (pb.image) setImg('pb-img', pb.image); }
 
-  // SPECTRAL
   const ss = await get('/_data/spectral.json');
-  if (ss) {
-    setText('ss-time', ss.time);
-    setText('ss-desc', ss.description);
-    if (ss.image) setImg('ss-img', ss.image);
-  }
+  if (ss) { setText('ss-time', ss.time); setText('ss-desc', ss.description); if (ss.image) setImg('ss-img', ss.image); }
 
-  // HYBRID
   const hybrid = await get('/_data/hybrid.json');
   if (hybrid) {
     if (hybrid.title) setText('hc-title', hybrid.title);
@@ -610,29 +484,19 @@ async function loadCMSData() {
       const thumb = document.getElementById('hc-thumb');
       if (thumb) {
         thumb.src = 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg';
-        thumb.style.display = 'block';
-        thumb.onerror = function() { this.src = 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg'; this.onerror=null; };
+        thumb.onerror = function() { this.src = 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg'; this.onerror = null; };
       }
     }
-    if (hybrid.image && !window.fetchHybridImage) {
-      window.fetchHybridImage = true;
-      const c = document.createElement('div');
-      c.className = 'hc-feature-img';
-      c.style.cssText = 'width:100%;height:300px;border-radius:6px;overflow:hidden;background:#0b161b;margin:16px 0;';
-      c.innerHTML = `<img src="${fixSrc(hybrid.image)}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
-      const left = document.querySelector('.hc-inner > div');
-      if (left) left.appendChild(c);
+    if (hybrid.image) {
+      const wrap = document.getElementById('hc-feature-img');
+      const img = document.getElementById('hc-feature-img-el');
+      if (wrap && img) { img.src = fixSrc(hybrid.image); wrap.style.display = 'block'; }
     }
   }
 
-  // NFTOPIA
   const nftopia = await get('/_data/nftopia.json');
-  if (nftopia) {
-    setText('nftopia-desc', nftopia.description);
-    if (nftopia.image) setImg('nftopia-img', nftopia.image);
-  }
+  if (nftopia) { setText('nftopia-desc', nftopia.description); if (nftopia.image) setImg('nftopia-img', nftopia.image); }
 
-  // BREAKERY
   const breakery = await get('/_data/breakery.json');
   if (breakery) {
     setText('breakery-tagline', breakery.tagline);
@@ -640,8 +504,8 @@ async function loadCMSData() {
       const strip = document.getElementById('app-strip');
       if (strip) {
         strip.innerHTML = breakery.apps.map(a => `
-          <a class="appcard" href="${a.link || '#'}" target="_blank" style="text-decoration:none;">
-            <div class="appcard-icon">${a.icon ? `<img src="${a.icon.startsWith('http') ? a.icon : '/'+a.icon.replace(/^\//,'')}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">` : '🎮'}</div>
+          <a class="appcard" href="${a.link || '#'}" target="_blank">
+            <div class="appcard-icon">${a.icon ? `<img src="${fixSrc(a.icon)}">` : '🎮'}</div>
             <div class="appcard-name">${a.name || ''}</div>
             <div class="appcard-desc">${a.description || a.desc || ''}</div>
             <span class="appcard-status">${a.status || ''}</span>
@@ -650,57 +514,284 @@ async function loadCMSData() {
     }
   }
 
-  // COMMUNITY
   const comm = await get('/_data/community.json');
   if (comm) {
     setText('community-title', comm.title);
     setText('community-desc', comm.description);
     if (comm.earn_items && comm.earn_items.length) {
       const list = document.getElementById('earn-items-list');
-      if (list) list.innerHTML = comm.earn_items.map(i =>
-        `<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">${i}</div></div>`
-      ).join('');
+      if (list) list.innerHTML = comm.earn_items.map(i => `<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">${i}</div></div>`).join('');
     }
   }
 }
 
 loadCMSData();
 
-// MOVIE PLAY BUTTON
-document.getElementById('hc-play-btn')?.addEventListener('click', function() {
-  const frame = document.getElementById('hc-movie');
-  if (!frame) return;
-  const url = window._movieUrl || '';
-  if (!url) { alert('No movie URL set. Add it in the editor under Hybrid Creatures.'); return; }
-  const videoId = url.includes('v=') ? url.split('v=')[1].split('&')[0] : url.split('/').pop();
-  frame.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videoId + '?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:block;"></iframe>';
-});
+// EDITOR MODAL
+const modalOverlay = document.createElement('div');
+Object.assign(modalOverlay.style, { position:'fixed', inset:0, background:'rgba(0,0,0,0.7)', display:'none', alignItems:'flex-start', justifyContent:'center', zIndex:99999, overflowY:'auto', paddingTop:'5vh', paddingBottom:'5vh' });
+const modal = document.createElement('div');
+Object.assign(modal.style, { background:'#0a110a', border:'1px solid #5fcf6e', borderRadius:'8px', padding:'24px', maxWidth:'520px', width:'95%', maxHeight:'82vh', overflowY:'auto', color:'#f0f7f0', position:'relative' });
+modalOverlay.appendChild(modal);
+document.body.appendChild(modalOverlay);
 
-// Editor behavior: wait for Identity init, require login
-console.log('[Editor] Page loaded');
-window.netlifyIdentity.on('init', async (user) => {
-  console.log('[Editor] init - user:', user && user.email);
-  if (!user) {
-    // not logged in — redirect to public site
-    window.location.replace('/index.html');
-    return;
-  }
-  // show page
-  document.body.style.opacity = '1';
-  // if logged in, inject edit buttons
-  injectEditButtons();
-});
+function base64EncodeUnicode(str) { return btoa(unescape(encodeURIComponent(str))); }
 
-function base64EncodeUnicode(str) {
-  return btoa(unescape(encodeURIComponent(str)));
+function closeModal() { modalOverlay.style.display = 'none'; }
+
+function openModalFor(spec) {
+  modal.innerHTML = '';
+  const h = document.createElement('h2');
+  h.textContent = spec.name;
+  Object.assign(h.style, { fontFamily:'Bebas Neue,sans-serif', color:'#5fcf6e', margin:'0 0 16px', fontSize:'28px', letterSpacing:'2px' });
+  modal.appendChild(h);
+
+  const closeX = document.createElement('button');
+  closeX.textContent = '✕';
+  Object.assign(closeX.style, { position:'absolute', right:'12px', top:'12px', background:'transparent', border:'none', color:'#f0f7f0', fontSize:'18px', cursor:'pointer' });
+  closeX.addEventListener('click', closeModal);
+  modal.appendChild(closeX);
+
+  fetch(spec.file + '?cb=' + Date.now(), { cache:'no-store' })
+    .then(r => r.json())
+    .then(data => {
+      spec.fields.forEach(f => {
+        if (f === 'apps') {
+          const appsWrap = document.createElement('div');
+          appsWrap.style.marginTop = '10px';
+          appsWrap.id = 'cb-field-apps';
+          const appsLabel = document.createElement('div');
+          appsLabel.textContent = 'App Cards';
+          appsLabel.style.cssText = 'color:#9fbf9f;font-size:13px;font-weight:700;margin-bottom:8px;';
+          appsWrap.appendChild(appsLabel);
+          const apps = data.apps || [];
+          appsWrap.dataset.count = apps.length;
+          apps.forEach((app, i) => {
+            const appBlock = document.createElement('div');
+            appBlock.draggable = true;
+            appBlock.dataset.idx = i;
+            appBlock.style.cssText = 'border:1px solid #1a2e1a;border-radius:6px;padding:10px;margin-bottom:10px;background:rgba(95,207,110,0.03);';
+            appBlock.innerHTML = `
+              <div style="cursor:grab;color:#4a6b4a;font-size:13px;text-align:center;margin-bottom:6px;user-select:none;">⠿ drag to reorder</div>
+              <div class="app-num-label" style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:#5fcf6e;letter-spacing:1px;margin-bottom:8px;">APP ${i+1}</div>
+              <div style="display:grid;gap:6px;">
+                <input id="app-${i}-name" placeholder="Name" value="${app.name||''}" style="width:100%;padding:6px;background:transparent;border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:13px;">
+                <textarea id="app-${i}-desc" placeholder="Description" style="width:100%;padding:6px;background:transparent;border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:13px;height:60px;">${app.desc||app.description||''}</textarea>
+                <input id="app-${i}-status" placeholder="Status (Live / Beta / Coming Soon)" value="${app.status||''}" style="width:100%;padding:6px;background:transparent;border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:13px;">
+                <input id="app-${i}-link" placeholder="Link URL" value="${app.link||''}" style="width:100%;padding:6px;background:transparent;border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:13px;">
+                <input id="app-${i}-icon" placeholder="Icon image path or URL" value="${app.icon||''}" style="width:100%;padding:6px;background:transparent;border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:13px;">
+              </div>`;
+            appsWrap.appendChild(appBlock);
+          });
+
+          // Drag to reorder
+          let dragSrc = null;
+          appsWrap.querySelectorAll('[draggable]').forEach(el => {
+            el.addEventListener('dragstart', function(e) { dragSrc = this; this.style.opacity = '0.4'; e.dataTransfer.effectAllowed = 'move'; });
+            el.addEventListener('dragend', function() { this.style.opacity = '1'; });
+            el.addEventListener('dragover', function(e) { e.preventDefault(); return false; });
+            el.addEventListener('dragenter', function() { this.style.borderColor = '#5fcf6e'; });
+            el.addEventListener('dragleave', function() { this.style.borderColor = '#1a2e1a'; });
+            el.addEventListener('drop', function(e) {
+              e.stopPropagation();
+              if (dragSrc !== this) {
+                const all = [...appsWrap.querySelectorAll('[draggable]')];
+                const si = all.indexOf(dragSrc), ti = all.indexOf(this);
+                if (si < ti) appsWrap.insertBefore(dragSrc, this.nextSibling);
+                else appsWrap.insertBefore(dragSrc, this);
+                appsWrap.querySelectorAll('[draggable]').forEach((el, i) => {
+                  const lbl = el.querySelector('.app-num-label');
+                  if (lbl) lbl.textContent = 'APP ' + (i+1);
+                });
+              }
+              this.style.borderColor = '#1a2e1a';
+              return false;
+            });
+          });
+
+          modal.appendChild(appsWrap);
+          return;
+        }
+
+        const wrap = document.createElement('div');
+        wrap.style.marginTop = '10px';
+        const lab = document.createElement('label');
+        lab.textContent = f.replace(/_/g,' ').replace(/\b\w/g, l => l.toUpperCase());
+        lab.style.cssText = 'color:#9fbf9f;display:block;font-size:12px;margin-bottom:4px;';
+        wrap.appendChild(lab);
+
+        if (f === 'description' || f === 'tagline' || f === 'title') {
+          const ta = document.createElement('textarea');
+          ta.value = data[f] || '';
+          ta.style.cssText = 'width:100%;padding:8px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid #1a2e1a;color:#f0f7f0;font-size:13px;min-height:80px;';
+          ta.id = 'cb-field-' + f;
+          wrap.appendChild(ta);
+        } else {
+          const inp = document.createElement('input');
+          inp.type = 'text';
+          inp.value = data[f] || '';
+          inp.style.cssText = 'width:100%;padding:8px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid #1a2e1a;color:#f0f7f0;font-size:13px;';
+          inp.id = 'cb-field-' + f;
+          wrap.appendChild(inp);
+
+          if (f === 'image' || f === 'nav_logo' || f === 'hero_logo' || f === 'hero_image') {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*,.gif';
+            fileInput.style.display = 'none';
+            fileInput.id = 'cb-file-' + f;
+
+            const upBtn = document.createElement('button');
+            upBtn.textContent = '📁 Upload from computer';
+            upBtn.style.cssText = 'margin-top:6px;background:transparent;border:1px solid #5fcf6e;color:#5fcf6e;padding:5px 10px;border-radius:4px;font-size:11px;cursor:pointer;display:block;';
+            upBtn.addEventListener('click', (e) => { e.preventDefault(); fileInput.click(); });
+
+            fileInput.addEventListener('change', async () => {
+              const file = fileInput.files[0];
+              if (!file) return;
+              upBtn.textContent = '⏳ Uploading...';
+              upBtn.disabled = true;
+              try {
+                const user = window.netlifyIdentity.currentUser();
+                const token = await user.jwt();
+                const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+                const filename = 'images/uploads/' + Date.now() + '_' + safeName;
+                const arrayBuffer = await file.arrayBuffer();
+                const bytes = new Uint8Array(arrayBuffer);
+                let binary = '';
+                const chunkSize = 8192;
+                for (let i = 0; i < bytes.byteLength; i += chunkSize) {
+                  binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunkSize));
+                }
+                const base64Content = btoa(binary);
+                let sha = undefined;
+                try {
+                  const checkRes = await fetch('/.netlify/git/github/contents/' + filename, { headers: { 'Authorization': 'Bearer ' + token } });
+                  if (checkRes.ok) { const cj = await checkRes.json(); sha = cj.sha; }
+                } catch(e) {}
+                const body = { message: 'Upload image via editor: ' + safeName, content: base64Content };
+                if (sha) body.sha = sha;
+                const uploadRes = await fetch('/.netlify/git/github/contents/' + filename, {
+                  method: 'PUT',
+                  headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+                  body: JSON.stringify(body)
+                });
+                if (!uploadRes.ok) throw new Error('Upload failed ' + uploadRes.status + ': ' + await uploadRes.text());
+                const publicPath = '/' + filename;
+                const field = document.getElementById('cb-field-' + f);
+                if (field) {
+                  field.value = publicPath;
+                  let preview = document.getElementById('cb-preview-' + f);
+                  if (!preview) {
+                    preview = document.createElement('img');
+                    preview.id = 'cb-preview-' + f;
+                    preview.style.cssText = 'display:block;max-width:100%;max-height:120px;margin-top:8px;border-radius:4px;border:1px solid #1a2e1a;object-fit:cover;';
+                    field.parentNode.insertBefore(preview, field.nextSibling);
+                  }
+                  preview.src = publicPath + '?cb=' + Date.now();
+                  preview.onerror = () => {
+                    preview.style.display = 'none';
+                    const note = document.createElement('div');
+                    note.style.cssText = 'color:#5fcf6e;font-size:11px;margin-top:4px;';
+                    note.textContent = '✓ Uploaded: ' + publicPath + ' (live in ~30s after deploy)';
+                    if (!preview.nextSibling || preview.nextSibling.tagName !== 'DIV') preview.parentNode.insertBefore(note, preview.nextSibling);
+                  };
+                }
+                upBtn.textContent = '✓ Uploaded — Save to apply';
+                upBtn.style.color = '#5fcf6e';
+                upBtn.disabled = false;
+              } catch(err) {
+                console.error('[Editor] Upload error:', err);
+                upBtn.textContent = '📁 Upload from computer';
+                upBtn.disabled = false;
+                alert('Upload error: ' + err.message);
+              }
+            });
+
+            wrap.appendChild(upBtn);
+            wrap.appendChild(fileInput);
+
+            if (data[f]) {
+              const preview = document.createElement('img');
+              preview.id = 'cb-preview-' + f;
+              preview.style.cssText = 'display:block;max-width:100%;max-height:120px;margin-top:8px;border-radius:4px;border:1px solid #1a2e1a;object-fit:cover;';
+              preview.src = data[f];
+              wrap.appendChild(preview);
+            }
+          }
+        }
+        modal.appendChild(wrap);
+      });
+
+      const actions = document.createElement('div');
+      actions.style.cssText = 'display:flex;justify-content:flex-end;gap:8px;margin-top:18px;padding-top:14px;border-top:1px solid #1a2e1a;';
+      const cancel = document.createElement('button');
+      cancel.textContent = 'Cancel';
+      cancel.style.cssText = 'background:transparent;border:1px solid rgba(255,255,255,0.1);color:#f0f7f0;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px;';
+      cancel.addEventListener('click', closeModal);
+      const save = document.createElement('button');
+      save.textContent = 'Save';
+      save.style.cssText = 'background:#5fcf6e;border:none;color:#060c06;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:700;';
+      save.addEventListener('click', () => saveSpec(spec));
+      actions.appendChild(cancel);
+      actions.appendChild(save);
+      modal.appendChild(actions);
+      modalOverlay.style.display = 'flex';
+    })
+    .catch(e => { console.error('[Editor] Failed to load data for', spec.name, e); alert('Failed to load data for ' + spec.name + ': ' + e.message); });
 }
 
-function isAdmin(user){ try { return user && user.app_metadata && user.app_metadata.roles && user.app_metadata.roles.indexOf('admin') !== -1; } catch(e){ return false; } }
+async function saveSpec(spec) {
+  const out = {};
+  spec.fields.forEach(f => {
+    if (f === 'apps') {
+      const appsWrap = document.getElementById('cb-field-apps');
+      if (appsWrap) {
+        const appBlocks = appsWrap.querySelectorAll('[draggable]');
+        const apps = [];
+        appBlocks.forEach(block => {
+          apps.push({
+            name: (block.querySelector('[id$="-name"]') || {}).value || '',
+            desc: (block.querySelector('[id$="-desc"]') || {}).value || '',
+            status: (block.querySelector('[id$="-status"]') || {}).value || '',
+            link: (block.querySelector('[id$="-link"]') || {}).value || '',
+            icon: (block.querySelector('[id$="-icon"]') || {}).value || ''
+          });
+        });
+        out.apps = apps;
+      }
+    } else {
+      const el = document.getElementById('cb-field-' + f);
+      if (el) out[f] = el.value;
+    }
+  });
 
-function injectEditButtons(){
+  console.log('[Editor] Saving to:', spec.file, out);
+  try {
+    const user = window.netlifyIdentity.currentUser();
+    const token = await user.jwt();
+    const getUrl = '/.netlify/git/github/contents' + spec.file;
+    const gr = await fetch(getUrl, { headers: { 'Authorization': 'Bearer ' + token } });
+    if (!gr.ok) throw new Error('Failed to fetch file info: ' + gr.status);
+    const gjson = await gr.json();
+    const sha = gjson.sha;
+    const content = base64EncodeUnicode(JSON.stringify(out, null, 2));
+    const pr = await fetch('/.netlify/git/github/contents' + spec.file, {
+      method: 'PUT',
+      headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'Edit via editor', content: content, sha: sha })
+    });
+    if (!pr.ok) throw new Error('Save failed: ' + pr.status + ' ' + await pr.text());
+    console.log('[Editor] Save complete');
+    closeModal();
+    setTimeout(() => window.location.reload(), 500);
+  } catch(e) { alert('Save error: ' + e.message); console.error(e); }
+}
+
+function injectEditButtons() {
   console.log('[Editor] Injecting edit overlays');
   const spec = [
-    { sel: '.breakfest-banner', name: 'Hero + Stats + Breakfest', file: '/_data/hero.json', fields: ['badge','tagline','nav_logo','hero_logo','hero_image','breakfest_badge','breakfest_title','breakfest_sub','stat1_label','stat1_value','stat1_sub','stat2_label','stat2_value','stat2_sub','stat3_label','stat3_value','stat3_sub','stat4_label','stat4_value','stat4_sub','stat5_label','stat5_value','stat5_sub'] },
+    { sel: 'section.hero', name: 'Hero', file: '/_data/hero.json', fields: ['badge','tagline','nav_logo','hero_logo','hero_image'] },
     { sel: '#shows .show-card.pb', name: 'PitchBreak', file: '/_data/pitchbreak.json', fields: ['time','description','image'] },
     { sel: '#shows .show-card.ss', name: 'Spectral Sessions', file: '/_data/spectral.json', fields: ['time','description','image'] },
     { sel: 'section#hybrid', name: 'Hybrid Creatures', file: '/_data/hybrid.json', fields: ['title','eyebrow','description','stat1_val','stat1_lbl','stat2_val','stat2_lbl','stat3_val','stat3_lbl','stat4_val','stat4_lbl','movie_url','image'] },
@@ -717,7 +808,7 @@ function injectEditButtons(){
       btn.className = 'cb-edit-btn-inline';
       btn.textContent = '✏ Edit';
       Object.assign(btn.style, { position:'absolute', top:'8px', right:'8px', background:'#5fcf6e', color:'#060c06', borderRadius:'4px', padding:'4px 10px', fontSize:'11px', cursor:'pointer', zIndex:'9999', border:'none', opacity:'0', transition:'opacity .12s' });
-      btn.addEventListener('click', (e) => { e.stopPropagation(); openModalFor(s); console.log('[Editor] opened modal for:', s.name); });
+      btn.addEventListener('click', (e) => { e.stopPropagation(); openModalFor(s); });
       node.addEventListener('mouseenter', () => { btn.style.opacity = '1'; });
       node.addEventListener('mouseleave', () => { btn.style.opacity = '0'; });
       node.appendChild(btn);
@@ -725,291 +816,14 @@ function injectEditButtons(){
   });
 }
 
-/* Floating edit modal implementation */
-const modalOverlay = document.createElement('div');
-Object.assign(modalOverlay.style, { position:'fixed', inset:0, background:'rgba(0,0,0,0.7)', display:'none', alignItems:'flex-start', justifyContent:'center', zIndex:99999, overflowY:'auto', paddingTop:'5vh', paddingBottom:'5vh' });
-const modal = document.createElement('div');
-Object.assign(modal.style, { background:'#0a110a', border:'1px solid #5fcf6e', borderRadius:'8px', padding:'24px', maxWidth:'520px', width:'95%', maxHeight:'85vh', overflowY:'auto', color:'#f0f7f0', position:'relative' });
-modalOverlay.appendChild(modal);
-document.body.appendChild(modalOverlay);
-
-function varOr(a,b){ return a; }
-
-function openModalFor(spec){
-  modal.innerHTML = '';
-  const h = document.createElement('h2'); h.textContent = spec.name; h.style.fontFamily='Bebas Neue, serif'; h.style.color='#5fcf6e'; h.style.margin='0 0 12px'; modal.appendChild(h);
-  const closeX = document.createElement('button'); closeX.textContent='✕'; Object.assign(closeX.style,{position:'absolute',right:'12px',top:'12px',background:'transparent',border:'none',color:'#f0f7f0',fontSize:'18px',cursor:'pointer'}); closeX.addEventListener('click', closeModal); modal.appendChild(closeX);
-
-  // load data
-  fetch(spec.file + '?cb=' + Date.now(), { cache:'no-store' }).then(r=>r.json()).then(data=>{
-    spec.fields.forEach(f => {
-      if (f === 'apps') {
-        const appsWrap = document.createElement('div');
-        appsWrap.style.marginTop = '10px';
-        const appsLabel = document.createElement('div');
-        appsLabel.textContent = 'App Cards';
-        appsLabel.style.cssText = 'color:#9fbf9f;font-size:13px;font-weight:700;margin-bottom:8px;';
-        appsWrap.appendChild(appsLabel);
-        const apps = data.apps || [];
-        apps.forEach((app, i) => {
-          const appBlock = document.createElement('div');
-          appBlock.draggable = true;
-          appBlock.style.cssText = 'border:1px solid #1a2e1a;border-radius:6px;padding:10px;margin-bottom:10px;background:rgba(95,207,110,0.03);cursor:grab;';
-          appBlock.innerHTML = `
-            <div class="drag-handle" style="cursor:grab;color:#4a6b4a;font-size:16px;text-align:center;margin-bottom:6px;user-select:none;" title="Drag to reorder">⠿ drag to reorder</div>
-            <div class="app-num-label" style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:#5fcf6e;letter-spacing:1px;margin-bottom:8px;">APP ${i+1}</div>
-            <div style="display:grid;gap:6px;">
-              <input id="app-${i}-name" placeholder="Name" value="${app.name||''}" style="width:100%;padding:6px;background:transparent;border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:13px;">
-              <textarea id="app-${i}-desc" placeholder="Description" style="width:100%;padding:6px;background:transparent;border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:13px;height:60px;">${app.desc||app.description||''}</textarea>
-              <input id="app-${i}-status" placeholder="Status (Live / Beta / Coming Soon)" value="${app.status||''}" style="width:100%;padding:6px;background:transparent;border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:13px;">
-              <input id="app-${i}-link" placeholder="Link URL" value="${app.link||''}" style="width:100%;padding:6px;background:transparent;border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:13px;">
-              <input id="app-${i}-icon" placeholder="Icon image path or URL" value="${app.icon||''}" style="width:100%;padding:6px;background:transparent;border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:13px;">
-            </div>`;
-          appsWrap.appendChild(appBlock);
-        });
-        
-        // Drag to reorder
-        let dragSrc = null;
-        appsWrap.querySelectorAll('[draggable]').forEach(el => {
-          el.addEventListener('dragstart', function(e) {
-            dragSrc = this;
-            this.style.opacity = '0.4';
-            e.dataTransfer.effectAllowed = 'move';
-          });
-          el.addEventListener('dragend', function() {
-            this.style.opacity = '1';
-            appsWrap.querySelectorAll('[draggable]').forEach(el => el.classList.remove('drag-over'));
-          });
-          el.addEventListener('dragover', function(e) {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'move';
-            return false;
-          });
-          el.addEventListener('dragenter', function() {
-            this.style.borderColor = '#5fcf6e';
-          });
-          el.addEventListener('dragleave', function() {
-            this.style.borderColor = '#1a2e1a';
-          });
-          el.addEventListener('drop', function(e) {
-            e.stopPropagation();
-            if (dragSrc !== this) {
-              const allBlocks = [...appsWrap.querySelectorAll('[draggable]')];
-              const srcIdx = allBlocks.indexOf(dragSrc);
-              const tgtIdx = allBlocks.indexOf(this);
-              if (srcIdx < tgtIdx) {
-                appsWrap.insertBefore(dragSrc, this.nextSibling);
-              } else {
-                appsWrap.insertBefore(dragSrc, this);
-              }
-              // Re-number labels
-              appsWrap.querySelectorAll('[draggable]').forEach((el, i) => {
-                const lbl = el.querySelector('.app-num-label');
-                if (lbl) lbl.textContent = 'APP ' + (i+1);
-              });
-            }
-            this.style.borderColor = '#1a2e1a';
-            return false;
-          });
-        });
-        
-        appsWrap.id = 'cb-field-apps';
-        appsWrap.dataset.count = apps.length;
-        modal.appendChild(appsWrap);
-        return;
-      }
-      const wrap = document.createElement('div'); wrap.style.marginTop='10px';
-      const lab = document.createElement('label'); lab.textContent = f.replace(/_/g,' ').replace(/\b\w/g, l=>l.toUpperCase()); lab.style.color='#9fbf9f'; lab.style.display='block'; wrap.appendChild(lab);
-      if (f==='description' || f==='tagline' || f==='title'){
-        const ta = document.createElement('textarea'); ta.value = data[f] || ''; ta.style.width='100%'; ta.style.padding='8px'; ta.style.borderRadius='6px'; ta.style.background='transparent'; ta.style.color='#f0f7f0'; ta.id='cb-field-'+f; wrap.appendChild(ta);
-      } else {
-        const inp = document.createElement('input'); inp.type='text'; inp.value = data[f] || ''; inp.style.width='100%'; inp.style.padding='8px'; inp.style.borderRadius='6px'; inp.style.background='transparent'; inp.style.color='#f0f7f0'; inp.id='cb-field-'+f; wrap.appendChild(inp);
-        if (f==='image' || f==='nav_logo' || f==='hero_logo' || f==='hero_image'){
-          // File upload button
-          const fileInput = document.createElement('input');
-          fileInput.type = 'file';
-          fileInput.accept = 'image/*,.gif';
-          fileInput.style.display = 'none';
-          fileInput.id = 'cb-file-' + f;
-          
-          const upBtn = document.createElement('button');
-          upBtn.textContent = '📁 Upload from computer';
-          Object.assign(upBtn.style, { marginTop:'6px', background:'transparent', border:'1px solid #5fcf6e', color:'#5fcf6e', padding:'5px 10px', borderRadius:'4px', fontSize:'11px', cursor:'pointer', display:'block' });
-          upBtn.addEventListener('click', (e) => { e.preventDefault(); fileInput.click(); });
-          
-          fileInput.addEventListener('change', async () => {
-            const file = fileInput.files[0];
-            if (!file) return;
-
-            upBtn.textContent = '⏳ Uploading...';
-            upBtn.disabled = true;
-
-            try {
-              const user = window.netlifyIdentity.currentUser();
-              const token = await user.jwt();
-
-              const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-              const filename = 'images/uploads/' + Date.now() + '_' + safeName;
-
-              // Read file as binary and encode to base64 for GitHub API
-              const arrayBuffer = await file.arrayBuffer();
-              const bytes = new Uint8Array(arrayBuffer);
-              let binary = '';
-              const chunkSize = 8192;
-              for (let i = 0; i < bytes.byteLength; i += chunkSize) {
-                const chunk = bytes.subarray(i, i + chunkSize);
-                binary += String.fromCharCode.apply(null, chunk);
-              }
-              const base64Content = btoa(binary);
-
-              // Check if file already exists (need SHA for update)
-              let sha = undefined;
-              try {
-                const checkRes = await fetch('/.netlify/git/github/contents/' + filename, {
-                  headers: { 'Authorization': 'Bearer ' + token }
-                });
-                if (checkRes.ok) {
-                  const checkJson = await checkRes.json();
-                  sha = checkJson.sha;
-                }
-              } catch(e) {}
-
-              const body = { message: 'Upload image via editor: ' + safeName, content: base64Content };
-              if (sha) body.sha = sha;
-
-              const uploadRes = await fetch('/.netlify/git/github/contents/' + filename, {
-                method: 'PUT',
-                headers: {
-                  'Authorization': 'Bearer ' + token,
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(body)
-              });
-
-              if (!uploadRes.ok) {
-                const errText = await uploadRes.text();
-                throw new Error('Upload failed ' + uploadRes.status + ': ' + errText);
-              }
-
-              // Store only the clean path — NOT base64 — in the field
-              const publicPath = '/' + filename;
-              const field = document.getElementById('cb-field-' + f);
-              if (field) {
-                field.value = publicPath;
-
-                // Show preview
-                let preview = document.getElementById('cb-preview-' + f);
-                if (!preview) {
-                  preview = document.createElement('img');
-                  preview.id = 'cb-preview-' + f;
-                  Object.assign(preview.style, {
-                    display: 'block',
-                    maxWidth: '100%',
-                    maxHeight: '120px',
-                    marginTop: '8px',
-                    borderRadius: '4px',
-                    border: '1px solid #1a2e1a',
-                    objectFit: 'cover'
-                  });
-                  field.parentNode.insertBefore(preview, field.nextSibling);
-                }
-                // GitHub takes ~30s to deploy — show path as confirmation
-                preview.alt = '✓ Uploaded: ' + publicPath;
-                preview.src = publicPath + '?cb=' + Date.now();
-                preview.onerror = () => {
-                  preview.style.display = 'none';
-                  const note = document.createElement('div');
-                  note.style.cssText = 'color:#5fcf6e;font-size:11px;margin-top:4px;';
-                  note.textContent = '✓ Uploaded: ' + publicPath + ' (live in ~30s after deploy)';
-                  preview.parentNode.insertBefore(note, preview.nextSibling);
-                };
-              }
-
-              upBtn.textContent = '✓ Uploaded — Save to apply';
-              upBtn.style.color = '#5fcf6e';
-              upBtn.disabled = false;
-
-            } catch(err) {
-              console.error('[Editor] Upload error:', err);
-              upBtn.textContent = '📁 Upload from computer';
-              upBtn.disabled = false;
-              alert('Upload error: ' + err.message);
-            }
-          });
-          
-          wrap.appendChild(upBtn);
-          wrap.appendChild(fileInput);
-          
-          // also show preview if existing value is a URL
-          const existingVal = data[f];
-          if (existingVal) {
-            const preview = document.createElement('img');
-            preview.id = 'cb-preview-' + f;
-            Object.assign(preview.style, { display:'block', maxWidth:'100%', maxHeight:'120px', marginTop:'8px', borderRadius:'4px', border:'1px solid #1a2e1a', objectFit:'cover' });
-            preview.src = existingVal.startsWith('http') ? existingVal : existingVal;
-            wrap.appendChild(preview);
-          }
-        }
-      }
-      modal.appendChild(wrap);
-    });
-
-    const actions = document.createElement('div'); actions.style.display='flex'; actions.style.justifyContent='flex-end'; actions.style.gap='8px'; actions.style.marginTop='14px';
-    const cancel = document.createElement('button'); cancel.textContent='Cancel'; Object.assign(cancel.style,{background:'transparent',border:'1px solid rgba(255,255,255,0.06)',color:'#f0f7f0',padding:'8px 12px',borderRadius:'8px',cursor:'pointer'}); cancel.addEventListener('click', closeModal);
-    const save = document.createElement('button'); save.textContent='Save'; Object.assign(save.style,{background:'#5fcf6e',border:'none',color:'#060c06',padding:'8px 12px',borderRadius:'8px',cursor:'pointer'});
-    save.addEventListener('click', ()=> saveSpec(spec));
-    actions.appendChild(cancel); actions.appendChild(save); modal.appendChild(actions);
-    modalOverlay.style.display='flex';
-  }).catch(e=>{ console.error('[Editor] Failed to load data for', spec.name, e); alert('Failed to load data for ' + spec.name + ': ' + e.message); });
-}
-
-function closeModal(){ modalOverlay.style.display='none'; }
-
-async function saveSpec(spec){
-  // collect fields
-  const out = {};
-  spec.fields.forEach(f => {
-    if (f === 'apps') {
-      const wrap = document.getElementById('cb-field-apps');
-      if (wrap) {
-        const apps = [];
-        const appBlocks = wrap.querySelectorAll('[draggable]');
-        appBlocks.forEach((block) => {
-          apps.push({
-            name: (block.querySelector('[id$="-name"]') || {}).value || '',
-            desc: (block.querySelector('[id$="-desc"]') || {}).value || '',
-            status: (block.querySelector('[id$="-status"]') || {}).value || '',
-            link: (block.querySelector('[id$="-link"]') || {}).value || '',
-            icon: (block.querySelector('[id$="-icon"]') || {}).value || ''
-          });
-        });
-        out.apps = apps;
-      }
-    } else {
-      const el = document.getElementById('cb-field-'+f);
-      if (el) out[f] = el.value;
-    }
-  });
-  console.log('[Editor] Saving to:', spec.file, out);
-  try{
-    const user = window.netlifyIdentity.currentUser();
-    const token = await user.jwt();
-    // get file info (sha)
-    const getUrl = '/.netlify/git/github/contents' + spec.file;
-    const gr = await fetch(getUrl, { headers: { 'Authorization': 'Bearer ' + token } });
-    if (!gr.ok) throw new Error('Failed to fetch file info: '+gr.status);
-    const gjson = await gr.json();
-    const sha = gjson.sha;
-    const content = base64EncodeUnicode(JSON.stringify(out, null, 2));
-    const putUrl = '/.netlify/git/github/contents' + spec.file;
-    const body = { message: 'Edit via editor', content: content, sha: sha };
-    const pr = await fetch(putUrl, { method:'PUT', headers: { 'Authorization': 'Bearer ' + token, 'Content-Type':'application/json' }, body: JSON.stringify(body) });
-    if (!pr.ok) throw new Error('Save failed: '+pr.status+' '+await pr.text());
-    console.log('[Editor] Save complete');
-    closeModal();
-    window.location.reload();
-  }catch(e){ alert('Save error: '+e.message); console.error(e); }
-}
+console.log('[Editor] Page loaded');
+window.netlifyIdentity.on('init', async (user) => {
+  console.log('[Editor] init - user:', user && user.email);
+  if (!user) { window.location.replace('/index.html'); return; }
+  document.body.style.opacity = '1';
+  injectEditButtons();
+});
+window.netlifyIdentity.init();
 </script>
 </body>
 </html>

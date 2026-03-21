@@ -20,30 +20,35 @@ nav{background:#0b110b;border-bottom:1px solid #1c361c;display:flex;align-items:
 .nlinks a{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#8ab88a;}
 .nlinks a:hover{color:#5fcf6e;}
 .ncta{background:#5fcf6e;color:#0b110b !important;font-size:12px;padding:8px 18px;border-radius:3px;}
+/* HERO */
 .comm-hero{background:linear-gradient(135deg,#0b110b,#0a0f0a);min-height:50vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:60px 40px;position:relative;}
 .eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#5fcf6e;margin-bottom:10px;}
 .hero-title{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:3px;color:#f0f7f0;line-height:1;margin-bottom:16px;}
 .hero-title span{color:#5fcf6e;}
 .hero-body{font-size:17px;color:#c8e6c8;line-height:1.7;max-width:640px;}
-.content-wrap{padding:60px 40px;max-width:1100px;margin:0 auto;}
-.section-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+/* CONTENT */
+.section-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:60px 40px;}
 .sec-title{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:2px;color:#f0f7f0;margin-bottom:12px;}
-.sec-body{font-size:16px;color:#c8e6c8;line-height:1.7;}
+.sec-body{font-size:16px;color:#c8e6c8;line-height:1.7;margin-bottom:16px;}
 .earn-list{display:flex;flex-direction:column;gap:10px;margin-top:16px;}
 .earn-item{display:flex;align-items:center;gap:12px;background:rgba(95,207,110,.04);border:1px solid #1c361c;border-radius:4px;padding:13px 16px;font-size:16px;color:#c8e6c8;}
 .earn-dot{width:6px;height:6px;background:#5fcf6e;border-radius:50%;flex-shrink:0;}
 .social-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
 .social-btn{background:#5fcf6e;color:#0b110b;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:12px 24px;border-radius:3px;text-decoration:none;}
 .social-btn.out{background:transparent;color:#5fcf6e;border:1px solid #3a7a3a;}
+.social-fields{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.social-fields input{width:100%;padding:8px;background:rgba(255,255,255,.05);border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:14px;font-family:'Barlow',sans-serif;}
+/* EDIT OVERLAYS */
 .editable{position:relative;}
-.editable:hover .edit-btn-overlay{opacity:1;}
-.edit-btn-overlay{position:absolute;top:12px;right:12px;background:#5fcf6e;color:#0b110b;border:none;border-radius:4px;padding:6px 14px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;opacity:0;transition:opacity .15s;z-index:10;}
+.editable:hover .edit-ov{opacity:1;}
+.edit-ov{position:absolute;top:12px;right:12px;background:#5fcf6e;color:#0b110b;border:none;border-radius:4px;padding:6px 14px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;opacity:0;transition:opacity .15s;z-index:10;}
+/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;align-items:flex-start;justify-content:center;z-index:99999;overflow-y:auto;padding:5vh 0;}
 .modal{background:#0a110a;border:1px solid #5fcf6e;border-radius:8px;padding:24px;max-width:520px;width:95%;max-height:82vh;overflow-y:auto;position:relative;}
 .modal h2{font-family:'Bebas Neue',sans-serif;color:#5fcf6e;font-size:28px;letter-spacing:2px;margin-bottom:16px;}
 .modal label{display:block;color:#9fbf9f;font-size:13px;margin-bottom:4px;margin-top:12px;}
 .modal input,.modal textarea{width:100%;padding:9px;background:rgba(255,255,255,.05);border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:15px;font-family:'Barlow',sans-serif;}
-.modal textarea{min-height:100px;resize:vertical;}
+.modal textarea{resize:vertical;}
 .modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px;padding-top:14px;border-top:1px solid #1a2e1a;}
 .btn-cancel{background:transparent;border:1px solid rgba(255,255,255,.1);color:#f0f7f0;padding:9px 18px;border-radius:6px;cursor:pointer;font-size:14px;}
 .btn-save{background:#5fcf6e;border:none;color:#0b110b;padding:9px 18px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:700;}
@@ -65,15 +70,15 @@ footer{background:#060d06;padding:30px 40px;border-top:1px solid #1c361c;text-al
   <span class="nav-logo-text">CON$UMER BREAK</span>
   <div class="nlinks">
     <a href="index.html">Home</a>
-    <a href="breakery.html">The Breakery</a>
+    <a href="breakery.html">Breakery</a>
     <a href="community.html" style="color:#5fcf6e;">Community</a>
     <a class="ncta" href="https://twitch.tv/consumerbreak" target="_blank">Watch Live</a>
   </div>
 </nav>
 
-<!-- HERO — editable -->
-<div class="comm-hero editable" id="hero-section">
-  <button class="edit-btn-overlay" onclick="openModal('hero')">✏ Edit</button>
+<!-- HERO -->
+<div class="comm-hero editable">
+  <button class="edit-ov" onclick="openModal('hero')">✏ Edit</button>
   <div style="position:relative;z-index:2;">
     <div class="eyebrow">The Breakverse</div>
     <div class="hero-title" id="d-title">Join The <span>Breakverse</span></div>
@@ -81,31 +86,30 @@ footer{background:#060d06;padding:30px 40px;border-top:1px solid #1c361c;text-al
   </div>
 </div>
 
-<!-- EARN + SOCIAL — editable -->
-<div style="background:#0b110b;border-top:1px solid #1c361c;border-bottom:1px solid #1c361c;padding:60px 0;">
-  <div class="content-wrap" style="padding-top:0;padding-bottom:0;">
-    <div class="section-grid">
-      <div class="editable" style="position:relative;">
-        <button class="edit-btn-overlay" onclick="openModal('earn')">✏ Edit Earn Items</button>
-        <div class="eyebrow">How to Earn</div>
-        <div class="sec-title">Earn in the Breakverse</div>
-        <div class="earn-list" id="d-earn">
-          <div class="earn-item"><div class="earn-dot"></div>500+ free WAX NFTs distributed every week via stream</div>
-          <div class="earn-item"><div class="earn-dot"></div>Weekly 50M $WUF airdrop split to Scroll holders</div>
-          <div class="earn-item"><div class="earn-dot"></div>Watch2Earn — tune in and get rewarded live</div>
-          <div class="earn-item"><div class="earn-dot"></div>Vote on Spectral Sessions art themes every Sunday</div>
-          <div class="earn-item"><div class="earn-dot"></div>Play Breakery games and earn across the Breakverse</div>
-        </div>
+<!-- EARN + CONNECT — both editable -->
+<div style="background:#0b110b;border-top:1px solid #1c361c;border-bottom:1px solid #1c361c;">
+  <div class="section-grid">
+    <div class="editable" style="position:relative;">
+      <button class="edit-ov" onclick="openModal('earn')">✏ Edit Earn Items</button>
+      <div class="eyebrow">How to Earn</div>
+      <div class="sec-title">Earn in the Breakverse</div>
+      <div class="earn-list" id="d-earn">
+        <div class="earn-item"><div class="earn-dot"></div>500+ free WAX NFTs distributed every week via stream</div>
+        <div class="earn-item"><div class="earn-dot"></div>Weekly 50M $WUF airdrop split to Scroll holders</div>
+        <div class="earn-item"><div class="earn-dot"></div>Watch2Earn — tune in and get rewarded live</div>
+        <div class="earn-item"><div class="earn-dot"></div>Vote on Spectral Sessions art themes every Sunday</div>
+        <div class="earn-item"><div class="earn-dot"></div>Play Breakery games and earn across the Breakverse</div>
       </div>
-      <div>
-        <div class="eyebrow">Connect</div>
-        <div class="sec-title">Join the Community</div>
-        <p class="sec-body">Connect with fellow Web3 explorers, NFT collectors, live art fans, and puzzle players across all platforms.</p>
-        <div class="social-btns">
-          <a href="https://discord.gg/consumerbreak" target="_blank" class="social-btn">Join Discord</a>
-          <a href="https://twitch.tv/consumerbreak" target="_blank" class="social-btn out">Twitch</a>
-          <a href="https://twitter.com/consumerbreak" target="_blank" class="social-btn out">Twitter</a>
-        </div>
+    </div>
+    <div class="editable" style="position:relative;">
+      <button class="edit-ov" onclick="openModal('connect')">✏ Edit Connect</button>
+      <div class="eyebrow">Connect</div>
+      <div class="sec-title">Join the Community</div>
+      <p class="sec-body" id="d-connect-body">Connect with fellow Web3 explorers, NFT collectors, live art fans, and puzzle players across all platforms.</p>
+      <div class="social-btns">
+        <a href="https://discord.gg/consumerbreak" target="_blank" class="social-btn" id="d-discord-btn">Join Discord</a>
+        <a href="https://twitch.tv/consumerbreak" target="_blank" class="social-btn out" id="d-twitch-btn">Twitch</a>
+        <a href="https://twitter.com/consumerbreak" target="_blank" class="social-btn out" id="d-twitter-btn">Twitter</a>
       </div>
     </div>
   </div>
@@ -118,67 +122,82 @@ footer{background:#060d06;padding:30px 40px;border-top:1px solid #1c361c;text-al
 </div>
 
 <script>
-let cData = {};
+let cData = {
+  title: 'Join The Breakverse',
+  description: 'The Breakverse is ConsumerBreak\'s unified community ecosystem. One account connects you to all 30 Breakery apps, earns points across BrandBreak campaigns, tracks your NFT holdings, and builds your reputation across every platform we touch.',
+  earn_items: ['500+ free WAX NFTs distributed every week via stream','Weekly 50M $WUF airdrop split to Scroll holders','Watch2Earn — tune in and get rewarded live','Vote on Spectral Sessions art themes every Sunday','Play Breakery games and earn across the Breakverse'],
+  connect_body: 'Connect with fellow Web3 explorers, NFT collectors, live art fans, and puzzle players across all platforms.',
+  discord_url: 'https://discord.gg/consumerbreak',
+  twitch_url: 'https://twitch.tv/consumerbreak',
+  twitter_url: 'https://twitter.com/consumerbreak'
+};
 
 async function loadData() {
   try {
-    const r = await fetch('/_data/community.json?cb=' + Date.now(), { cache:'no-store' });
-    const t = await r.text();
-    cData = JSON.parse(t);
-    const title = cData.title || 'Join The Breakverse';
-    document.getElementById('d-title').innerHTML = title.replace('Breakverse', '<span style="color:#5fcf6e;">Breakverse</span>');
-    document.getElementById('d-desc').textContent = cData.description || '';
-    if (cData.earn_items && cData.earn_items.length) {
-      document.getElementById('d-earn').innerHTML = cData.earn_items.map(i => '<div class="earn-item"><div class="earn-dot"></div>' + i + '</div>').join('');
-    }
-  } catch(e) { console.warn('community.json load failed', e); }
+    const r = await fetch('/_data/community.json?cb='+Date.now(),{cache:'no-store'});
+    const t = await r.text(); cData = Object.assign(cData, JSON.parse(t)); renderAll();
+  } catch(e) { renderAll(); }
 }
 
-function closeModal() { document.getElementById('modal-overlay').style.display = 'none'; }
+function renderAll() {
+  const title = cData.title||'Join The Breakverse';
+  document.getElementById('d-title').innerHTML = title.replace('Breakverse','<span style="color:#5fcf6e;">Breakverse</span>');
+  document.getElementById('d-desc').textContent = cData.description||'';
+  if (cData.earn_items) document.getElementById('d-earn').innerHTML = cData.earn_items.map(i=>'<div class="earn-item"><div class="earn-dot"></div>'+i+'</div>').join('');
+  if (cData.connect_body) document.getElementById('d-connect-body').textContent = cData.connect_body;
+  if (cData.discord_url) { const el=document.getElementById('d-discord-btn'); if(el) el.href=cData.discord_url; }
+  if (cData.twitch_url) { const el=document.getElementById('d-twitch-btn'); if(el) el.href=cData.twitch_url; }
+  if (cData.twitter_url) { const el=document.getElementById('d-twitter-btn'); if(el) el.href=cData.twitter_url; }
+}
+
+function closeModal() { document.getElementById('modal-overlay').style.display='none'; }
+
+async function saveModal(getOut) {
+  try {
+    const out = getOut();
+    const user = window.netlifyIdentity.currentUser();
+    const token = await user.jwt();
+    const gr = await fetch('/.netlify/git/github/contents/_data/community.json',{headers:{'Authorization':'Bearer '+token}});
+    const gj = await gr.json();
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(out,null,2))));
+    const pr = await fetch('/.netlify/git/github/contents/_data/community.json',{method:'PUT',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},body:JSON.stringify({message:'Edit community via editor',content,sha:gj.sha})});
+    if(!pr.ok) throw new Error('Save failed: '+pr.status);
+    cData=out; renderAll(); closeModal();
+    alert('✓ Saved! Deploying in ~30 seconds.');
+  } catch(e) { alert('Save error: '+e.message); }
+}
 
 function openModal(type) {
   const modal = document.getElementById('modal-content');
   const overlay = document.getElementById('modal-overlay');
-  modal.innerHTML = '';
-  const cx = document.createElement('button'); cx.className = 'close-x'; cx.textContent = '✕'; cx.onclick = closeModal; modal.appendChild(cx);
-  let getOut;
-  if (type === 'hero') {
-    modal.innerHTML += '<h2>Hero Section</h2>';
-    modal.innerHTML += '<label>Title</label><input id="f-title" value="' + (cData.title||'').replace(/"/g,'&quot;') + '">';
-    modal.innerHTML += '<label>Description</label><textarea id="f-desc">' + (cData.description||'') + '</textarea>';
-    getOut = () => Object.assign({}, cData, { title: document.getElementById('f-title').value, description: document.getElementById('f-desc').value });
-  } else {
-    modal.innerHTML += '<h2>Earn Items</h2><label>One item per line</label><textarea id="f-earn" style="min-height:200px;">' + (cData.earn_items||[]).join('\n') + '</textarea>';
-    getOut = () => { const lines = document.getElementById('f-earn').value.split('\n').map(l=>l.trim()).filter(l=>l); return Object.assign({}, cData, { earn_items: lines }); };
+  modal.innerHTML='';
+  const cx=document.createElement('button'); cx.className='close-x'; cx.textContent='✕'; cx.onclick=closeModal; modal.appendChild(cx);
+
+  if (type==='hero') {
+    modal.innerHTML+='<h2>Hero Section</h2><label>Title</label><input id="f-title" value="'+(cData.title||'').replace(/"/g,'&quot;')+'"><label>Description</label><textarea id="f-desc" style="min-height:120px;">'+(cData.description||'')+'</textarea>';
+    addActions(()=>Object.assign({},cData,{title:document.getElementById('f-title').value,description:document.getElementById('f-desc').value}));
+  } else if (type==='earn') {
+    modal.innerHTML+='<h2>Earn Items</h2><label>One item per line</label><textarea id="f-earn" style="min-height:200px;">'+(cData.earn_items||[]).join('\n')+'</textarea>';
+    addActions(()=>Object.assign({},cData,{earn_items:document.getElementById('f-earn').value.split('\n').map(l=>l.trim()).filter(l=>l)}));
+  } else if (type==='connect') {
+    modal.innerHTML+='<h2>Connect Section</h2><label>Body Text</label><textarea id="f-cbody" style="min-height:80px;">'+(cData.connect_body||'')+'</textarea><label>Discord URL</label><input id="f-discord" value="'+(cData.discord_url||'').replace(/"/g,'&quot;')+'"><label>Twitch URL</label><input id="f-twitch" value="'+(cData.twitch_url||'').replace(/"/g,'&quot;')+'"><label>Twitter URL</label><input id="f-twitter" value="'+(cData.twitter_url||'').replace(/"/g,'&quot;')+'">';
+    addActions(()=>Object.assign({},cData,{connect_body:document.getElementById('f-cbody').value,discord_url:document.getElementById('f-discord').value,twitch_url:document.getElementById('f-twitch').value,twitter_url:document.getElementById('f-twitter').value}));
   }
-  const actions = document.createElement('div'); actions.className = 'modal-actions';
-  const cancel = document.createElement('button'); cancel.className = 'btn-cancel'; cancel.textContent = 'Cancel'; cancel.onclick = closeModal;
-  const save = document.createElement('button'); save.className = 'btn-save'; save.textContent = 'Save';
-  save.onclick = async () => {
-    try {
-      const out = getOut();
-      const user = window.netlifyIdentity.currentUser();
-      const token = await user.jwt();
-      const gr = await fetch('/.netlify/git/github/contents/_data/community.json', { headers: { 'Authorization': 'Bearer ' + token } });
-      const gj = await gr.json();
-      const content = btoa(unescape(encodeURIComponent(JSON.stringify(out, null, 2))));
-      const pr = await fetch('/.netlify/git/github/contents/_data/community.json', {
-        method:'PUT', headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},
-        body: JSON.stringify({ message:'Edit community via editor', content, sha: gj.sha })
-      });
-      if (!pr.ok) throw new Error('Save failed: ' + pr.status);
-      cData = out; closeModal(); loadData();
-      alert('✓ Saved! Deploying in ~30 seconds.');
-    } catch(e) { alert('Save error: ' + e.message); }
-  };
-  actions.appendChild(cancel); actions.appendChild(save); modal.appendChild(actions);
-  overlay.style.display = 'flex';
+  overlay.style.display='flex';
 }
 
-window.netlifyIdentity.on('init', user => {
-  if (!user) { window.location.replace('/index.html'); return; }
-  document.body.style.opacity = '1';
-  loadData();
+function addActions(getOut) {
+  const modal=document.getElementById('modal-content');
+  const actions=document.createElement('div'); actions.className='modal-actions';
+  const cancel=document.createElement('button'); cancel.className='btn-cancel'; cancel.textContent='Cancel'; cancel.onclick=closeModal;
+  const save=document.createElement('button'); save.className='btn-save'; save.textContent='Save';
+  save.onclick=()=>saveModal(getOut);
+  actions.appendChild(cancel); actions.appendChild(save); modal.appendChild(actions);
+}
+
+window.netlifyIdentity.on('init', user=>{
+  if(!user){window.location.replace('/index.html');return;}
+  document.body.style.opacity='1'; loadData();
 });
 window.netlifyIdentity.init();
 </script>
