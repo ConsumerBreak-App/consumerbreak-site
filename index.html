@@ -112,6 +112,8 @@ section{position:relative;padding:80px 60px;}
 .hc-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
 .hc-movie{position:relative;aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden;border:1px solid rgba(95,207,110,.2);box-shadow:0 0 60px rgba(95,207,110,.06);}
 .hc-movie-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#060e12,#0a1820);gap:14px;}
+.hc-feature-img{width:100%;height:300px;border-radius:6px;overflow:hidden;background:#0b161b;margin:16px 0;}
+.hc-feature-img img{width:100%;height:100%;object-fit:cover;display:block;}
 .play-circle{width:64px;height:64px;background:rgba(95,207,110,.12);border:2px solid var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;}
 .play-circle:hover{background:rgba(95,207,110,.22);transform:scale(1.06);}
 .play-circle svg{width:22px;height:22px;fill:var(--green);margin-left:4px;}
@@ -324,6 +326,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <div class="eyebrow" id="hc-eyebrow">4 Seasons · 1.7M+ Assets · WAX Blockchain</div>
       <div class="sec-title" id="hc-title">Hybrid Creatures NFT</div>
       <p class="sec-body" id="hc-desc">Hand-drawn trading cards. Cryptids, mythology, and sci-fi collide in a universe powered by Mystery Matter — blending any creature into something new. Now with an AI feature film.</p>
+      <div id="hc-feature-img"></div>
       <div class="season-chips">
         <span class="schip">S1 · Cryptids</span>
         <span class="schip">S2 · Folklore</span>
@@ -614,19 +617,14 @@ async function loadCMSData() {
     if (hybrid.stat4_val) setText('hc-stat4-val', hybrid.stat4_val);
     if (hybrid.stat4_lbl) setText('hc-stat4-lbl', hybrid.stat4_lbl);
     if (hybrid.movie_url) window._movieUrl = hybrid.movie_url;
-    if (hybrid.image) {
-      const placeholder = document.getElementById('hc-movie-placeholder');
-      if (placeholder) {
-        const existingImg = placeholder.querySelector('img.hc-bg-img');
-        if (!existingImg) {
-          const img = document.createElement('img');
-          img.className = 'hc-bg-img';
-          img.src = hybrid.image.startsWith('http') ? hybrid.image : '/' + hybrid.image.replace(/^\//, '');
-          img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.35;border-radius:6px;';
-          placeholder.style.position = 'relative';
-          placeholder.insertBefore(img, placeholder.firstChild);
-        }
-      }
+    if (hybrid.image && !window.fetchHybridImage) {
+      window.fetchHybridImage = true;
+      const c = document.createElement('div');
+      c.className = 'hc-feature-img';
+      c.style.cssText = 'width:100%;height:300px;border-radius:6px;overflow:hidden;background:#0b161b;margin:16px 0;';
+      c.innerHTML = `<img src="${fixSrc(hybrid.image)}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+      const left = document.querySelector('.hc-inner > div');
+      if (left) left.appendChild(c);
     }
   }
 
