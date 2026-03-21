@@ -727,9 +727,9 @@ function injectEditButtons(){
 
 /* Floating edit modal implementation */
 const modalOverlay = document.createElement('div');
-Object.assign(modalOverlay.style, { position:'fixed', inset:0, background:'rgba(0,0,0,0.7)', display:'none', alignItems:'center', justifyContent:'center', zIndex:99999 });
+Object.assign(modalOverlay.style, { position:'fixed', inset:0, background:'rgba(0,0,0,0.7)', display:'none', alignItems:'flex-start', justifyContent:'center', zIndex:99999, overflowY:'auto', paddingTop:'5vh', paddingBottom:'5vh' });
 const modal = document.createElement('div');
-Object.assign(modal.style, { background:'#0a110a', border:'1px solid #5fcf6e', borderRadius:'8px', padding:'24px', maxWidth:'480px', width:'92%', color:varOr('#f0f7f0','#f0f7f0') });
+Object.assign(modal.style, { background:'#0a110a', border:'1px solid #5fcf6e', borderRadius:'8px', padding:'24px', maxWidth:'520px', width:'95%', maxHeight:'85vh', overflowY:'auto', color:'#f0f7f0', position:'relative' });
 modalOverlay.appendChild(modal);
 document.body.appendChild(modalOverlay);
 
@@ -753,9 +753,11 @@ function openModalFor(spec){
         const apps = data.apps || [];
         apps.forEach((app, i) => {
           const appBlock = document.createElement('div');
-          appBlock.style.cssText = 'border:1px solid #1a2e1a;border-radius:6px;padding:10px;margin-bottom:10px;background:rgba(95,207,110,0.03);';
+          appBlock.draggable = true;
+          appBlock.style.cssText = 'border:1px solid #1a2e1a;border-radius:6px;padding:10px;margin-bottom:10px;background:rgba(95,207,110,0.03);cursor:grab;';
           appBlock.innerHTML = `
-            <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:#5fcf6e;letter-spacing:1px;margin-bottom:8px;">APP ${i+1}</div>
+            <div class="drag-handle" style="cursor:grab;color:#4a6b4a;font-size:16px;text-align:center;margin-bottom:6px;user-select:none;" title="Drag to reorder">⠿ drag to reorder</div>
+            <div class="app-num-label" style="font-family:'Barlow Condensed',sans-serif;font-size:11px;color:#5fcf6e;letter-spacing:1px;margin-bottom:8px;">APP ${i+1}</div>
             <div style="display:grid;gap:6px;">
               <input id="app-${i}-name" placeholder="Name" value="${app.name||''}" style="width:100%;padding:6px;background:transparent;border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:13px;">
               <textarea id="app-${i}-desc" placeholder="Description" style="width:100%;padding:6px;background:transparent;border:1px solid #1a2e1a;border-radius:4px;color:#f0f7f0;font-size:13px;height:60px;">${app.desc||app.description||''}</textarea>
@@ -765,6 +767,52 @@ function openModalFor(spec){
             </div>`;
           appsWrap.appendChild(appBlock);
         });
+        
+        // Drag to reorder
+        let dragSrc = null;
+        appsWrap.querySelectorAll('[draggable]').forEach(el => {
+          el.addEventListener('dragstart', function(e) {
+            dragSrc = this;
+            this.style.opacity = '0.4';
+            e.dataTransfer.effectAllowed = 'move';
+          });
+          el.addEventListener('dragend', function() {
+            this.style.opacity = '1';
+            appsWrap.querySelectorAll('[draggable]').forEach(el => el.classList.remove('drag-over'));
+          });
+          el.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            return false;
+          });
+          el.addEventListener('dragenter', function() {
+            this.style.borderColor = '#5fcf6e';
+          });
+          el.addEventListener('dragleave', function() {
+            this.style.borderColor = '#1a2e1a';
+          });
+          el.addEventListener('drop', function(e) {
+            e.stopPropagation();
+            if (dragSrc !== this) {
+              const allBlocks = [...appsWrap.querySelectorAll('[draggable]')];
+              const srcIdx = allBlocks.indexOf(dragSrc);
+              const tgtIdx = allBlocks.indexOf(this);
+              if (srcIdx < tgtIdx) {
+                appsWrap.insertBefore(dragSrc, this.nextSibling);
+              } else {
+                appsWrap.insertBefore(dragSrc, this);
+              }
+              // Re-number labels
+              appsWrap.querySelectorAll('[draggable]').forEach((el, i) => {
+                const lbl = el.querySelector('.app-num-label');
+                if (lbl) lbl.textContent = 'APP ' + (i+1);
+              });
+            }
+            this.style.borderColor = '#1a2e1a';
+            return false;
+          });
+        });
+        
         appsWrap.id = 'cb-field-apps';
         appsWrap.dataset.count = apps.length;
         modal.appendChild(appsWrap);
@@ -924,17 +972,17 @@ async function saveSpec(spec){
     if (f === 'apps') {
       const wrap = document.getElementById('cb-field-apps');
       if (wrap) {
-        const count = parseInt(wrap.dataset.count) || 0;
         const apps = [];
-        for (let i = 0; i < count; i++) {
+        const appBlocks = wrap.querySelectorAll('[draggable]');
+        appBlocks.forEach((block) => {
           apps.push({
-            name: (document.getElementById('app-'+i+'-name') || {}).value || '',
-            desc: (document.getElementById('app-'+i+'-desc') || {}).value || '',
-            status: (document.getElementById('app-'+i+'-status') || {}).value || '',
-            link: (document.getElementById('app-'+i+'-link') || {}).value || '',
-            icon: (document.getElementById('app-'+i+'-icon') || {}).value || ''
+            name: (block.querySelector('[id$="-name"]') || {}).value || '',
+            desc: (block.querySelector('[id$="-desc"]') || {}).value || '',
+            status: (block.querySelector('[id$="-status"]') || {}).value || '',
+            link: (block.querySelector('[id$="-link"]') || {}).value || '',
+            icon: (block.querySelector('[id$="-icon"]') || {}).value || ''
           });
-        }
+        });
         out.apps = apps;
       }
     } else {
