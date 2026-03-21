@@ -1,10 +1,11 @@
 {
-  "tagline": "Puzzle mini-games and interactive tools to play, win, and explore across the Breakverse.",
+  "tagline": "30 apps. One Breakverse account. Play games, earn points, build campaigns, and connect your wallet across everything we make.",
+  "login_text": "One Breakverse account works across all apps — your stats, XP, and leaderboard rank carry everywhere.",
   "apps": [
-    {"name": "ConsumerBreak", "description": "Jigsaw ad puzzles with cash & NFT prizes", "status": "Era 2 Beta"},
-    {"name": "PuzzleBreak", "description": "The core puzzle engine", "status": "Live"},
-    {"name": "KeyBreak", "description": "Keyboard puzzle challenges", "status": "Beta"},
-    {"name": "BingoBreak", "description": "Live bingo with rewards", "status": "Beta"},
-    {"name": "TriviaBreak", "description": "Web3 trivia & learn-to-earn", "status": "Beta"}
+    {"name": "ConsumerBreak App", "desc": "Your all-in-one Breakverse hub. Watch live streams, access all 30 Breakery apps, connect your WAX wallet, manage your Breakverse account, and participate in BrandBreak campaigns — all in one place. One account, everything synced.", "status": "COMING SOON"},
+    {"name": "PuzzleBreak", "desc": "The core puzzle engine powering the Breakverse. Classic puzzle gameplay with community challenges and daily rewards.", "status": "Live"},
+    {"name": "KeyBreak", "desc": "Keyboard puzzle challenges", "status": "Beta"},
+    {"name": "BingoBreak", "desc": "Live bingo with rewards", "status": "Beta"},
+    {"name": "TriviaBreak", "desc": "Web3 trivia & learn-to-earn", "status": "Beta"}
   ]
 }

@@ -124,6 +124,19 @@ section{position:relative;padding:80px 60px;}
 .hc-stat-lbl{font-size:10px;color:var(--muted);margin-top:2px;}
 .hc-btns{display:flex;gap:12px;margin-top:24px;}
 
+/* SPECTRAL SESSIONS */
+#spectral{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:80px 0;}
+.spectral-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:36px;}
+.spectral-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:30px;}
+.spectral-card h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--purple);margin-bottom:12px;}
+.spectral-card p{font-size:14px;color:#7ab07a;line-height:1.6;}
+.safe-subtitle{font-size:12px;color:#4a6b4a;margin-bottom:12px;}
+.safe-link{color:var(--purple);text-decoration:none;font-weight:600;}
+.safe-link:hover{opacity:.7;}
+.safe-link::after{content:' →';}
+.spectral-footer{margin-top:32px;text-align:center;}
+.streaming-on{font-size:12px;color:#4a6b4a;margin-bottom:16px;}
+
 /* NFT CARDS */
 .nft-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px;}
 .nft-card{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:30px;transition:all .2s;}
@@ -215,10 +228,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="breakery.html">The Breakery</a></li>
-    <li><a href="#hybrid">Hybrid Creatures</a></li>
-    <li><a href="#nfts">NFTs &amp; Art</a></li>
-    <li><a href="#community">Community</a></li>
-    <li><a href="#story">Our Story</a></li>
+    <li><a href="community.html">Community</a></li>
+    <li><a href="hybrid-creatures.html">Hybrid Creatures</a></li>
   </ul>
   <a href="https://twitch.tv/consumerbreak" target="_blank" class="btn-watch">Watch Live</a>
 </nav>
@@ -236,7 +247,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
     </div>
     <p class="hero-tagline" id="hero-tagline">Web3 education · Live art · NFT drops · Community games · Prize-winning apps.</p>
     <div class="hero-btns">
-      <a href="https://twitch.tv/consumerbreak" target="_blank" class="btn-solid">Watch on Twitch</a>
+      <a href="https://twitch.tv/consumerbreak" target="_blank" class="btn-solid">Watch Live</a>
       <a href="breakery.html" class="btn-outline">Explore The Breakery</a>
     </div>
   </div>
@@ -338,6 +349,29 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SPECTRAL SESSIONS -->
+<section id="spectral">
+  <div class="eyebrow purple">Every Sunday · In Partnership with Jumbie Art</div>
+  <div class="sec-title">SPECTRAL SESSIONS</div>
+  <p class="sec-body">Live collaborative art creation streamed every Sunday at 2PM EST. Multiple artists draw simultaneously while viewers vote on attributes — color, subject, mood. At the end of each session, a hue-shifting color effect transforms all artwork live. A weekly demonstration of the Spectral Art movement.</p>
+  <div class="spectral-grid">
+    <div class="spectral-card">
+      <h3>The Show</h3>
+      <p>Artists share their screens and create original work over 4 hours while we discuss Spectral Art technique, color theory, and XRPL provenance. The audience shapes the art through live voting.</p>
+    </div>
+    <div class="spectral-card">
+      <h3>S.A.F.E.</h3>
+      <p class="safe-subtitle">Spectral Art Foundation Enterprises · 501(c)(3)</p>
+      <p>SAFE empowers artists through grants, workshops, exhibitions, and zero-barrier access to patented Spectral Frame technology. Physical artwork engineered to come alive through LED hue-cycling. XRPL-verified provenance.</p>
+      <a href="https://jumbieart.com/pages/safe" target="_blank" class="safe-link">Learn about SAFE →</a>
+    </div>
+  </div>
+  <div class="spectral-footer">
+    <p class="streaming-on">Streaming on: Twitch · X Spaces · Arena Social · Blaze.stream</p>
+    <a href="https://twitch.tv/consumerbreak" target="_blank" class="btn-solid">Watch Live</a>
   </div>
 </section>
 
@@ -653,7 +687,7 @@ if (window.netlifyIdentity) {
       if (document.getElementById('admin-edit-btn')) return;
       const btn = document.createElement('a');
       btn.id = 'admin-edit-btn';
-      btn.href = '/editor.html';
+      btn.href = location.pathname === '/breakery.html' ? '/breakery-editor.html' : '/editor.html';
       btn.className = 'btn-outline';
       btn.textContent = '✏ Edit Site';
       btn.style.position = 'fixed';

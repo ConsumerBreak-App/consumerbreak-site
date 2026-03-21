@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community — ConsumerBreak</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0b110b;color:#f0f7ee;font-family:'Barlow',sans-serif;overflow-x:hidden;}
+a{text-decoration:none;}
+
+/* GLASS */
+.glass-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+
+/* NAV */
+nav{background:#0b110b;border-bottom:1px solid #1c361c;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;position:relative;z-index:10;}
+.nlogo img{height:38px;width:auto;mix-blend-mode:screen;}
+.nlinks{display:flex;gap:24px;align-items:center;}
+.nlinks a{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#6a9e6a;}
+.nlinks a:hover{color:#5fcf6e;}
+.ncta{background:#5fcf6e;color:#0b110b !important;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:8px 18px;border-radius:3px;}
+
+/* BUTTONS */
+.btn-solid{background:#5fcf6e;color:#0b110b;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:12px 24px;border-radius:3px;border:none;cursor:pointer;display:inline-block;}
+.btn-out{background:transparent;color:#5fcf6e;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:12px 24px;border-radius:3px;border:1px solid #3a7a3a;cursor:pointer;display:inline-block;}
+.btn-out:hover{border-color:#5fcf6e;}
+
+/* SECTION LABELS */
+.eyebrow{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:#5fcf6e;margin-bottom:8px;}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:2px;color:#f0f7ee;line-height:1;margin-bottom:12px;}
+.sec-body{font-size:13px;color:#7ab07a;line-height:1.7;}
+
+/* COMMUNITY */
+.comm-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;padding:80px 40px;}
+.earn-list{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
+.earn-item{display:flex;align-items:flex-start;gap:12px;}
+.earn-dot{width:6px;height:6px;background:#5fcf6e;border-radius:50%;margin-top:6px;flex-shrink:0;}
+.earn-text{font-size:12px;color:#7ab07a;}
+
+/* FOOTER */
+footer{background:#060d06;padding:40px 40px 24px;position:relative;}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
+.footer-col h4{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:#f0f7ee;margin-bottom:12px;}
+.footer-col a{font-size:12px;color:#7ab07a;text-decoration:none;margin-bottom:6px;display:block;}
+.footer-col a:hover{color:#5fcf6e;}
+.footer-bottom{border-top:1px solid #1c361c;padding-top:24px;text-align:center;}
+.footer-logo{margin-bottom:16px;}
+.footer-logo img{height:32px;width:auto;mix-blend-mode:screen;}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:16px;}
+.footer-links a{font-size:11px;color:#4a6b4a;text-decoration:none;}
+.footer-links a:hover{color:#7ab07a;}
+.footer-copyright{font-size:10px;color:#4a6b4a;}
+</style>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on("init", user => {
+    if (!user) {
+      window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin/";
+      });
+    }
+  });
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="nlogo"><a href="index.html"><img class="nav-logo-img" src="" alt="ConsumerBreak"></a></div>
+  <div class="nlinks"><a href="index.html">Home</a>
+<a href="breakery.html">The Breakery</a>
+<a href="community.html" style="color:#5fcf6e;">Community</a>
+<a href="hybrid-creatures.html">Hybrid Creatures</a>
+<a class="ncta" href="https://twitch.tv/consumerbreak" target="_blank">Watch Live</a></div>
+</nav>
+
+<!-- HERO -->
+<div class="breakery-hero" style="background:linear-gradient(135deg,#0b110b 0%,#0a0f0a 100%);min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;">
+  <svg class="glass-bg" data-glass="1200,360,23" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"></svg>
+  <div style="position:relative;z-index:2;">
+    <div class="eyebrow">The Breakverse</div>
+    <div class="breakery-hero-title" style="font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:2px;color:#f0f7ee;">Join The <span style="color:#5fcf6e;">Breakverse</span></div>
+    <p class="breakery-hero-sub" style="font-size:16px;color:#7ab07a;max-width:600px;margin:0 auto;">The Breakverse is ConsumerBreak's unified community ecosystem. One account connects you to all 30 Breakery apps, earns points across BrandBreak campaigns, tracks your NFT holdings, and builds your reputation across every platform we touch. Stream prizes, NFT drops, app leaderboards, and community tournaments — all tied to one identity.</p>
+  </div>
+</div>
+
+<!-- COMMUNITY CONTENT -->
+<section style="background:#0b110b;padding:80px 0;">
+  <div class="comm-grid" style="padding:0 40px;max-width:1200px;margin:0 auto;">
+    <div>
+      <div class="earn-list">
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Earn points across all Breakery apps</div></div>
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Track your NFT collection</div></div>
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Participate in community tournaments</div></div>
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Win prizes from live streams</div></div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:14px;color:#7ab07a;line-height:1.7;">Connect with fellow Web3 explorers, NFT collectors, live art fans, and puzzle players. Join our Discord, follow on Twitch and Twitter, and become part of the growing Breakverse community.</p>
+      <div style="margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="https://discord.gg/consumerbreak" target="_blank" class="btn-solid">Join Discord</a>
+        <a href="https://twitch.tv/consumerbreak" target="_blank" class="btn-out">Follow on Twitch</a>
+        <a href="https://twitter.com/consumerbreak" target="_blank" class="btn-out">Follow on Twitter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Apps</h4>
+      <a href="breakery.html">The Breakery</a>
+      <a href="#">ConsumerBreak App</a>
+      <a href="#">PuzzleBreak</a>
+      <a href="#">More Coming Soon</a>
+    </div>
+    <div class="footer-col">
+      <h4>Shows</h4>
+      <a href="https://twitch.tv/consumerbreak">Live Streams</a>
+      <a href="#">PitchBreak</a>
+      <a href="#">Spectral Sessions</a>
+      <a href="#">BrandBreak</a>
+    </div>
+    <div class="footer-col">
+      <h4>Community</h4>
+      <a href="https://discord.gg/consumerbreak">Discord</a>
+      <a href="https://twitch.tv/consumerbreak">Twitch</a>
+      <a href="https://twitter.com/consumerbreak">Twitter</a>
+      <a href="story.html">Our Story</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-logo"><img src="" class="nav-logo-img" alt="ConsumerBreak"></div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="breakery.html">The Breakery</a>
+      <a href="community.html">Community</a>
+      <a href="hybrid-creatures.html">Hybrid Creatures</a>
+    </div>
+    <div class="footer-copyright">© 2025 ConsumerBreak® · Concept & Innovation Group, LLC · @NatEisenbergLIVE</div>
+  </div>
+</footer>
+
+<script>
+// Load nav logo
+fetch('/_data/hero.json').then(r=>r.json()).then(d=>{document.querySelectorAll('.nav-logo-img').forEach(i=>{i.src=d.site_logo;i.style.display='block';});document.getElementById('nav-logo-fallback').style.display='none';}).catch(()=>{});
+</script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on("init", user => {
+    if (!user) {
+      window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin/";
+      });
+    }
+  });
+}
+
+// Admin edit button
+if (window.netlifyIdentity && window.netlifyIdentity.currentUser()) {
+  const editBtn = document.createElement('a');
+  editBtn.href = '/editor.html';
+  editBtn.innerHTML = '✏ Edit Site';
+  editBtn.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#5fcf6e;color:#0b110b;padding:10px 16px;border-radius:4px;text-decoration:none;font-size:12px;font-weight:600;z-index:1000;';
+  document.body.appendChild(editBtn);
+}
+</script>
+
+</body>
+</html>

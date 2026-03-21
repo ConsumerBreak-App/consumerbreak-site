@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Breakery — ConsumerBreak App Suite</title>
+<title>Breakery Editor — ConsumerBreak</title>
 <style>
 
 
@@ -403,21 +403,130 @@ window.addEventListener('load', () => {
 
 </script>
 <script>
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on("init", user => {
-    if (!user) {
-      window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
-    }
+// Editor behavior: wait for Identity init, require login
+console.log('[Breakery Editor] Page loaded');
+window.netlifyIdentity.on('init', async (user) => {
+  console.log('[Breakery Editor] init - user:', user && user.email);
+  if (!user) {
+    // not logged in — redirect to public site
+    window.location.replace('/breakery.html');
+    return;
+  }
+  // show page
+  document.body.style.opacity = '1';
+  // if logged in, inject edit buttons
+  injectEditButtons();
+});
+
+function base64EncodeUnicode(str) {
+  return btoa(unescape(encodeURIComponent(str)));
+}
+
+function isAdmin(user){ try { return user && user.app_metadata && user.app_metadata.roles && user.app_metadata.roles.indexOf('admin') !== -1; } catch(e){ return false; } }
+
+function injectEditButtons(){
+  console.log('[Breakery Editor] Injecting edit overlays');
+  const spec = [
+    { sel: '[data-edit="breakery-tagline"]', name: 'Breakery Tagline', file: '/_data/breakery.json', fields: ['tagline'] },
+    { sel: '[data-edit="app-0"]', name: 'ConsumerBreak App', file: '/_data/breakery.json', fields: ['apps[0].name', 'apps[0].desc', 'apps[0].status', 'apps[0].image'] },
+    { sel: '[data-edit="breakery-login"]', name: 'Login Section', file: '/_data/breakery.json', fields: ['login_text'] }
+  ];
+
+  spec.forEach(s => {
+    const nodes = document.querySelectorAll(s.sel);
+    nodes.forEach(node => {
+      node.style.position = node.style.position || 'relative';
+      const btn = document.createElement('button');
+      btn.className = 'cb-edit-btn-inline';
+      btn.textContent = '✏ Edit';
+      Object.assign(btn.style, { position:'absolute', top:'8px', right:'8px', background:'#5fcf6e', color:'#060c06', borderRadius:'4px', padding:'4px 10px', fontSize:'11px', cursor:'pointer', zIndex:'9999', border:'none', opacity:'0', transition:'opacity .12s' });
+      btn.addEventListener('click', (e) => { e.stopPropagation(); openModalFor(s); console.log('[Breakery Editor] opened modal for:', s.name); });
+      node.addEventListener('mouseenter', () => { btn.style.opacity = '1'; });
+      node.addEventListener('mouseleave', () => { btn.style.opacity = '0'; });
+      node.appendChild(btn);
+    });
   });
 }
 
-// Admin edit button
-if (window.netlifyIdentity && window.netlifyIdentity.currentUser()) {
-  const editBtn = document.createElement('a');
-  editBtn.href = '/breakery-editor.html';
-  editBtn.innerHTML = '✏ Edit Site';
-  editBtn.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#5fcf6e;color:#0b110b;padding:10px 16px;border-radius:4px;text-decoration:none;font-size:12px;font-weight:600;z-index:1000;';
-  document.body.appendChild(editBtn);
+/* Floating edit modal implementation */
+const modalOverlay = document.createElement('div');
+Object.assign(modalOverlay.style, { position:'fixed', inset:0, background:'rgba(0,0,0,0.7)', display:'none', alignItems:'center', justifyContent:'center', zIndex:99999 });
+const modal = document.createElement('div');
+Object.assign(modal.style, { background:'#0a110a', border:'1px solid #5fcf6e', borderRadius:'8px', padding:'24px', maxWidth:'480px', width:'92%', color:'#f0f7f0' });
+modalOverlay.appendChild(modal);
+document.body.appendChild(modalOverlay);
+
+function openModalFor(spec){
+  modal.innerHTML = '';
+  const h = document.createElement('h2'); h.textContent = spec.name; h.style.fontFamily='Bebas Neue, serif'; h.style.color='#5fcf6e'; h.style.margin='0 0 12px'; modal.appendChild(h);
+  const closeX = document.createElement('button'); closeX.textContent='✕'; Object.assign(closeX.style,{position:'absolute',right:'12px',top:'12px',background:'transparent',border:'none',color:'#f0f7f0',fontSize:'18px',cursor:'pointer'}); closeX.addEventListener('click', closeModal); modal.appendChild(closeX);
+
+  // load data
+  fetch(spec.file + '?cb=' + Date.now(), { cache:'no-store' }).then(r=>r.json()).then(data=>{
+    spec.fields.forEach(f => {
+      const wrap = document.createElement('div'); wrap.style.marginTop='10px';
+      const lab = document.createElement('label'); lab.textContent = f.replace(/_/g,' ').replace(/\b\w/g, l=>l.toUpperCase()); lab.style.color='#9fbf9f'; lab.style.display='block'; wrap.appendChild(lab);
+      if (f==='description' || f==='tagline' || f==='login_text'){
+        const ta = document.createElement('textarea'); ta.value = getNestedValue(data, f) || ''; ta.style.width='100%'; ta.style.padding='8px'; ta.style.borderRadius='6px'; ta.style.background='transparent'; ta.style.color='#f0f7f0'; ta.id='cb-field-'+f.replace(/\[|\]|\./g,'-'); wrap.appendChild(ta);
+      } else {
+        const inp = document.createElement('input'); inp.type='text'; inp.value = getNestedValue(data, f) || ''; inp.style.width='100%'; inp.style.padding='8px'; inp.style.borderRadius='6px'; inp.style.background='transparent'; inp.style.color='#f0f7f0'; inp.id='cb-field-'+f.replace(/\[|\]|\./g,'-'); wrap.appendChild(inp);
+        if (f.includes('image') || f.includes('logo')){
+          const up = document.createElement('button'); up.textContent='Upload'; up.style.marginTop='6px'; up.addEventListener('click', ()=>{
+            const url = prompt('Paste image URL'); if (url) document.getElementById('cb-field-'+f.replace(/\[|\]|\./g,'-')).value = url;
+          }); wrap.appendChild(up);
+        }
+      }
+      modal.appendChild(wrap);
+    });
+
+    const actions = document.createElement('div'); actions.style.display='flex'; actions.style.justifyContent='flex-end'; actions.style.gap='8px'; actions.style.marginTop='14px';
+    const cancel = document.createElement('button'); cancel.textContent='Cancel'; Object.assign(cancel.style,{background:'transparent',border:'1px solid rgba(255,255,255,0.06)',color:'#f0f7f0',padding:'8px 12px',borderRadius:'8px',cursor:'pointer'}); cancel.addEventListener('click', closeModal);
+    const save = document.createElement('button'); save.textContent='Save'; Object.assign(save.style,{background:'#5fcf6e',border:'none',color:'#060c06',padding:'8px 12px',borderRadius:'8px',cursor:'pointer'});
+    save.addEventListener('click', ()=> saveSpec(spec));
+    actions.appendChild(cancel); actions.appendChild(save); modal.appendChild(actions);
+    modalOverlay.style.display='flex';
+  }).catch(e=>{ alert('Failed to load data'); });
+}
+
+function closeModal(){ modalOverlay.style.display='none'; }
+
+function getNestedValue(obj, path) {
+  return path.split(/\[|\]|\./).filter(p=>p).reduce((o, k) => o && o[k], obj);
+}
+
+function setNestedValue(obj, path, value) {
+  const keys = path.split(/\[|\]|\./).filter(p=>p);
+  const last = keys.pop();
+  const target = keys.reduce((o, k) => o[k] = o[k] || {}, obj);
+  target[last] = value;
+}
+
+async function saveSpec(spec){
+  // collect fields
+  const out = {};
+  spec.fields.forEach(f => { 
+    const el = document.getElementById('cb-field-'+f.replace(/\[|\]|\./g,'-')); 
+    if (el) setNestedValue(out, f, el.value); 
+  });
+  console.log('[Breakery Editor] Saving to:', spec.file, out);
+  try{
+    const user = window.netlifyIdentity.currentUser();
+    const token = await user.jwt();
+    // get file info (sha)
+    const getUrl = '/.netlify/git/github/contents' + spec.file;
+    const gr = await fetch(getUrl, { headers: { 'Authorization': 'Bearer ' + token } });
+    if (!gr.ok) throw new Error('Failed to fetch file info: '+gr.status);
+    const gjson = await gr.json();
+    const sha = gjson.sha;
+    const content = base64EncodeUnicode(JSON.stringify(out, null, 2));
+    const putUrl = '/.netlify/git/github/contents' + spec.file;
+    const body = { message: 'Edit via breakery editor', content: content, sha: sha };
+    const pr = await fetch(putUrl, { method:'PUT', headers: { 'Authorization': 'Bearer ' + token, 'Content-Type':'application/json' }, body: JSON.stringify(body) });
+    if (!pr.ok) throw new Error('Save failed: '+pr.status+' '+await pr.text());
+    console.log('[Breakery Editor] Save complete');
+    closeModal();
+    window.location.reload();
+  }catch(e){ alert('Save error: '+e.message); console.error(e); }
 }
 </script>
 </body>

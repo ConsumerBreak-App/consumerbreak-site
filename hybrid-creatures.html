@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hybrid Creatures — ConsumerBreak</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&family=Barlow+Condensed:wght@700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0b110b;color:#f0f7ee;font-family:'Barlow',sans-serif;overflow-x:hidden;}
+a{text-decoration:none;}
+
+/* GLASS */
+.glass-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+
+/* NAV */
+nav{background:#0b110b;border-bottom:1px solid #1c361c;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:56px;position:relative;z-index:10;}
+.nlogo img{height:38px;width:auto;mix-blend-mode:screen;}
+.nlinks{display:flex;gap:24px;align-items:center;}
+.nlinks a{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#6a9e6a;}
+.nlinks a:hover{color:#5fcf6e;}
+.ncta{background:#5fcf6e;color:#0b110b !important;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:8px 18px;border-radius:3px;}
+
+/* BUTTONS */
+.btn-solid{background:#5fcf6e;color:#0b110b;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:12px 24px;border-radius:3px;border:none;cursor:pointer;display:inline-block;}
+.btn-out{background:transparent;color:#5fcf6e;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:12px 24px;border-radius:3px;border:1px solid #3a7a3a;cursor:pointer;display:inline-block;}
+.btn-out:hover{border-color:#5fcf6e;}
+
+/* SECTION LABELS */
+.eyebrow{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:#5fcf6e;margin-bottom:8px;}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:2px;color:#f0f7ee;line-height:1;margin-bottom:12px;}
+.sec-body{font-size:13px;color:#7ab07a;line-height:1.7;}
+
+/* HYBRID CREATURES */
+.hc-section{background:linear-gradient(180deg,#0b110b 0%,#0a0f0a 50%,#0b110b 100%);padding:80px 40px;}
+.hc-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto;}
+.hc-movie{position:relative;aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden;border:1px solid rgba(95,207,110,.2);box-shadow:0 0 60px rgba(95,207,110,.06);}
+.hc-movie-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#060e12,#0a1820);gap:14px;}
+.play-circle{width:64px;height:64px;background:rgba(95,207,110,.12);border:2px solid #5fcf6e;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;}
+.play-circle:hover{background:rgba(95,207,110,.22);transform:scale(1.06);}
+.play-circle svg{width:22px;height:22px;fill:#5fcf6e;margin-left:4px;}
+.hc-movie-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#4a6b4a;}
+.season-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:22px;}
+.schip{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 9px;border-radius:2px;border:1px solid #1c361c;color:#7ab07a;}
+.hc-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px;}
+.hc-stat{background:rgba(95,207,110,.04);border:1px solid #1c361c;border-radius:4px;padding:14px;}
+.hc-stat-val{font-family:'Bebas Neue',sans-serif;font-size:26px;color:#5fcf6e;letter-spacing:2px;}
+.hc-stat-lbl{font-size:10px;color:#4a6b4a;margin-top:2px;}
+.hc-btns{display:flex;gap:12px;margin-top:24px;}
+
+/* FOOTER */
+footer{background:#060d06;padding:40px 40px 24px;position:relative;}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
+.footer-col h4{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;color:#f0f7ee;margin-bottom:12px;}
+.footer-col a{font-size:12px;color:#7ab07a;text-decoration:none;margin-bottom:6px;display:block;}
+.footer-col a:hover{color:#5fcf6e;}
+.footer-bottom{border-top:1px solid #1c361c;padding-top:24px;text-align:center;}
+.footer-logo{margin-bottom:16px;}
+.footer-logo img{height:32px;width:auto;mix-blend-mode:screen;}
+.footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:16px;}
+.footer-links a{font-size:11px;color:#4a6b4a;text-decoration:none;}
+.footer-links a:hover{color:#7ab07a;}
+.footer-copyright{font-size:10px;color:#4a6b4a;}
+</style>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on("init", user => {
+    if (!user) {
+      window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin/";
+      });
+    }
+  });
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="nlogo"><a href="index.html"><img class="nav-logo-img" src="" alt="ConsumerBreak"></a></div>
+  <div class="nlinks"><a href="index.html">Home</a>
+<a href="breakery.html">The Breakery</a>
+<a href="community.html">Community</a>
+<a href="hybrid-creatures.html" style="color:#5fcf6e;">Hybrid Creatures</a>
+<a class="ncta" href="https://twitch.tv/consumerbreak" target="_blank">Watch Live</a></div>
+</nav>
+
+<!-- HYBRID CREATURES -->
+<section class="hc-section">
+  <div class="hc-inner">
+    <div>
+      <div class="eyebrow">4 Seasons · 1.7M+ Assets · WAX Blockchain</div>
+      <div class="sec-title">Hybrid Creatures NFT</div>
+      <p class="sec-body">Hand-drawn trading cards. Cryptids, mythology, and sci-fi collide in a universe powered by Mystery Matter — blending any creature into something new. Now with an AI feature film.</p>
+      <div class="season-chips">
+        <span class="schip">S1 · Cryptids</span>
+        <span class="schip">S2 · Folklore</span>
+        <span class="schip">S3 · Animals</span>
+        <span class="schip">S3.5 · Hybrids</span>
+        <span class="schip">S4 · Mythology</span>
+        <span class="schip">S4.5 · The Movie</span>
+      </div>
+      <div class="hc-stats-grid">
+        <div class="hc-stat"><div class="hc-stat-val">1.7M+</div><div class="hc-stat-lbl">Total Assets Minted</div></div>
+        <div class="hc-stat"><div class="hc-stat-val">500+</div><div class="hc-stat-lbl">Free NFTs Per Week</div></div>
+        <div class="hc-stat"><div class="hc-stat-val">4 YRS</div><div class="hc-stat-lbl">Of Lore Building</div></div>
+        <div class="hc-stat"><div class="hc-stat-val">17 MIN</div><div class="hc-stat-lbl">AI Feature Film</div></div>
+      </div>
+      <div class="hc-btns">
+        <a href="https://hybridcreaturesnft.com" target="_blank" class="btn-solid">Explore Lore</a>
+        <a href="https://wax.atomichub.io/explorer/collection/cbreakgaming" target="_blank" class="btn-out">Buy on AtomicHub</a>
+      </div>
+    </div>
+    <div>
+      <div class="hc-movie" id="hc-movie">
+        <div class="hc-movie-placeholder" id="hc-movie-placeholder">
+          <div class="play-circle" id="hc-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="hc-movie-label">Hybrid Creatures: The Movie</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Apps</h4>
+      <a href="breakery.html">The Breakery</a>
+      <a href="#">ConsumerBreak App</a>
+      <a href="#">PuzzleBreak</a>
+      <a href="#">More Coming Soon</a>
+    </div>
+    <div class="footer-col">
+      <h4>Shows</h4>
+      <a href="https://twitch.tv/consumerbreak">Live Streams</a>
+      <a href="#">PitchBreak</a>
+      <a href="#">Spectral Sessions</a>
+      <a href="#">BrandBreak</a>
+    </div>
+    <div class="footer-col">
+      <h4>Community</h4>
+      <a href="https://discord.gg/consumerbreak">Discord</a>
+      <a href="https://twitch.tv/consumerbreak">Twitch</a>
+      <a href="https://twitter.com/consumerbreak">Twitter</a>
+      <a href="story.html">Our Story</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-logo"><img src="" class="nav-logo-img" alt="ConsumerBreak"></div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="breakery.html">The Breakery</a>
+      <a href="community.html">Community</a>
+      <a href="hybrid-creatures.html">Hybrid Creatures</a>
+    </div>
+    <div class="footer-copyright">© 2025 ConsumerBreak® · Concept & Innovation Group, LLC · @NatEisenbergLIVE</div>
+  </div>
+</footer>
+
+<script>
+// Load nav logo
+fetch('/_data/hero.json').then(r=>r.json()).then(d=>{document.querySelectorAll('.nav-logo-img').forEach(i=>{i.src=d.site_logo;i.style.display='block';});document.getElementById('nav-logo-fallback').style.display='none';}).catch(()=>{});
+
+// Movie embed
+document.getElementById('hc-play-btn').addEventListener('click', function() {
+  const placeholder = document.getElementById('hc-movie-placeholder');
+  placeholder.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+});
+</script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on("init", user => {
+    if (!user) {
+      window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin/";
+      });
+    }
+  });
+}
+
+// Admin edit button
+if (window.netlifyIdentity && window.netlifyIdentity.currentUser()) {
+  const editBtn = document.createElement('a');
+  editBtn.href = '/editor.html';
+  editBtn.innerHTML = '✏ Edit Site';
+  editBtn.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#5fcf6e;color:#0b110b;padding:10px 16px;border-radius:4px;text-decoration:none;font-size:12px;font-weight:600;z-index:1000;';
+  document.body.appendChild(editBtn);
+}
+</script>
+
+</body>
+</html>
