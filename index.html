@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9148277996258336" crossorigin="anonymous"></script>
 <style>
 :root {
   --bg: #060c06;
@@ -95,7 +96,7 @@ section{position:relative;padding:80px 60px;}
 .show-day{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:3px;margin-bottom:4px;}
 .show-card.pb .show-day{color:var(--green);}
 .show-card.ss .show-day{color:var(--purple);}
-.show-time{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:2px;color:var(--muted);margin-bottom:20px;text-transform:uppercase;}
+.show-time{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:2px;color:var(--muted);margin-bottom:20px;text-transform:uppercase;}
 .show-img{height:180px;margin-bottom:20px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid var(--border);}
 .show-img img{width:100%;height:100%;object-fit:cover;display:block;}
 .show-desc{font-size:15px;font-weight:300;color:rgba(240,247,240,.5);line-height:1.75;margin-bottom:20px;}
@@ -110,13 +111,7 @@ section{position:relative;padding:80px 60px;}
 /* HYBRID CREATURES */
 .hc-section{background:linear-gradient(180deg,var(--bg) 0%,#070d10 50%,var(--bg) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .hc-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
-.hc-movie{position:relative;aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden;border:1px solid rgba(95,207,110,.2);box-shadow:0 0 60px rgba(95,207,110,.06);}
-.hc-movie-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#060e12,#0a1820);gap:14px;}
-.hc-feature-img{width:100%;height:300px;border-radius:6px;overflow:hidden;background:#0b161b;margin:16px 0;}
-.hc-feature-img img{width:100%;height:100%;object-fit:cover;display:block;}
-.play-circle{width:64px;height:64px;background:rgba(95,207,110,.12);border:2px solid var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;}
-.play-circle:hover{background:rgba(95,207,110,.22);transform:scale(1.06);}
-.play-circle svg{width:22px;height:22px;fill:var(--green);margin-left:4px;}
+.hc-movie{position:relative;aspect-ratio:16/9;background:#000;border-radius:6px;overflow:hidden;border:1px solid rgba(95,207,110,.2);box-shadow:0 0 60px rgba(95,207,110,.06);cursor:pointer;}
 .hc-movie-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
 .season-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:22px;}
 .schip{font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 9px;border-radius:2px;border:1px solid var(--border);color:var(--muted);}
@@ -154,11 +149,11 @@ section{position:relative;padding:80px 60px;}
 /* BREAKERY */
 .breakery-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .app-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:10px;margin-top:36px;}
-.appcard{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:18px 14px;text-align:center;transition:all .2s;}
+.appcard{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:18px 14px;text-align:center;transition:all .2s;text-decoration:none;color:var(--white);display:block;}
 .appcard:hover{border-color:rgba(95,207,110,.3);background:rgba(95,207,110,.03);transform:translateY(-2px);}
 .appcard-icon{width:46px;height:46px;margin:0 auto 10px;border-radius:10px;background:rgba(95,207,110,.07);border:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:20px;}
 .appcard-icon img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
-.appcard-name{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:var(--white);margin-bottom:4px;}
+.appcard-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;color:var(--white);margin-bottom:4px;}
 .appcard-desc{font-size:12px;color:var(--muted);line-height:1.4;}
 .appcard-status{display:inline-block;margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:2px;background:rgba(95,207,110,.1);color:var(--green);border:1px solid rgba(95,207,110,.2);}
 .breakery-foot{margin-top:28px;padding-top:22px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
@@ -265,19 +260,19 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
 
 <!-- STATS BAR -->
 <div class="statsbar">
-  <div class="statitem"><div class="stat-label" id="stat1-label">PitchBreak</div><div class="stat-value" id="stat1-value">WEDNESDAYS</div><div class="stat-sub" id="stat1-sub">2PM EST · 7PM UTC</div></div>
-  <div class="statitem"><div class="stat-label" id="stat2-label">Spectral Sessions</div><div class="stat-value" id="stat2-value">SUNDAYS</div><div class="stat-sub" id="stat2-sub">2PM EST · 7PM UTC</div></div>
-  <div class="statitem"><div class="stat-label" id="stat3-label">NFT Assets</div><div class="stat-value" id="stat3-value">1.7M+</div><div class="stat-sub" id="stat3-sub">WAX Blockchain</div></div>
-  <div class="statitem"><div class="stat-label" id="stat4-label">WAX Status</div><div class="stat-value" id="stat4-value">GOLD</div><div class="stat-sub" id="stat4-sub">Ambassador · cbreakgaming</div></div>
-  <div class="statitem"><div class="stat-label" id="stat5-label">Convention</div><div class="stat-value" id="stat5-value">NFTOPIA 5</div><div class="stat-sub" id="stat5-sub">Aug 16–17, 2025</div></div>
+  <div class="statitem"><div class="stat-label">PitchBreak</div><div class="stat-value">WEDNESDAYS</div><div class="stat-sub">2PM EST · 7PM UTC</div></div>
+  <div class="statitem"><div class="stat-label">Spectral Sessions</div><div class="stat-value">SUNDAYS</div><div class="stat-sub">2PM EST · 7PM UTC</div></div>
+  <div class="statitem"><div class="stat-label">NFT Assets</div><div class="stat-value">1.7M+</div><div class="stat-sub">WAX Blockchain</div></div>
+  <div class="statitem"><div class="stat-label">WAX Status</div><div class="stat-value">GOLD</div><div class="stat-sub">Ambassador · cbreakgaming</div></div>
+  <div class="statitem"><div class="stat-label">Convention</div><div class="stat-value">NFTOPIA 5</div><div class="stat-sub">Aug 16–17, 2025</div></div>
 </div>
 
 <!-- BREAKFEST BANNER -->
 <div class="breakfest-banner">
   <div class="breakfest-left">
-    <div id="breakfest-badge" class="breakfest-badge">🔥 Beta Launch</div>
-    <div id="breakfest-title" class="breakfest-title">BREAKFEST</div>
-    <p id="breakfest-sub" class="breakfest-sub">The ConsumerBreak community campaign — play games, complete tasks, earn rewards in the Breakverse. Powered by BrandBreak.</p>
+    <div class="breakfest-badge" id="breakfest-badge">🔥 Beta Launch</div>
+    <div class="breakfest-title" id="breakfest-title">BREAKFEST</div>
+    <p class="breakfest-sub" id="breakfest-sub">The ConsumerBreak community campaign — play games, complete tasks, earn rewards in the Breakverse. Powered by BrandBreak.</p>
   </div>
   <a href="breakery.html" class="btn-solid" style="flex-shrink:0;white-space:nowrap;">Join BREAKFEST →</a>
 </div>
@@ -308,9 +303,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <p class="show-desc" id="ss-desc">Live art show featuring Jumbie Art & guest artists drawing simultaneously — themes and attributes voted by viewers in real time. Learn the Spectral Art movement and Web3 through creativity.</p>
       <div style="margin-top:14px;padding:14px 16px;border:1px solid rgba(167,139,250,0.35);border-radius:4px;background:rgba(167,139,250,0.06);">
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#a78bfa;margin-bottom:6px;">Powered by S.A.F.E.</div>
-        <p style="font-size:13px;color:rgba(240,247,240,0.55);margin:0;line-height:1.65;">Spectral Art Foundation Enterprises &#8212; 501(c)(3) nonprofit. Artist grants, workshops, youth education &amp; live exhibitions. Co-produced with <a href="https://jumbieart.com/pages/safe" target="_blank" style="color:#a78bfa;text-decoration:none;font-weight:600;">Jumbie Art &#8594;</a></p>
+        <p style="font-size:13px;color:rgba(240,247,240,0.6);margin:0;line-height:1.65;">Spectral Art Foundation Enterprises &#8212; 501(c)(3) nonprofit. Artist grants, workshops, youth education &amp; live exhibitions. Co-produced with <a href="https://jumbieart.com/pages/safe" target="_blank" style="color:#a78bfa;text-decoration:none;font-weight:600;">Jumbie Art &#8594;</a></p>
       </div>
-      <div class="pills">
+      <div class="pills" style="margin-top:14px;">
         <span class="pill pill-tw">Twitch</span>
         <span class="pill pill-bl">Blaze.stream</span>
         <span class="pill pill-ar">Arena Social</span>
@@ -326,7 +321,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       <div class="eyebrow" id="hc-eyebrow">4 Seasons · 1.7M+ Assets · WAX Blockchain</div>
       <div class="sec-title" id="hc-title">Hybrid Creatures NFT</div>
       <p class="sec-body" id="hc-desc">Hand-drawn trading cards. Cryptids, mythology, and sci-fi collide in a universe powered by Mystery Matter — blending any creature into something new. Now with an AI feature film.</p>
-      <div id="hc-feature-img"></div>
+      <div id="hc-feature-img" style="display:none;margin:18px 0;border-radius:6px;overflow:hidden;border:1px solid var(--border);max-height:200px;"><img id="hc-feature-img-el" src="" style="width:100%;height:200px;object-fit:cover;display:block;"></div>
       <div class="season-chips">
         <span class="schip">S1 · Cryptids</span>
         <span class="schip">S2 · Folklore</span>
@@ -347,14 +342,20 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
       </div>
     </div>
     <div>
-      <div class="hc-movie" id="hc-movie">
-        <div class="hc-movie-placeholder" id="hc-movie-placeholder" style="position:relative;cursor:pointer;">
-        <img id="hc-thumb" src="" alt="Hybrid Creatures: The Movie" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;border-radius:6px;">
-        <div id="hc-play-btn" class="play-circle" style="position:relative;z-index:2;">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <div class="hc-movie" id="hc-movie" onclick="playHCMovie()">
+        <img id="hc-thumb" src="" alt="Hybrid Creatures: The Movie" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.15);display:flex;flex-direction:column;justify-content:space-between;padding:12px 16px;z-index:2;">
+          <div style="font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,0.8);max-width:70%;">Hybrid Creatures: The Movie</div>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.75);padding:5px 10px;border-radius:3px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z"/></svg>
+              <span style="font-size:11px;color:#fff;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;">Watch on YouTube</span>
+            </div>
+            <div style="width:56px;height:40px;background:#ff0000;border-radius:8px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.5);">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="white"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
         </div>
-        <div class="hc-movie-label" style="position:relative;z-index:2;">Hybrid Creatures: The Movie</div>
-      </div>
       </div>
     </div>
   </div>
@@ -387,44 +388,45 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
 <section class="breakery-section" id="breakery">
   <div class="eyebrow">The App Suite</div>
   <div class="sec-title">The Breakery</div>
-  <p class="sec-body" id="breakery-tagline">Puzzle mini-games and interactive tools to play, win, and explore across the Breakverse.</p>
+  <p class="sec-body" id="breakery-tagline">30 apps. One Breakverse account. Play games, earn points, build campaigns, and connect your wallet across everything we make.</p>
   <div class="app-strip" id="app-strip">
-    <div class="appcard">
+    <a class="appcard" href="#" target="_blank">
       <div class="appcard-icon">🎮</div>
       <div class="appcard-name">ConsumerBreak</div>
       <div class="appcard-desc">Jigsaw ad puzzles with cash & NFT prizes</div>
       <span class="appcard-status">Era 2 Beta</span>
-    </div>
-    <div class="appcard">
+    </a>
+    <a class="appcard" href="https://puzzlebreak.base44.app" target="_blank">
       <div class="appcard-icon">🎮</div>
       <div class="appcard-name">PuzzleBreak</div>
       <div class="appcard-desc">The core puzzle engine</div>
       <span class="appcard-status">Live</span>
-    </div>
-    <div class="appcard">
+    </a>
+    <a class="appcard" href="https://keybreak.base44.app" target="_blank">
       <div class="appcard-icon">🎮</div>
       <div class="appcard-name">KeyBreak</div>
       <div class="appcard-desc">Keyboard puzzle challenges</div>
       <span class="appcard-status">Beta</span>
-    </div>
-    <div class="appcard">
+    </a>
+    <a class="appcard" href="https://bingobreak.base44.app" target="_blank">
       <div class="appcard-icon">🎮</div>
       <div class="appcard-name">BingoBreak</div>
       <div class="appcard-desc">Live bingo with rewards</div>
       <span class="appcard-status">Beta</span>
-    </div>
-    <div class="appcard">
+    </a>
+    <a class="appcard" href="https://triviabreak.base44.app" target="_blank">
       <div class="appcard-icon">🎮</div>
       <div class="appcard-name">TriviaBreak</div>
       <div class="appcard-desc">Web3 trivia & learn-to-earn</div>
       <span class="appcard-status">Beta</span>
-    </div>
+    </a>
     <div class="appcard" style="opacity:.4;border-style:dashed;">
       <div class="appcard-icon">+</div>
       <div class="appcard-name">More Soon</div>
       <div class="appcard-desc">15+ mini games launching</div>
       <span class="appcard-status">Coming</span>
-    </div></div>
+    </div>
+  </div>
   <div class="breakery-foot">
     <p>One Breakverse account · Every app · Earn across all of them</p>
     <a href="breakery.html" class="btn-solid">See All Apps →</a>
@@ -435,7 +437,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
 <section id="nfts" style="background:var(--bg);">
   <div class="eyebrow">Metaverse Convention</div>
   <div class="sec-title">NFTOPIA</div>
-  <div class="nft-grid">
+  <div class="nft-grid" style="grid-template-columns:1fr;">
     <div class="nft-card">
       <div class="nft-img" id="nftopia-img"></div>
       <div class="nft-name">NFTOPIA</div>
@@ -446,20 +448,23 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
 </section>
 
 <!-- COMMUNITY -->
-<section id="community" style="background:var(--bg);">
+<section id="community" style="background:var(--bg2);">
   <div class="comm-grid">
     <div>
       <div class="eyebrow">The Breakverse</div>
       <div class="sec-title" id="community-title">Join The Breakverse</div>
       <p class="sec-body" id="community-desc">Discord, Twitch, Twitter — the ConsumerBreak community is where Web3 explorers, NFT collectors, live art fans, and puzzle players come together.</p>
-      <div class="earn-list" id="earn-items-list"><div class="earn-item"><div class="earn-dot"></div><div class="earn-text">500+ free WAX NFTs distributed every week via stream</div></div>
-<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Weekly 50M $WUF airdrop split to Scroll holders</div></div>
-<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Watch2Earn — tune in and get rewarded live</div></div>
-<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Vote on Spectral Sessions art themes every Sunday</div></div>
-<div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Play Breakery games and earn across the Breakverse</div></div></div>
+      <div class="earn-list" id="earn-items-list">
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">500+ free WAX NFTs distributed every week via stream</div></div>
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Weekly 50M $WUF airdrop split to Scroll holders</div></div>
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Watch2Earn — tune in and get rewarded live</div></div>
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Vote on Spectral Sessions art themes every Sunday</div></div>
+        <div class="earn-item"><div class="earn-dot"></div><div class="earn-text">Play Breakery games and earn across the Breakverse</div></div>
+      </div>
     </div>
   </div>
 </section>
+
 <!-- STORY TEASER -->
 <section class="story-section" id="story">
   <div class="story-grid">
@@ -522,7 +527,19 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:50px 60p
 </footer>
 
 <script>
-// CMS DATA LOADER
+window._movieUrl = '';
+
+function playHCMovie() {
+  const frame = document.getElementById('hc-movie');
+  if (!frame) return;
+  const url = window._movieUrl || '';
+  if (!url) { alert('No movie URL set. Add it in the editor under Hybrid Creatures.'); return; }
+  const videoId = url.includes('v=') ? url.split('v=')[1].split('&')[0] : url.split('/').pop();
+  frame.style.cursor = 'default';
+  frame.onclick = null;
+  frame.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videoId + '?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:block;position:absolute;inset:0;border:none;"></iframe>';
+}
+
 async function loadCMSData() {
   async function get(path) {
     try {
@@ -530,13 +547,14 @@ async function loadCMSData() {
       if (!r.ok) return null;
       const t = await r.text();
       if (!t || t.trim().startsWith('<')) return null;
-      return JSON.parse(t);
-    } catch(e) { return null; }
+      try { return JSON.parse(t); }
+      catch(je) { console.warn('[CMS] Bad JSON in ' + path + ':', je.message); return null; }
+    } catch(e) { console.warn('[CMS] Fetch failed ' + path + ':', e.message); return null; }
   }
 
   function fixSrc(s) {
     if (!s) return '';
-    if (s.startsWith('http')) return s;
+    if (s.startsWith('http') || s.startsWith('data:')) return s;
     return s.startsWith('/') ? s : '/' + s;
   }
 
@@ -544,8 +562,7 @@ async function loadCMSData() {
     if (!src) return;
     const el = document.getElementById(id);
     if (!el) return;
-    const s = fixSrc(src);
-    el.innerHTML = `<img src="${s}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
+    el.innerHTML = `<img src="${fixSrc(src)}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
   }
 
   function setText(id, val) {
@@ -577,32 +594,12 @@ async function loadCMSData() {
   if (hero) {
     setText('hero-badge', hero.badge);
     setText('hero-tagline', hero.tagline);
-    // Nav/footer logo (separate from hero logo)
     if (hero.nav_logo || hero.site_logo) setNavLogo(hero.nav_logo || hero.site_logo);
-    // Hero logo (large, left side)
     if (hero.hero_logo || hero.site_logo) setHeroLogo(hero.hero_logo || hero.site_logo);
     if (hero.hero_image) {
       const wrap = document.getElementById('hero-img-wrap');
       if (wrap) wrap.innerHTML = `<img src="${fixSrc(hero.hero_image)}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
     }
-    if (hero.breakfest_badge) setText('breakfest-badge', hero.breakfest_badge);
-    if (hero.breakfest_title) setText('breakfest-title', hero.breakfest_title);
-    if (hero.breakfest_sub) setText('breakfest-sub', hero.breakfest_sub);
-    if (hero.stat1_label) setText('stat1-label', hero.stat1_label);
-    if (hero.stat1_value) setText('stat1-value', hero.stat1_value);
-    if (hero.stat1_sub) setText('stat1-sub', hero.stat1_sub);
-    if (hero.stat2_label) setText('stat2-label', hero.stat2_label);
-    if (hero.stat2_value) setText('stat2-value', hero.stat2_value);
-    if (hero.stat2_sub) setText('stat2-sub', hero.stat2_sub);
-    if (hero.stat3_label) setText('stat3-label', hero.stat3_label);
-    if (hero.stat3_value) setText('stat3-value', hero.stat3_value);
-    if (hero.stat3_sub) setText('stat3-sub', hero.stat3_sub);
-    if (hero.stat4_label) setText('stat4-label', hero.stat4_label);
-    if (hero.stat4_value) setText('stat4-value', hero.stat4_value);
-    if (hero.stat4_sub) setText('stat4-sub', hero.stat4_sub);
-    if (hero.stat5_label) setText('stat5-label', hero.stat5_label);
-    if (hero.stat5_value) setText('stat5-value', hero.stat5_value);
-    if (hero.stat5_sub) setText('stat5-sub', hero.stat5_sub);
   }
 
   // PITCHBREAK
@@ -641,18 +638,16 @@ async function loadCMSData() {
       const thumb = document.getElementById('hc-thumb');
       if (thumb) {
         thumb.src = 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg';
-        thumb.style.display = 'block';
-        thumb.onerror = function() { this.src = 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg'; this.onerror=null; };
+        thumb.onerror = function() { this.src = 'https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg'; this.onerror = null; };
       }
     }
-    if (hybrid.image && !window.fetchHybridImage) {
-      window.fetchHybridImage = true;
-      const c = document.createElement('div');
-      c.className = 'hc-feature-img';
-      c.style.cssText = 'width:100%;height:300px;border-radius:6px;overflow:hidden;background:#0b161b;margin:16px 0;';
-      c.innerHTML = `<img src="${fixSrc(hybrid.image)}" style="width:100%;height:100%;object-fit:cover;display:block;">`;
-      const left = document.querySelector('.hc-inner > div');
-      if (left) left.appendChild(c);
+    if (hybrid.image) {
+      const wrap = document.getElementById('hc-feature-img');
+      const img = document.getElementById('hc-feature-img-el');
+      if (wrap && img) {
+        img.src = fixSrc(hybrid.image);
+        wrap.style.display = 'block';
+      }
     }
   }
 
@@ -671,8 +666,8 @@ async function loadCMSData() {
       const strip = document.getElementById('app-strip');
       if (strip) {
         strip.innerHTML = breakery.apps.map(a => `
-          <a class="appcard" href="${a.link || '#'}" target="_blank" style="text-decoration:none;">
-            <div class="appcard-icon">${a.icon ? `<img src="${a.icon.startsWith('http') ? a.icon : '/'+a.icon.replace(/^\//,'')}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">` : '🎮'}</div>
+          <a class="appcard" href="${a.link || '#'}" target="_blank">
+            <div class="appcard-icon">${a.icon ? `<img src="${fixSrc(a.icon)}">` : '🎮'}</div>
             <div class="appcard-name">${a.name || ''}</div>
             <div class="appcard-desc">${a.description || a.desc || ''}</div>
             <span class="appcard-status">${a.status || ''}</span>
@@ -696,45 +691,22 @@ async function loadCMSData() {
 }
 
 loadCMSData();
-
-// MOVIE PLAY BUTTON
-document.getElementById('hc-play-btn')?.addEventListener('click', function() {
-  const frame = document.getElementById('hc-movie');
-  if (!frame) return;
-  const url = window._movieUrl || '';
-  if (!url) { alert('No movie URL set. Add it in the editor under Hybrid Creatures.'); return; }
-  const videoId = url.includes('v=') ? url.split('v=')[1].split('&')[0] : url.split('/').pop();
-  frame.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videoId + '?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:block;"></iframe>';
-});
 </script>
 
 <script>
 console.log('[Editor] Page loaded');
-// Movie URL from CMS
-window._movieUrl = '';
-
 if (window.netlifyIdentity) {
-  // Initialize Identity and add an admin-only editor button when appropriate
   window.netlifyIdentity.on('init', user => {
     console.log('[Editor] Auth check - user:', user);
 
-    // Inject admin Edit button for users with role 'admin'
-    function addEditorButton(){
-      console.log('[Editor] Injecting edit overlay button');
+    function addEditorButton() {
       if (document.getElementById('admin-edit-btn')) return;
       const btn = document.createElement('a');
       btn.id = 'admin-edit-btn';
-      btn.href = location.pathname === '/breakery.html' ? '/breakery-editor.html' : '/editor.html';
+      btn.href = '/editor.html';
       btn.className = 'btn-outline';
       btn.textContent = '✏ Edit Site';
-      btn.style.position = 'fixed';
-      btn.style.bottom = '18px';
-      btn.style.right = '18px';
-      btn.style.zIndex = '9999';
-      btn.style.background = 'rgba(6,12,6,.94)';
-      btn.style.color = 'var(--green)';
-      btn.style.padding = '10px 12px';
-      btn.style.border = '2px solid var(--green)';
+      btn.style.cssText = 'position:fixed;bottom:18px;right:18px;z-index:9999;background:rgba(6,12,6,.94);color:var(--green);padding:10px 12px;border:2px solid var(--green);border-radius:3px;font-family:Barlow Condensed,sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;';
       document.body.appendChild(btn);
     }
 
@@ -742,8 +714,10 @@ if (window.netlifyIdentity) {
       addEditorButton();
     }
 
-    // On login/logout, refresh so UI updates (or add/remove button)
-    window.netlifyIdentity.on('logout', () => { const el = document.getElementById('admin-edit-btn'); if (el) el.remove(); });
+    window.netlifyIdentity.on('logout', () => {
+      const el = document.getElementById('admin-edit-btn');
+      if (el) el.remove();
+    });
   });
   window.netlifyIdentity.init();
 }
